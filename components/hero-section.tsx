@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import { ArrowUpRight, Pill, Calendar, Phone, Mic } from "lucide-react"
+import { ArrowUpRight, ArrowRight, Pill, Calendar, Phone, Mic } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 
@@ -44,12 +44,24 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex items-center justify-center gap-2 bg-[#1F3842] text-[#F5F1EA] rounded-full px-8 py-4 font-medium text-lg transition-all duration-300 hover:shadow-lg hover:shadow-[#1F3842]/20 hover:scale-[1.02]">
-                {t.hero.primaryCta}
-                <ArrowUpRight className="w-5 h-5" />
+              <button className="relative flex items-center gap-0 border border-[#1F3842] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden">
+                <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#1F3842]" />
+                <span className="text-base font-medium pr-4 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#F5F1EA]">
+                  {t.hero.primaryCta}
+                </span>
+                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 bg-[#1F3842] group-hover:bg-[#F5F1EA]/20">
+                  <ArrowUpRight className="w-4 h-4 text-[#F5F1EA]" />
+                </span>
               </button>
-              <button className="flex items-center justify-center gap-2 border-2 border-[#D9D2BE] rounded-full px-8 py-4 font-medium text-[#1F3842] transition-all duration-300 hover:border-[#7EA088] hover:bg-[#7EA088]/5">
-                {t.hero.secondaryCta}
+              <button className="relative flex items-center gap-0 border border-[#D9D2BE] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden">
+                <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#7EA088]" />
+                <span className="text-base font-medium pr-4 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#F5F1EA]">
+                  {t.hero.secondaryCta}
+                </span>
+                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10">
+                  <ArrowRight className="w-4 h-4 text-[#1F3842] group-hover:opacity-0 absolute transition-opacity duration-300" />
+                  <ArrowUpRight className="w-4 h-4 text-[#F5F1EA] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                </span>
               </button>
             </div>
           </div>
