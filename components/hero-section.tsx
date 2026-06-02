@@ -16,7 +16,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="pt-32 pb-20 px-6 min-h-screen flex items-center relative overflow-hidden">
+    <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 sm:px-6 min-h-screen flex items-center relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 -left-20 w-80 h-80 bg-[#7EA088]/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#D4A24D]/8 rounded-full blur-3xl" />
@@ -24,7 +24,7 @@ export function HeroSection() {
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             {t.hero.badge && (
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#7EA088]/15 border border-[#7EA088]/20 rounded-full mb-8">
@@ -55,7 +55,7 @@ export function HeroSection() {
           </div>
 
           <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
-            <div className="relative mx-auto w-full max-w-sm">
+            <div className="relative mx-auto w-full max-w-[280px] sm:max-w-[320px] md:max-w-sm">
               <div className="relative bg-[#1F3842] rounded-[3rem] p-3 shadow-2xl shadow-[#1F3842]/30">
                 <div className="bg-[#F5F1EA] rounded-[2.4rem] overflow-hidden">
                   <div className="px-6 pt-4 pb-2 flex justify-between items-center">
@@ -163,7 +163,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 1.2, duration: 0.6 }}
-                className="absolute -left-8 top-[15%] bg-white rounded-2xl border border-[#D9D2BE] shadow-lg shadow-[#1F3842]/8 p-3 flex items-center gap-3"
+                className="hidden md:flex absolute -left-8 top-[15%] bg-white rounded-2xl border border-[#D9D2BE] shadow-lg shadow-[#1F3842]/8 p-3 items-center gap-3"
               >
                 <div className="w-9 h-9 bg-[#D4A24D]/15 rounded-full flex items-center justify-center">
                   <Calendar className="w-4 h-4 text-[#D4A24D]" />
@@ -178,7 +178,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 1.6, duration: 0.6 }}
-                className="absolute -right-6 top-[60%] bg-white rounded-2xl border border-[#D9D2BE] shadow-lg shadow-[#1F3842]/8 p-3 flex items-center gap-3"
+                className="hidden md:flex absolute -right-6 top-[60%] bg-white rounded-2xl border border-[#D9D2BE] shadow-lg shadow-[#1F3842]/8 p-3 items-center gap-3"
               >
                 <div className="w-9 h-9 bg-[#7EA088]/15 rounded-full flex items-center justify-center">
                   <Pill className="w-4 h-4 text-[#7EA088]" />
@@ -193,7 +193,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1.9, duration: 0.6 }}
-                className="absolute -left-4 bottom-20 bg-white rounded-2xl border border-[#D9D2BE] shadow-lg shadow-[#1F3842]/8 p-3 flex items-center gap-3"
+                className="hidden md:flex absolute -left-4 bottom-20 bg-white rounded-2xl border border-[#D9D2BE] shadow-lg shadow-[#1F3842]/8 p-3 items-center gap-3"
               >
                 <div className="w-9 h-9 bg-[#A95535]/10 rounded-full flex items-center justify-center">
                   <Phone className="w-4 h-4 text-[#A95535]" />

@@ -36,12 +36,12 @@ export function StatsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-[#FDFBF6] border border-[#D9D2BE] rounded-2xl p-6 text-center flex flex-col"
+              className="bg-[#FDFBF6] border border-[#D9D2BE] rounded-2xl p-4 sm:p-6 text-center flex flex-col"
             >
               <h3 className="text-sm font-semibold text-[#1F3842] mb-3 min-h-[40px] flex items-center justify-center">
                 {stat.title}
               </h3>
-              <p className="text-4xl md:text-5xl font-bold mb-3" style={{ color: stat.color }}>
+              <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3" style={{ color: stat.color }}>
                 {stat.value}
               </p>
               <p className="text-xs text-[#4D6E7B] leading-relaxed mt-auto">

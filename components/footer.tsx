@@ -35,7 +35,7 @@ export function Footer() {
   }
 
   return (
-    <footer id="contact" className="relative border-t border-[#D9D2BE] py-16 px-6 bg-[#FDFBF6]">
+    <footer id="contact" className="relative border-t border-[#D9D2BE] py-12 md:py-16 px-4 sm:px-6 bg-[#FDFBF6]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2 md:col-span-1">

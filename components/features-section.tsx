@@ -15,9 +15,9 @@ export function FeaturesSection() {
   ]
 
   return (
-    <section id="features" className="py-32 px-6 relative overflow-hidden">
+    <section id="features" className="py-20 md:py-32 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
+        <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center mb-20 md:mb-32">
           <div className="space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -81,7 +81,7 @@ export function TestimonialsSection() {
   }, [isPaused, isInitialized])
 
   return (
-    <section id="testimonials" className="py-32 px-6">
+    <section id="testimonials" className="py-20 md:py-32 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <motion.div

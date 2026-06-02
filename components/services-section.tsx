@@ -13,7 +13,7 @@ export function ServicesSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="how-it-works" className="py-32 px-6 relative overflow-hidden">
+    <section id="how-it-works" className="py-20 md:py-32 px-4 sm:px-6 relative overflow-hidden">
       <div ref={sectionRef} className="max-w-7xl mx-auto relative z-10">
 
         {/* Section label + headline */}
@@ -57,8 +57,6 @@ export function ServicesSection() {
           })}
         </div>
 
-        {/* Divider line */}
-        <div className="mt-16 border-t border-[#D9D2BE]" />
       </div>
     </section>
   )
