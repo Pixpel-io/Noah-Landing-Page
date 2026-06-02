@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Noah AI - Landing Page Content</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1F3842;
+      line-height: 1.7;
+      padding: 60px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #FDFBF6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: #1F3842;
+    }
+
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    h2 { font-size: 22px; margin-bottom: 12px; margin-top: 48px; border-bottom: 2px solid #7EA088; padding-bottom: 8px; }
+    h3 { font-size: 16px; margin-bottom: 6px; margin-top: 20px; font-family: 'Inter', sans-serif; font-weight: 600; }
+
+    p { margin-bottom: 12px; font-size: 13.5px; color: #4D6E7B; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #D9D2BE;
+    }
+
+    .header h1 { font-size: 36px; margin-bottom: 4px; }
+    .header .subtitle { font-size: 15px; color: #7EA088; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+    .header .tagline { font-size: 16px; color: #4D6E7B; font-style: italic; }
+
+    .logo-mark {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-bottom: 16px;
+    }
+
+    .section { margin-bottom: 36px; }
+
+    .badge {
+      display: inline-block;
+      background: #7EA088;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 24px;
+      margin: 12px 0;
+    }
+
+    .feature-item {
+      font-size: 13px;
+      color: #1F3842;
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .feature-item::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: #7EA088;
+      font-weight: bold;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 16px 0;
+      background: #1F3842;
+      padding: 24px;
+      border-radius: 12px;
+    }
+
+    .stat { text-align: center; }
+    .stat .number { font-size: 24px; font-weight: 700; color: #F5F1EA; }
+    .stat .label { font-size: 10px; color: #86A0A9; text-transform: uppercase; letter-spacing: 1px; }
+
+    .service-card {
+      padding: 16px 0;
+      border-bottom: 1px solid #EBE5D5;
+    }
+    .service-card:last-child { border-bottom: none; }
+    .service-card h3 { color: #1F3842; }
+    .service-card p { margin-bottom: 0; }
+
+    .step {
+      margin-bottom: 16px;
+      padding-left: 16px;
+      border-left: 3px solid #D9D2BE;
+    }
+    .step-number { font-size: 12px; font-weight: 700; color: #7EA088; text-transform: uppercase; letter-spacing: 1px; }
+
+    .testimonial {
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #F5F1EA;
+      border-radius: 8px;
+    }
+    .testimonial .quote { font-style: italic; font-size: 13px; color: #1F3842; margin-bottom: 8px; }
+    .testimonial .author { font-size: 12px; font-weight: 600; color: #1F3842; }
+    .testimonial .role { font-size: 11px; color: #4D6E7B; }
+
+    .faq-item { margin-bottom: 16px; }
+    .faq-item .question { font-weight: 600; font-size: 14px; color: #1F3842; margin-bottom: 4px; }
+    .faq-item .answer { font-size: 13px; color: #4D6E7B; }
+
+    .cta-box {
+      background: #1F3842;
+      color: #F5F1EA;
+      padding: 32px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 32px 0;
+    }
+    .cta-box h2 { color: #F5F1EA; border: none; margin-top: 0; padding: 0; margin-bottom: 12px; }
+    .cta-box p { color: #86A0A9; }
+    .cta-box .buttons { margin-top: 16px; font-size: 13px; color: #D4A24D; font-weight: 600; }
+
+    .footer-info {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #D9D2BE;
+      font-size: 12px;
+      color: #4D6E7B;
+      text-align: center;
+    }
+
+    .page-break { page-break-before: always; }
+
+    @media print {
+      body { padding: 40px 50px; background: white; }
+      .cta-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .stats-grid { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .testimonial { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER / HEADER -->
+  <div class="header">
+    <svg class="logo-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="16" r="15" fill="#1F3842"/>
+      <path d="M11 22V10.5L21 22V10" stroke="#F5F1EA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="22" cy="9" r="1.5" fill="#D4A24D"/>
+    </svg>
+    <div class="subtitle">Landing Page Content Document</div>
+    <h1>Noah AI</h1>
+    <p class="tagline">Your Caring Health Companion</p>
+  </div>
+
+  <!-- NAVIGATION LINKS -->
+  <div class="section">
+    <h2>Navigation</h2>
+    <p><strong>Menu Items:</strong> How It Works | Features | Testimonials | FAQ</p>
+    <p><strong>Primary CTA:</strong> Download App</p>
+  </div>
+
+  <!-- HERO SECTION -->
+  <div class="section">
+    <h2>Hero Section</h2>
+    <p><strong>Badge:</strong> Now with Premium Voice & AI Agent</p>
+    <h3 style="font-family: 'Playfair Display', serif; font-size: 20px;">Health care that <span style="color: #7EA088;">feels like</span> family</h3>
+    <p style="margin-top: 12px;">
+      Noah is your warm, intelligent health companion — talk naturally, manage medications by voice, record doctor visits, and stay connected with your loved ones. Powered by Claude AI.
+    </p>
+    <p><strong>Primary Button:</strong> Talk to Noah</p>
+    <p><strong>Secondary Button:</strong> See How It Works</p>
+    <p style="margin-top: 12px;"><strong>Phone Mockup Shows:</strong> Voice call interface with waveform animation, "Noah is speaking..." state, tap-to-talk mic button, bottom tab navigation (Home, Calendar, Noah, Medications, Settings)</p>
+    <p><strong>Floating Cards:</strong></p>
+    <ul style="padding-left: 20px; font-size: 13px; color: #4D6E7B;">
+      <li>Dr. Martin — Recorded / AI Summary Ready</li>
+      <li>"Add Aspirin 500mg" / Done via voice</li>
+      <li>Emergency / One-tap call</li>
+    </ul>
+  </div>
+
+  <!-- STATS SECTION -->
+  <div class="section">
+    <h2>Stats Section</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="number">50K+</div>
+        <div class="label">Active Users</div>
+      </div>
+      <div class="stat">
+        <div class="number" style="color: #7EA088;">120K+</div>
+        <div class="label">Meds Tracked</div>
+      </div>
+      <div class="stat">
+        <div class="number" style="color: #D4A24D;">35K+</div>
+        <div class="label">Appointments</div>
+      </div>
+      <div class="stat">
+        <div class="number">99.9%</div>
+        <div class="label">Uptime</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES / WHAT NORA CAN DO -->
+  <div class="section">
+    <h2>What Noah Can Do</h2>
+    <p><strong>Section Headline:</strong> Care, simplified</p>
+    <p><strong>Subtext:</strong> Nine powerful features designed with warmth — from voice-first AI interactions to hands-free doctor recordings, all built for comfort and clarity.</p>
+
+    <div class="service-card">
+      <h3>Premium Voice Chat <span class="badge">New</span></h3>
+      <p>Talk naturally with Noah using tap-to-speak. She responds with a warm, human-like voice powered by AWS Polly's generative engine — with sentence-level streaming for instant replies.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>AI Agent Actions <span class="badge">New</span></h3>
+      <p>Just say "Add Aspirin 500mg twice daily" or "Set a meditation at 3pm" — Noah executes it directly. Powered by Claude Sonnet, she manages meds, reminders, and contacts from chat.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Doctor Visit Recording <span class="badge">New</span></h3>
+      <p>Record your doctor appointments hands-free. Noah auto-transcribes the conversation and generates an AI-powered summary you can review anytime.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Medication Management</h3>
+      <p>Scan medication boxes with your camera or add them by voice. Smart scheduling with hourly intervals, gentle reminders, and a progress ring to track your day.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Agenda & Appointments</h3>
+      <p>Your daily view with medications, consultations, and reminders — all in one place. Swipe through days, see your progress, and never miss an appointment.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Emergency Contacts</h3>
+      <p>One-tap emergency calling with a pulsing button that draws attention. Manage trusted contacts with phone and email — always within reach.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Family Check-In <span class="badge">New</span></h3>
+      <p>Daily notifications keep loved ones connected. Family members get peace of mind knowing their parent or grandparent is doing well.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Full Accessibility</h3>
+      <p>Adjustable font sizes, high-contrast mode, haptic feedback, and 56-72px tap targets. No passwords needed — just your name to log back in.</p>
+    </div>
+
+    <div class="service-card">
+      <h3>Bilingual Support</h3>
+      <p>Full English and Spanish interface. Noah speaks in your preferred language with a native-sounding voice (Ruth for English, Lucia for Spanish).</p>
+    </div>
+  </div>
+
+  <!-- PAGE BREAK -->
+  <div class="page-break"></div>
+
+  <!-- FEATURES SECTION -->
+  <div class="section">
+    <h2>Features Section</h2>
+    <p><strong>Headline:</strong> Voice-first, action-ready</p>
+    <p><strong>Subtext:</strong> Noah doesn't just listen — she acts. Powered by Claude Sonnet and AWS Polly, every interaction feels natural, warm, and gets things done.</p>
+
+    <h3>Feature Checklist</h3>
+    <div class="feature-grid">
+      <div class="feature-item">Tap-to-talk voice interface</div>
+      <div class="feature-item">Sentence-level streaming TTS</div>
+      <div class="feature-item">Medication photo scanning</div>
+      <div class="feature-item">Doctor visit auto-transcription</div>
+      <div class="feature-item">AI-powered visit summaries</div>
+      <div class="feature-item">Hourly to weekly schedules</div>
+      <div class="feature-item">No-password login by name</div>
+      <div class="feature-item">Family daily check-in alerts</div>
+    </div>
+
+    <h3 style="margin-top: 28px;">App Preview Content (Interactive Mockup)</h3>
+    <p><strong>Chat Preview:</strong></p>
+    <p style="padding-left: 16px; font-style: italic;">
+      Noah: "Good morning! I've added Aspirin 500mg to your 8 AM schedule."<br>
+      User (via mic): "Set a reminder for my vitamin too"<br>
+      Noah: "Done! Vitamin D reminder set for 9 AM daily. Anything else?"
+    </p>
+    <p><strong>Doctor Recording Preview:</strong></p>
+    <p style="padding-left: 16px; font-style: italic;">
+      "...your blood pressure looks good. Let's continue with the current dosage and check again in 3 months..."<br>
+      <span style="color: #A95535;">[Recording indicator]</span> — Progress: 12:34
+    </p>
+    <p><strong>Daily Progress:</strong> 3 of 4 medications taken — 75% (progress ring)</p>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <h2>How Noah Works</h2>
+    <p><strong>Headline:</strong> From voice to action in seconds</p>
+
+    <div class="step">
+      <div class="step-number">Step 01</div>
+      <h3>Talk to Noah</h3>
+      <p>Tap the mic and speak naturally — "I need to add my new prescription" or "What's my schedule today?" Noah understands context and takes action.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">Step 02</div>
+      <h3>Noah Takes Action</h3>
+      <p>She adds your medication, sets the reminder, books the appointment — all from your voice command. No menus, no typing needed.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">Step 03</div>
+      <h3>Record & Remember</h3>
+      <p>At your next doctor visit, tap record. Noah captures everything, transcribes it, and creates a summary you can review with family.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">Step 04</div>
+      <h3>Stay Connected</h3>
+      <p>Your family gets daily check-in notifications. Emergency contacts are always one tap away. Everyone stays in the loop.</p>
+    </div>
+  </div>
+
+  <!-- CTA SECTION -->
+  <div class="cta-box">
+    <h2>Give your loved ones the care they deserve</h2>
+    <p>Whether for yourself or a family member — Noah is a companion that brings peace of mind, gentle reminders, and real support. Now with premium voice, AI actions, and doctor visit recording.</p>
+    <div class="buttons">
+      Primary: "Get Noah — It's Free" &nbsp;&nbsp;|&nbsp;&nbsp; Secondary: "Learn More"
+    </div>
+    <p style="margin-top: 16px; font-size: 12px; color: #86A0A9;">
+      Trust Badges: Premium Voice (Natural, streaming TTS) | Claude Sonnet AI (Takes action from voice) | Doctor Recording (Auto-transcribe & summarize)
+    </p>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section">
+    <h2>Testimonials</h2>
+    <p><strong>Headline:</strong> Loved by families everywhere</p>
+
+    <div class="testimonial">
+      <div class="quote">"I set up Noah for my mother and it changed everything. She never misses her medications anymore, and I get peace of mind knowing she can reach me in one tap."</div>
+      <div class="author">Catherine Moreau</div>
+      <div class="role">Daughter & Caregiver</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="quote">"I recommend Noah to my elderly patients. The medication tracking and large interface make it perfect for those who struggle with typical health apps."</div>
+      <div class="author">Dr. Philippe Laurent</div>
+      <div class="role">Geriatric Physician</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="quote">"Noah feels like talking to a kind friend. She reminds me of my pills, helps me remember my appointments, and the text is big enough that I can read without my glasses!"</div>
+      <div class="author">Marie Bellanger</div>
+      <div class="role">User, age 74</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="quote">"The emergency button saved me once already. I fell and was able to call my son immediately. The app is so simple — even I can use it without help."</div>
+      <div class="author">Jean-Pierre Duval</div>
+      <div class="role">User, age 68</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="quote">"Papa takes 6 different medications. Before Noah, he mixed them up constantly. Now everything is organized and tracked. Such a relief for our family."</div>
+      <div class="author">Sophie Martin</div>
+      <div class="role">Daughter & Caregiver</div>
+    </div>
+
+    <div class="testimonial">
+      <div class="quote">"The accessibility features are outstanding. High contrast, large touch targets, voice input — this is how all health apps should be designed for older adults."</div>
+      <div class="author">Dr. Amira Hassan</div>
+      <div class="role">Family Medicine</div>
+    </div>
+  </div>
+
+  <!-- PAGE BREAK -->
+  <div class="page-break"></div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <h2>FAQ Section</h2>
+    <p><strong>Headline:</strong> Questions? We're here.</p>
+    <p><strong>Subtext:</strong> Everything you need to know about Noah. Can't find your answer? We'd love to hear from you.</p>
+
+    <div class="faq-item">
+      <div class="question">Q: Who is Noah designed for?</div>
+      <div class="answer">Noah is designed primarily for older adults and their caregivers. The interface uses large text (minimum 16px body, 18-20px for buttons), generous tap targets (56-72px), haptic feedback, and high contrast options. No passwords are needed — just your name to log back in.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: How does the voice feature work?</div>
+      <div class="answer">Noah uses a tap-to-talk interface — press the microphone button, speak naturally, and Noah responds with a warm, human-like voice powered by AWS Polly's generative engine. The response streams sentence-by-sentence so you hear the first part immediately. You can say things like "Add my new medication" or "What's my schedule today" and Noah takes action directly.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: What can Noah actually do from my voice?</div>
+      <div class="answer">Noah is powered by Claude Sonnet AI and can execute real actions from your voice: add or edit medications, set reminders, schedule meditation sessions, add doctor consultations, manage emergency contacts, and mark medications as taken. She understands natural language — no special commands needed.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: How does doctor visit recording work?</div>
+      <div class="answer">When you're at a doctor's appointment, tap the record button. Noah captures the conversation hands-free, automatically transcribes it, and generates an AI-powered summary. You can review past consultations, listen to recordings, and share summaries with family members.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: Can my family stay connected?</div>
+      <div class="answer">Yes! Family members can set up Noah for their loved ones and receive daily check-in notifications. You can configure trusted contacts with phone and email, and the emergency calling feature is always one tap away. The app is designed to be set up by a tech-savvy family member and used independently.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: What about my privacy and data?</div>
+      <div class="answer">Your health data stays on your device by default. We use end-to-end encryption for any data that syncs. We never sell personal information and you can delete all your data at any time from Settings. Doctor recordings and transcriptions are stored securely on your device.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: Does it work without internet?</div>
+      <div class="answer">Core features like medication reminders, your agenda, and emergency calling work offline. Voice chat and AI agent features require an internet connection, but your medication schedule, doctor recordings, and contact list are always available even without signal.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question">Q: What languages does Noah support?</div>
+      <div class="answer">Noah currently supports English and Spanish with full interface translation and native-sounding voices (Ruth for English, Lucia for Spanish via AWS Polly). More languages are planned. You can switch languages anytime from Settings.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section">
+    <h2>Footer</h2>
+    <p><strong>Tagline:</strong> Your caring AI health companion, designed for comfort and clarity.</p>
+    <p><strong>Product Links:</strong> Features | How It Works | Download | Accessibility</p>
+    <p><strong>Company Links:</strong> About | Careers | Blog | Partners</p>
+    <p><strong>Legal Links:</strong> Terms | Privacy | Data Policy | Cookie Policy</p>
+    <p><strong>Support Links:</strong> Help Center | Contact | FAQ | Caregiver Guide</p>
+    <p><strong>Social:</strong> Twitter | LinkedIn | Instagram</p>
+    <p><strong>Bottom Line:</strong> &copy; 2026 Noah AI. All rights reserved. | Made with love for those who care.</p>
+  </div>
+
+  <!-- DOCUMENT FOOTER -->
+  <div class="footer-info">
+    <p>Noah AI - Landing Page Content Document</p>
+    <p>Prepared for CEO Review | June 2026</p>
+    <p style="margin-top: 8px; color: #7EA088;">Confidential</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F5F1EA"/>
+  <rect x="0" y="0" width="1200" height="630" fill="#1F3842" opacity="0.03"/>
+
+  <!-- Logo -->
+  <circle cx="600" cy="240" r="60" fill="#1F3842"/>
+  <path d="M580 280V240L620 280V240" stroke="#F5F1EA" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="622" cy="237" r="3" fill="#D4A24D"/>
+
+  <!-- Text -->
+  <text x="600" y="350" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="56" font-weight="700" fill="#1F3842">Noah AI</text>
+  <text x="600" y="400" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#4D6E7B">Your Caring Health Companion</text>
+
+  <!-- Tagline -->
+  <text x="600" y="460" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#7EA088">Voice Support • Medication Management • Doctor Recording • Family Connection</text>
+
+  <!-- Bottom accent -->
+  <rect x="500" y="520" width="200" height="4" rx="2" fill="#7EA088"/>
+</svg>
