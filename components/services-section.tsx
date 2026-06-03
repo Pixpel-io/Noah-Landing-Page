@@ -57,6 +57,21 @@ export function ServicesSection() {
           })}
         </div>
 
+        {/* Old lady image */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="mt-16 md:mt-24 rounded-3xl overflow-hidden"
+        >
+          <img
+            src="/images/Old-Lady.png"
+            alt="Senior woman using phone"
+            className="w-full object-contain"
+          />
+        </motion.div>
+
       </div>
     </section>
   )
