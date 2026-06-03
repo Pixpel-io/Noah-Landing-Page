@@ -97,23 +97,24 @@ export function Header() {
             {/* Language Toggle */}
             <button
               onClick={toggleLocale}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#D9D2BE] hover:border-[#7EA088] hover:bg-[#7EA088]/5 transition-all duration-200"
+              className="relative flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#D9D2BE] transition-all duration-300 group overflow-hidden"
               title={locale === "en" ? "Cambiar a Español" : "Switch to English"}
             >
-              <Globe className="w-3.5 h-3.5 text-[#4D6E7B]" />
-              <span className="text-xs font-semibold text-[#1F3842] uppercase">{locale === "en" ? "ES" : "EN"}</span>
+              <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#7EA088]" />
+              <Globe className="w-3.5 h-3.5 text-[#4D6E7B] relative z-10 group-hover:text-white transition-colors duration-300" />
+              <span className="text-xs font-semibold text-[#1F3842] uppercase relative z-10 group-hover:text-white transition-colors duration-300">{locale === "en" ? "ES" : "EN"}</span>
             </button>
 
             <button
-              className="relative flex items-center gap-0 border border-[#1F3842] rounded-full pl-5 pr-1 py-1 transition-all duration-300 group overflow-hidden"
+              className="relative flex items-center gap-0 border border-[#D4A24D] rounded-full pl-5 pr-1 py-1 transition-all duration-300 group overflow-hidden"
             >
-              <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#1F3842]" />
-              <span className="text-sm pr-3 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#F5F1EA]">
+              <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#D4A24D]" />
+              <span className="text-sm pr-3 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#1F3842]">
                 {t.nav.downloadApp}
               </span>
               <span className="w-8 h-8 rounded-full flex items-center justify-center relative z-10">
                 <ArrowRight className="w-4 h-4 group-hover:opacity-0 absolute transition-opacity duration-300 text-[#1F3842]" />
-                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[#F5F1EA]" />
+                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[#1F3842]" />
               </span>
             </button>
           </div>
@@ -169,15 +170,15 @@ export function Header() {
             </a>
             <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-[#D9D2BE]">
               <button
-                className="relative flex items-center gap-0 border border-[#1F3842] rounded-full pl-5 pr-1 py-1 w-fit transition-all duration-300 group overflow-hidden"
+                className="relative flex items-center gap-0 border border-[#D4A24D] rounded-full pl-5 pr-1 py-1 w-fit transition-all duration-300 group overflow-hidden"
               >
-                <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#1F3842]" />
-                <span className="text-sm pr-3 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#F5F1EA]">
+                <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#D4A24D]" />
+                <span className="text-sm pr-3 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#1F3842]">
                   {t.nav.downloadApp}
                 </span>
                 <span className="w-8 h-8 rounded-full flex items-center justify-center relative z-10">
                   <ArrowRight className="w-4 h-4 group-hover:opacity-0 absolute transition-opacity duration-300 text-[#1F3842]" />
-                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[#F5F1EA]" />
+                  <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[#1F3842]" />
                 </span>
               </button>
             </div>
