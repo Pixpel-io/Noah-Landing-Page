@@ -163,8 +163,8 @@ export const translations = {
           answer: "Yes. Your health data stays on your device by default. We use end-to-end encryption for any synced data, never sell personal information, and you can delete everything at any time. Doctor recordings and medication history are stored securely and only accessible to you.",
         },
         {
-          question: "Do I need to be tech-savvy to use Noah?",
-          answer: "Not at all. Noah is built specifically for people who find technology intimidating. The interface uses extra-large text, big buttons (56-72px touch targets), voice-first interaction, and haptic feedback. There are no passwords to remember — you log in with just your name. If you can talk, you can use Noah.",
+          question: "How does Noah's AI health companion work?",
+          answer: "Noah uses conversational AI to help you manage your daily health routine. You can talk to Noah naturally — ask about your medication schedule, get reminders explained, or have it summarize your last doctor visit. It learns your routine over time and proactively reminds you about upcoming appointments, medication times, and health check-ins. Think of it as a caring assistant that's always available to help you stay on top of your health.",
         },
         {
           question: "What if I don't have internet at home?",
@@ -363,8 +363,8 @@ export const translations = {
           answer: "Sí. Tus datos de salud se quedan en tu dispositivo por defecto. Usamos cifrado de extremo a extremo para cualquier dato sincronizado, nunca vendemos información personal, y puedes borrar todo en cualquier momento. Las grabaciones médicas y el historial de medicamentos se almacenan de forma segura y solo son accesibles para ti.",
         },
         {
-          question: "¿Necesito saber de tecnología para usar Noah?",
-          answer: "Para nada. Noah está construido específicamente para personas que encuentran la tecnología intimidante. La interfaz usa texto extra grande, botones grandes (56-72px), interacción por voz, y retroalimentación háptica. No hay contraseñas — inicias sesión solo con tu nombre. Si puedes hablar, puedes usar Noah.",
+          question: "¿Cómo funciona el compañero de salud con IA de Noah?",
+          answer: "Noah usa inteligencia artificial conversacional para ayudarte a gestionar tu rutina de salud diaria. Puedes hablar con Noah de forma natural — preguntar sobre tu horario de medicamentos, pedir que te explique recordatorios, o que resuma tu última visita al médico. Aprende tu rutina con el tiempo y te recuerda proactivamente sobre citas, horarios de medicación y chequeos de salud. Piensa en él como un asistente atento que siempre está disponible para ayudarte a cuidar tu salud.",
         },
         {
           question: "¿Y si no tengo internet en casa?",
