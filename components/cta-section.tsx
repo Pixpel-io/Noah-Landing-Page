@@ -39,7 +39,7 @@ export function CTASection() {
             >
               <div className="relative inline-flex items-center gap-2 px-4 py-2 bg-[#7EA088]/20 border border-[#7EA088]/30 rounded-full mb-8 overflow-hidden group cursor-default hover:border-[#7EA088]/60 transition-colors duration-300">
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                <Heart className="w-4 h-4 text-[#7EA088] relative z-10 group-hover:scale-125 transition-transform duration-300" />
+                <Heart className="w-4 h-4 text-[#7EA088] relative z-10 group-hover:scale-125 group-hover:text-white group-hover:fill-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
                 <span className="text-sm font-medium text-[#F5F1EA] relative z-10">{t.cta.badge}</span>
               </div>
 

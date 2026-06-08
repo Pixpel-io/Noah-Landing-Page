@@ -80,12 +80,17 @@ export function ServicesSection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center mb-0"
         >
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
+          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden group">
+            {/* Glowing ring effect behind the device */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-[45%] h-[45%] rounded-full bg-[#5CE0D8]/0 group-hover:bg-[#5CE0D8]/10 transition-all duration-700" />
+              <div className="absolute w-[42%] h-[42%] rounded-full border-2 border-[#5CE0D8]/0 group-hover:border-[#5CE0D8]/40 group-hover:shadow-[0_0_30px_rgba(92,224,216,0.3)] transition-all duration-700" />
+            </div>
             <Image
               src="/images/Robot.png"
               alt="Noah portable device"
               fill
-              className="object-cover scale-80"
+              className="object-cover scale-80 transition-transform duration-700 group-hover:scale-[0.83]"
             />
           </div>
           <div>

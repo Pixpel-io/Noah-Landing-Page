@@ -97,7 +97,7 @@ export function WhyDifferentSection() {
           className="relative bg-[#1F3842] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#1F3842]/40 transition-shadow duration-300"
         >
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          <Heart className="w-6 h-6 shrink-0 text-[#7EA088] relative z-10" />
+          <Heart className="w-6 h-6 shrink-0 text-[#7EA088] relative z-10 group-hover:fill-white group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
           <p className="text-white text-sm md:text-base leading-relaxed relative z-10">
             {t.whyDifferent.quote}
           </p>

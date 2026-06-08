@@ -78,7 +78,7 @@ export function NumbersSection() {
       >
         <div className="relative bg-[#C17B50] rounded-full px-5 sm:px-8 md:px-10 py-3 sm:py-4 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#C17B50]/30 transition-shadow duration-300">
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-          <Heart className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-white" />
+          <Heart className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-white group-hover:fill-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
           <p className="text-white text-xs sm:text-sm md:text-base font-medium text-center relative z-10">
             {t.numbersSection.bottomQuote}
           </p>
