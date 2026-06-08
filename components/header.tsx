@@ -36,17 +36,17 @@ export function Header() {
   }
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "px-4 pt-4" : ""}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "px-3 sm:px-4 pt-3 sm:pt-4" : ""}`}>
       <div
         className={`max-w-7xl mx-auto transition-all duration-300 rounded-2xl ${
           isScrolled
-            ? "bg-[#F5F1EA]/80 backdrop-blur-xl border border-[#D9D2BE] px-6 py-3"
-            : "bg-background/90 backdrop-blur-md px-6 py-5"
+            ? "bg-[#F5F1EA]/80 backdrop-blur-xl border border-[#D9D2BE] px-4 sm:px-6 py-2.5 sm:py-3"
+            : "bg-background/90 backdrop-blur-md px-4 sm:px-6 py-4 sm:py-5"
         }`}
       >
         <div className="flex items-center justify-between">
-          <a href="#" onClick={handleLogoClick} className="flex items-center gap-2.5 cursor-pointer">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <a href="#" onClick={handleLogoClick} className="flex items-center gap-2.5 cursor-pointer group">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" className="transition-transform duration-300 group-hover:rotate-[360deg]">
               <circle cx="16" cy="16" r="15" fill="#1F3842" />
               <path
                 d="M11 22V10.5L21 22V10"
@@ -57,7 +57,7 @@ export function Header() {
               />
               <circle cx="22" cy="9" r="1.5" fill="#D4A24D" />
             </svg>
-            <span className="text-lg font-semibold tracking-tight text-[#1F3842]">
+            <span className="text-lg font-semibold tracking-tight text-[#1F3842] group-hover:text-[#7EA088] transition-colors duration-300">
               Noah
             </span>
           </a>
@@ -68,14 +68,7 @@ export function Header() {
               onClick={(e) => handleSmoothScroll(e, "how-it-works")}
               className="text-sm text-[#4D6E7B] hover:text-[#1F3842] transition-colors cursor-pointer"
             >
-              {t.nav.howItWorks}
-            </a>
-            <a
-              href="#features"
-              onClick={(e) => handleSmoothScroll(e, "features")}
-              className="text-sm text-[#4D6E7B] hover:text-[#1F3842] transition-colors cursor-pointer"
-            >
-              {t.nav.features}
+              {t.nav.discoverNoah}
             </a>
             <a
               href="#testimonials"
@@ -145,14 +138,7 @@ export function Header() {
               onClick={(e) => handleSmoothScroll(e, "how-it-works")}
               className="text-[#4D6E7B] hover:text-[#1F3842] transition-colors cursor-pointer"
             >
-              {t.nav.howItWorks}
-            </a>
-            <a
-              href="#features"
-              onClick={(e) => handleSmoothScroll(e, "features")}
-              className="text-[#4D6E7B] hover:text-[#1F3842] transition-colors cursor-pointer"
-            >
-              {t.nav.features}
+              {t.nav.discoverNoah}
             </a>
             <a
               href="#testimonials"

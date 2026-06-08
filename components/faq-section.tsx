@@ -37,20 +37,26 @@ export function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.03 }}
               viewport={{ once: true }}
-              className="border border-[#E5E5E5] rounded-2xl px-6 py-4"
+              className={`rounded-2xl px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 cursor-pointer ${
+                openIndex === index
+                  ? "border border-[#7EA088]/40 bg-[#7EA088]/5 shadow-md shadow-[#7EA088]/10"
+                  : "border border-[#E5E5E5] hover:border-[#D9D2BE] hover:shadow-sm"
+              }`}
             >
               <button
                 onClick={() => toggleIndex(index)}
                 className="w-full text-left flex items-center justify-between gap-4"
               >
-                <span className={`text-base font-medium transition-colors ${openIndex === index ? "text-[#7EA088]" : "text-[#1F3842]"}`}>
+                <span className={`text-sm sm:text-base font-medium transition-colors duration-300 ${openIndex === index ? "text-[#7EA088]" : "text-[#1F3842]"}`}>
                   {faq.question}
                 </span>
-                <ChevronUp
-                  className={`w-5 h-5 shrink-0 text-[#4D6E7B] transition-transform duration-300 ${
-                    openIndex === index ? "rotate-0" : "rotate-180"
-                  }`}
-                />
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                  openIndex === index ? "bg-[#7EA088]/10 rotate-0" : "bg-transparent rotate-180"
+                }`}>
+                  <ChevronUp className={`w-4 h-4 transition-colors duration-300 ${
+                    openIndex === index ? "text-[#7EA088]" : "text-[#4D6E7B]"
+                  }`} />
+                </div>
               </button>
               <AnimatePresence>
                 {openIndex === index && (
@@ -58,10 +64,10 @@ export function FAQSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="text-sm text-[#4D6E7B] leading-relaxed pt-3">
+                    <p className="text-sm text-[#4D6E7B] leading-relaxed pt-3 border-t border-[#E5E5E5]/50 mt-3">
                       {faq.answer}
                     </p>
                   </motion.div>

@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { NumbersSection } from "@/components/numbers-section"
@@ -12,12 +13,19 @@ import { TestimonialsSection } from "@/components/testimonials-section"
 import { FAQSection } from "@/components/faq-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
+import { ScrollEffects } from "@/components/scroll-effects"
 import { LanguageProvider } from "@/lib/language-context"
 
 export default function Home() {
   return (
     <LanguageProvider>
-      <main className="min-h-screen bg-background">
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="min-h-screen bg-background"
+      >
+        <ScrollEffects />
         <Header />
         <HeroSection />
         <NumbersSection />
@@ -30,7 +38,7 @@ export default function Home() {
         <TestimonialsSection />
         <FAQSection />
         <Footer />
-      </main>
+      </motion.main>
     </LanguageProvider>
   )
 }

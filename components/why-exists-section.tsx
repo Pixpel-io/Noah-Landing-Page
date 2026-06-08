@@ -11,7 +11,7 @@ export function WhyExistsSection() {
     <section className="py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
           {/* Left - text content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -22,14 +22,14 @@ export function WhyExistsSection() {
             <p className="text-sm text-[#7EA088] font-medium mb-3">
               {t.whyExists.sectionLabel}
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-[#1F3842] mb-4 leading-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-[#1F3842] mb-4 leading-tight">
               {t.whyExists.headline}
             </h2>
-            <p className="text-[#4D6E7B] mb-8 italic">
+            <p className="text-sm sm:text-base text-[#4D6E7B] mb-6 sm:mb-8 italic">
               {t.whyExists.subtitle}
             </p>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               {t.whyExists.bullets.map((bullet, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 shrink-0 text-[#7EA088] mt-0.5" />
@@ -57,7 +57,7 @@ export function WhyExistsSection() {
             </div>
             <a
               href="#"
-              className="relative flex items-center gap-0 border border-[#D4A24D] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden"
+              className="relative flex items-center gap-0 border border-[#D4A24D] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(212,162,77,0.3)]"
             >
               <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#D4A24D]" />
               <span className="text-sm font-semibold pr-3 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-white">
@@ -77,10 +77,11 @@ export function WhyExistsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-12 bg-[#7EA088] rounded-2xl px-8 md:px-10 py-5 flex items-center gap-4"
+          className="relative mt-8 sm:mt-12 bg-[#7EA088] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#7EA088]/30 transition-shadow duration-300"
         >
-          <Heart className="w-6 h-6 shrink-0 text-white" />
-          <p className="text-white text-sm md:text-base leading-relaxed">
+          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+          <Heart className="w-6 h-6 shrink-0 text-white relative z-10" />
+          <p className="text-white text-sm md:text-base leading-relaxed relative z-10">
             {t.whyExists.bottomQuote}
           </p>
         </motion.div>

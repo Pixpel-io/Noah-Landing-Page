@@ -8,9 +8,9 @@ export function Footer() {
   const { t } = useLanguage()
 
   return (
-    <footer id="contact" className="border-t border-[#E5E5E5] py-12 md:py-16 px-4 sm:px-6">
+    <footer id="contact" className="border-t border-[#E5E5E5] py-16 md:py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 mb-12">
           {/* Logo + tagline + socials */}
           <div>
             <Link href="/" className="flex items-center gap-2.5 mb-4">
@@ -44,7 +44,7 @@ export function Footer() {
           {/* Product */}
           <div>
             <h4 className="text-sm font-semibold text-[#1F3842] mb-4">{t.footer.product}</h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               <li><Link href="#features" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.features}</Link></li>
               <li><Link href="#how-it-works" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.howItWorks}</Link></li>
               <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.download}</Link></li>
@@ -55,7 +55,7 @@ export function Footer() {
           {/* Company */}
           <div>
             <h4 className="text-sm font-semibold text-[#1F3842] mb-4">{t.footer.company}</h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.about}</Link></li>
               <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.blog}</Link></li>
             </ul>
@@ -64,7 +64,7 @@ export function Footer() {
           {/* Support */}
           <div>
             <h4 className="text-sm font-semibold text-[#1F3842] mb-4">{t.footer.support}</h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.contact}</Link></li>
               <li><Link href="#faq" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.faqLink}</Link></li>
             </ul>

@@ -11,7 +11,7 @@ export function FeaturesSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="features" className="py-6 md:py-8 px-4 sm:px-6">
+    <section id="features" className="py-16 md:py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ export function FeaturesSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 md:gap-8">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
           {t.features.items.map((item, index) => {
             const Icon = icons[index]
             const color = colors[index]
@@ -37,12 +37,13 @@ export function FeaturesSection() {
                 key={index}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.1, y: -4 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-center text-center"
+                className="flex flex-col items-center text-center cursor-default"
               >
                 <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4"
+                  className="w-14 h-14 rounded-full flex items-center justify-center mb-4 shadow-md transition-shadow duration-300 hover:shadow-xl"
                   style={{ backgroundColor: color }}
                 >
                   <Icon className="w-6 h-6 text-white" strokeWidth={1.75} />

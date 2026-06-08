@@ -12,7 +12,7 @@ export function ServicesSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="how-it-works" className="py-20 md:py-32 px-4 sm:px-6 relative overflow-hidden">
+    <section id="how-it-works" className="py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Section label + headline */}
@@ -24,7 +24,7 @@ export function ServicesSection() {
           className="mb-14"
         >
           <p className="text-sm uppercase tracking-[0.2em] text-[#7EA088] font-semibold mb-4">{t.services.sectionLabel}</p>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#1F3842]">
+          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-[#1F3842] heading-glow cursor-default">
             {t.services.headline}
           </h2>
         </motion.div>
@@ -39,12 +39,13 @@ export function ServicesSection() {
                 key={index}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="flex flex-col items-start"
+                className="flex flex-col items-start cursor-default"
               >
                 <div
-                  className="w-11 h-11 rounded-full border-2 flex items-center justify-center mb-4"
+                  className="w-11 h-11 rounded-full border-2 flex items-center justify-center mb-4 transition-all duration-300 hover:scale-110 hover:shadow-md"
                   style={{ borderColor: color }}
                 >
                   <Icon className="w-5 h-5" style={{ color }} strokeWidth={1.75} />
@@ -62,12 +63,12 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="rounded-3xl overflow-hidden mb-20"
+          className="rounded-3xl overflow-hidden mb-20 group"
         >
           <img
             src="/images/Old-Lady.png"
             alt="Senior woman using phone"
-            className="w-full object-contain"
+            className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
           />
         </motion.div>
 
@@ -77,7 +78,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-0"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center mb-0"
         >
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
             <Image
@@ -88,13 +89,13 @@ export function ServicesSection() {
             />
           </div>
           <div>
-            <h3 className="font-serif text-3xl md:text-4xl font-bold text-[#1F3842] mb-5 leading-tight">
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1F3842] mb-4 sm:mb-5 leading-tight">
               {t.services.buttonHeadline}
             </h3>
-            <p className="text-[#4D6E7B] leading-relaxed mb-4">
+            <p className="text-sm sm:text-base text-[#4D6E7B] leading-relaxed mb-3 sm:mb-4">
               {t.services.buttonDesc1}
             </p>
-            <p className="text-[#4D6E7B] leading-relaxed">
+            <p className="text-sm sm:text-base text-[#4D6E7B] leading-relaxed">
               {t.services.buttonDesc2}
             </p>
           </div>

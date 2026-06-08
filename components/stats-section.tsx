@@ -1,5 +1,6 @@
 "use client"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
 
@@ -14,7 +15,7 @@ export function StatsSection() {
   ]
 
   return (
-    <section id="stats-section" className="py-24 px-6">
+    <section id="stats-section" className="py-16 md:py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,26 +36,27 @@ export function StatsSection() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -6 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-3 cursor-default"
             >
-              <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden">
+              <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden group">
                 <Image
                   src={stat.image}
                   alt={stat.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="bg-[#F7F7F7] rounded-2xl p-4 sm:p-5 text-center flex flex-col items-center flex-1">
-                <h3 className="text-sm font-semibold text-[#1F3842] mb-2">
+              <div className="bg-[#F7F7F7] rounded-2xl p-3 sm:p-4 md:p-5 text-center flex flex-col items-center flex-1">
+                <h3 className="text-xs sm:text-sm font-semibold text-[#1F3842] mb-1 sm:mb-2">
                   {stat.title}
                 </h3>
-                <p className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2" style={{ color: stat.color }}>
+                <p className="text-2xl sm:text-3xl md:text-5xl font-bold mb-1 sm:mb-2" style={{ color: stat.color }}>
                   {stat.value}
                 </p>
-                <p className="text-xs text-[#4D6E7B] leading-relaxed">
+                <p className="text-[10px] sm:text-xs text-[#4D6E7B] leading-relaxed">
                   {stat.desc}
                 </p>
               </div>
