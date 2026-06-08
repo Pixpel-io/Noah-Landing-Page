@@ -40,6 +40,7 @@ export const translations = {
       stat3Desc: "Don't understand or remember the diagnosis given at their visit.",
       stat4Value: "2.500€",
       stat4Desc: "Is the average yearly cost per frail person due to falls.",
+      bottomQuote: "Noah is innovation with social impact",
     },
     stats: {
       sectionLabel: "What the surveys revealed",
@@ -269,6 +270,7 @@ export const translations = {
       stat3Desc: "No entienden o no recuerdan el diagnóstico dado en su visita.",
       stat4Value: "2.500€",
       stat4Desc: "Es el coste medio anual por persona frágil debido a caídas.",
+      bottomQuote: "Noah es innovación con impacto social",
     },
     stats: {
       sectionLabel: "Problemas detectados",

@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
-import { Users, Link2, Brain, HeartPulse } from "lucide-react"
+import { Users, Link2, Brain, HeartPulse, Heart } from "lucide-react"
 
 export function NumbersSection() {
   const { t } = useLanguage()
@@ -66,6 +66,22 @@ export function NumbersSection() {
           </div>
         </div>
       </div>
+
+      {/* Bottom quote banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        viewport={{ once: true }}
+        className="max-w-7xl mx-auto mt-6"
+      >
+        <div className="bg-[#C17B50] rounded-full px-8 md:px-10 py-4 flex items-center justify-center gap-3">
+          <Heart className="w-5 h-5 shrink-0 text-white" />
+          <p className="text-white text-sm md:text-base font-medium">
+            {t.numbersSection.bottomQuote}
+          </p>
+        </div>
+      </motion.div>
     </section>
   )
 }
