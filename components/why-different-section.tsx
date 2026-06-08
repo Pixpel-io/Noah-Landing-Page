@@ -43,44 +43,51 @@ export function WhyDifferentSection() {
           </div>
         </motion.div>
 
-        {/* Bottom block - banner style: text left, small image right, pillars below */}
+        {/* Bottom block - modern glass card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           viewport={{ once: true }}
-          className="bg-[#F5F1EA] rounded-2xl overflow-hidden"
+          className="relative rounded-3xl overflow-hidden group"
         >
-          <div className="relative flex flex-col sm:flex-row sm:items-center px-6 sm:px-8 py-6 min-h-[140px]">
-            <div className="flex-1 relative z-10 sm:max-w-[60%]">
-              <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-[#1F3842] mb-2 leading-tight">
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1F3842] via-[#2B505C] to-[#1F3842]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+          <div className="relative flex flex-col sm:flex-row sm:items-center">
+            {/* Text content */}
+            <div className="flex-1 px-6 sm:px-10 py-8 sm:py-10 relative z-10">
+              <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-[#F5F1EA] mb-3 leading-tight">
                 {t.whyDifferent.headline2}
               </h2>
-              <p className="text-sm text-[#7EA088] leading-relaxed">
+              <p className="text-sm text-[#F5F1EA]/70 leading-relaxed max-w-md">
                 {t.whyDifferent.description2}
               </p>
             </div>
-            <div className="hidden sm:block absolute right-0 top-0 bottom-0 w-[180px] md:w-[220px] overflow-hidden rounded-r-2xl">
+
+            {/* Image */}
+            <div className="hidden sm:block relative w-[200px] md:w-[260px] h-[180px] md:h-[200px] rounded-2xl overflow-hidden m-4 mr-6 shrink-0">
               <Image
                 src="/images/Couple.png"
                 alt="Elderly couple together"
                 fill
-                className="object-cover object-[70%_30%]"
+                className="object-cover object-[70%_30%] transition-transform duration-700 group-hover:scale-105"
               />
             </div>
           </div>
 
           {/* Pillars row */}
-          <div className="border-t border-[#E5E5E5] px-4 sm:px-8 py-4 bg-[#FAFAFA]">
+          <div className="relative border-t border-white/10 px-4 sm:px-10 py-4">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:justify-between items-center gap-3 md:gap-4">
               {t.whyDifferent.pillars.map((pillar, index) => {
                 const Icon = pillarIcons[index]
                 return (
-                  <div key={index} className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-[#F5F1EA] flex items-center justify-center shrink-0">
-                      <Icon className="w-3.5 h-3.5" style={{ color: pillarColors[index] }} />
+                  <div key={index} className="flex items-center gap-2.5 group/pill cursor-default">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover/pill:bg-white/20 transition-colors duration-300">
+                      <Icon className="w-4 h-4 text-white/80" />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-[#1F3842]">{pillar}</span>
+                    <span className="text-xs sm:text-sm font-medium text-[#F5F1EA]/90">{pillar}</span>
                   </div>
                 )
               })}
