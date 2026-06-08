@@ -1,44 +1,18 @@
 "use client"
 
 import Link from "next/link"
-import { Twitter, Linkedin, Instagram, Heart } from "lucide-react"
+import { Twitter, Linkedin, Instagram } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
 export function Footer() {
   const { t } = useLanguage()
 
-  const footerLinks = {
-    product: [
-      { label: t.footer.links.features, href: "#features" },
-      { label: t.footer.links.howItWorks, href: "#how-it-works" },
-      { label: t.footer.links.download, href: "#" },
-      { label: t.footer.links.accessibility, href: "#" },
-    ],
-    company: [
-      { label: t.footer.links.about, href: "#" },
-      { label: t.footer.links.careers, href: "#" },
-      { label: t.footer.links.blog, href: "#" },
-      { label: t.footer.links.partners, href: "#" },
-    ],
-    legal: [
-      { label: t.footer.links.terms, href: "#" },
-      { label: t.footer.links.privacy, href: "#" },
-      { label: t.footer.links.dataPolicy, href: "#" },
-      { label: t.footer.links.cookiePolicy, href: "#" },
-    ],
-    support: [
-      { label: t.footer.links.helpCenter, href: "#" },
-      { label: t.footer.links.contact, href: "#" },
-      { label: t.footer.links.faqLink, href: "#faq" },
-      { label: t.footer.links.caregiverGuide, href: "#" },
-    ],
-  }
-
   return (
-    <footer id="contact" className="relative border-t border-[#D9D2BE] py-12 md:py-16 px-4 sm:px-6 bg-[#FDFBF6]">
+    <footer id="contact" className="border-t border-[#E5E5E5] py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-          <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 mb-12">
+          {/* Logo + tagline + socials */}
+          <div>
             <Link href="/" className="flex items-center gap-2.5 mb-4">
               <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
                 <circle cx="16" cy="16" r="15" fill="#1F3842" />
@@ -53,87 +27,54 @@ export function Footer() {
               </svg>
               <span className="text-base font-semibold text-[#1F3842]">Noah</span>
             </Link>
-            <p className="text-sm text-[#4D6E7B] mb-6">{t.footer.tagline}</p>
+            <p className="text-sm text-[#4D6E7B] mb-5 max-w-[240px]">{t.footer.tagline}</p>
             <div className="flex gap-3">
-              <Link
-                href="#"
-                className="w-9 h-9 border border-[#D9D2BE] rounded-full flex items-center justify-center text-[#4D6E7B] hover:text-[#1F3842] hover:border-[#7EA088] transition-colors"
-              >
+              <Link href="#" className="text-[#4D6E7B] hover:text-[#1F3842] transition-colors">
                 <Twitter className="w-4 h-4" />
               </Link>
-              <Link
-                href="#"
-                className="w-9 h-9 border border-[#D9D2BE] rounded-full flex items-center justify-center text-[#4D6E7B] hover:text-[#1F3842] hover:border-[#7EA088] transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
-              </Link>
-              <Link
-                href="#"
-                className="w-9 h-9 border border-[#D9D2BE] rounded-full flex items-center justify-center text-[#4D6E7B] hover:text-[#1F3842] hover:border-[#7EA088] transition-colors"
-              >
+              <Link href="#" className="text-[#4D6E7B] hover:text-[#1F3842] transition-colors">
                 <Instagram className="w-4 h-4" />
+              </Link>
+              <Link href="#" className="text-[#4D6E7B] hover:text-[#1F3842] transition-colors">
+                <Linkedin className="w-4 h-4" />
               </Link>
             </div>
           </div>
 
+          {/* Product */}
           <div>
-            <h4 className="text-sm font-semibold text-[#1F3842] mb-4 uppercase tracking-wider">{t.footer.product}</h4>
-            <ul className="space-y-3">
-              {footerLinks.product.map((link, i) => (
-                <li key={i}>
-                  <Link href={link.href} className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-sm font-semibold text-[#1F3842] mb-4">{t.footer.product}</h4>
+            <ul className="space-y-2.5">
+              <li><Link href="#features" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.features}</Link></li>
+              <li><Link href="#how-it-works" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.howItWorks}</Link></li>
+              <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.download}</Link></li>
+              <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.accessibility}</Link></li>
             </ul>
           </div>
 
+          {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold text-[#1F3842] mb-4 uppercase tracking-wider">{t.footer.company}</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link, i) => (
-                <li key={i}>
-                  <Link href={link.href} className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-sm font-semibold text-[#1F3842] mb-4">{t.footer.company}</h4>
+            <ul className="space-y-2.5">
+              <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.about}</Link></li>
+              <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.blog}</Link></li>
             </ul>
           </div>
 
+          {/* Support */}
           <div>
-            <h4 className="text-sm font-semibold text-[#1F3842] mb-4 uppercase tracking-wider">{t.footer.legal}</h4>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link, i) => (
-                <li key={i}>
-                  <Link href={link.href} className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-sm font-semibold text-[#1F3842] mb-4 uppercase tracking-wider">{t.footer.support}</h4>
-            <ul className="space-y-3">
-              {footerLinks.support.map((link, i) => (
-                <li key={i}>
-                  <Link href={link.href} className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+            <h4 className="text-sm font-semibold text-[#1F3842] mb-4">{t.footer.support}</h4>
+            <ul className="space-y-2.5">
+              <li><Link href="#" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.contact}</Link></li>
+              <li><Link href="#faq" className="text-sm text-[#4D6E7B] hover:text-[#7EA088] transition-colors">{t.footer.links.faqLink}</Link></li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-[#D9D2BE] flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* Bottom bar */}
+        <div className="pt-6 border-t border-[#E5E5E5] flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-[#4D6E7B]">{t.footer.copyright}</p>
-          <p className="text-xs text-[#4D6E7B] flex items-center gap-1">
-            {t.footer.madeWith} <Heart className="w-3 h-3 text-[#A95535] fill-[#A95535]" /> {t.footer.forThoseWhoCare}
-          </p>
+          <p className="text-xs text-[#4D6E7B]">{t.footer.madeWith}</p>
         </div>
       </div>
     </footer>
