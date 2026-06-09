@@ -15,7 +15,7 @@ export function StatsSection() {
   ]
 
   return (
-    <section id="stats-section" className="py-16 md:py-24 px-4 sm:px-6">
+    <section id="stats-section" className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -50,13 +50,13 @@ export function StatsSection() {
                 />
               </div>
               <div className="bg-[#F7F7F7] rounded-2xl p-3 sm:p-4 md:p-5 text-center flex flex-col items-center flex-1">
-                <h3 className="text-xs sm:text-sm font-semibold text-[#1F3842] mb-1 sm:mb-2">
+                <h3 className="text-sm sm:text-base font-semibold text-[#1F3842] mb-1 sm:mb-2">
                   {stat.title}
                 </h3>
                 <p className="text-2xl sm:text-3xl md:text-5xl font-bold mb-1 sm:mb-2" style={{ color: stat.color }}>
                   {stat.value}
                 </p>
-                <p className="text-[10px] sm:text-xs text-[#4D6E7B] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#4D6E7B] leading-relaxed">
                   {stat.desc}
                 </p>
               </div>

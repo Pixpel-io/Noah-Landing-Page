@@ -12,7 +12,7 @@ export function ServicesSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="how-it-works" className="py-16 md:py-24 px-4 sm:px-6 relative overflow-hidden">
+    <section id="how-it-works" className="py-12 md:py-16 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Section label + headline */}
@@ -23,7 +23,7 @@ export function ServicesSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-14"
         >
-          <p className="text-sm uppercase tracking-[0.2em] text-[#7EA088] font-semibold mb-4">{t.services.sectionLabel}</p>
+          <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">{t.services.sectionLabel}</p>
           <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-[#1F3842] heading-glow cursor-default">
             {t.services.headline}
           </h2>

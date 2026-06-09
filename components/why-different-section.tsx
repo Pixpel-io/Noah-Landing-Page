@@ -11,7 +11,7 @@ export function WhyDifferentSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-16 px-4 sm:px-6">
+    <section className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto flex flex-col gap-16">
 
         {/* Top block - white bg with image left, text right */}
@@ -67,12 +67,12 @@ export function WhyDifferentSection() {
             </div>
 
             {/* Image */}
-            <div className="hidden sm:block relative w-[200px] md:w-[260px] h-[180px] md:h-[200px] rounded-2xl overflow-hidden m-4 mr-6 shrink-0">
+            <div className="hidden sm:block relative w-[240px] md:w-[360px] h-[200px] md:h-[280px] rounded-2xl overflow-hidden m-4 mr-6 shrink-0">
               <Image
-                src="/images/Couple.png"
+                src="/images/Couple2.png"
                 alt="Elderly couple together"
                 fill
-                className="object-cover object-[70%_30%] transition-transform duration-700 group-hover:scale-105"
+                className="object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105"
               />
             </div>
           </div>
