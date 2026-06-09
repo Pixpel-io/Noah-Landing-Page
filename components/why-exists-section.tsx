@@ -8,7 +8,7 @@ export function WhyExistsSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-16 px-4 sm:px-6">
+    <section className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-start">
@@ -25,7 +25,7 @@ export function WhyExistsSection() {
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-[#1F3842] mb-4 leading-tight">
               {t.whyExists.headline}
             </h2>
-            <p className="text-sm sm:text-base text-[#4D6E7B] mb-6 sm:mb-8 italic">
+            <p className="text-sm sm:text-base text-[#4D6E7B] mb-6 sm:mb-8">
               {t.whyExists.subtitle}
             </p>
 

@@ -75,8 +75,10 @@ export function HeroSection() {
           {/* Right - Image with floating cards */}
           <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
             <div className="relative mx-auto w-full max-w-lg">
+              {/* Glowing ring behind the container */}
+              <div className="absolute -inset-3 sm:-inset-4 rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-br from-[#7EA088]/30 via-[#D4A24D]/10 to-[#7EA088]/20 blur-sm" />
               {/* Outer sage green rounded container */}
-              <div className="bg-[#7EA088] rounded-[2rem] sm:rounded-[2.5rem] p-3 sm:p-4">
+              <div className="relative bg-[#7EA088] rounded-[2rem] sm:rounded-[2.5rem] p-3 sm:p-4">
                 {/* Image inside with rounded corners */}
                 <div className="rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden">
                   <img
@@ -154,8 +156,8 @@ export function HeroSection() {
                   <Calendar className="w-4 h-4 text-[#D4A24D]" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-[#1F3842]">{t.hero.drRecorded}</p>
-                  <p className="text-xs text-[#4D6E7B]">{t.hero.aiSummary}</p>
+                  <p className="text-sm font-semibold text-[#1F3842]">{t.hero.drRecorded}</p>
+                  <p className="text-xs sm:text-sm text-[#4D6E7B]">{t.hero.aiSummary}</p>
                 </div>
               </motion.div>
 
@@ -169,8 +171,8 @@ export function HeroSection() {
                   <Pill className="w-4 h-4 text-[#7EA088]" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-[#1F3842]">{t.hero.addAspirin}</p>
-                  <p className="text-xs text-[#7EA088]">{t.hero.doneViaVoice}</p>
+                  <p className="text-sm font-semibold text-[#1F3842]">{t.hero.addAspirin}</p>
+                  <p className="text-xs sm:text-sm text-[#7EA088]">{t.hero.doneViaVoice}</p>
                 </div>
               </motion.div>
 
@@ -184,8 +186,8 @@ export function HeroSection() {
                   <Phone className="w-4 h-4 text-[#A95535]" />
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm font-semibold text-[#1F3842]">{t.hero.emergency}</p>
-                  <p className="text-xs text-[#4D6E7B]">{t.hero.oneTapCall}</p>
+                  <p className="text-sm font-semibold text-[#1F3842]">{t.hero.emergency}</p>
+                  <p className="text-xs sm:text-sm text-[#4D6E7B]">{t.hero.oneTapCall}</p>
                 </div>
               </motion.div>
             </div>
