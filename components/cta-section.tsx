@@ -34,8 +34,8 @@ export function CTASection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
+              viewport={{ once: true, margin: "-50px" }}
             >
               <div className="relative inline-flex items-center gap-2 px-4 py-2 bg-[#7EA088]/20 border border-[#7EA088]/30 rounded-full mb-8 overflow-hidden group cursor-default hover:border-[#7EA088]/60 transition-colors duration-300">
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -56,8 +56,8 @@ export function CTASection() {
                   <span className="text-base font-semibold pr-4 relative z-10 transition-colors duration-300 text-[#D4A24D] group-hover:text-[#1F3842]">
                     {t.cta.primaryCta}
                   </span>
-                  <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 bg-[#D4A24D] group-hover:bg-[#1F3842]/20">
-                    <ArrowUpRight className="w-4 h-4 text-[#1F3842]" />
+                  <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 bg-[#D4A24D] group-hover:bg-white group-hover:shadow-[0_0_12px_rgba(255,255,255,0.8)] transition-all duration-300">
+                    <ArrowUpRight className="w-4 h-4 text-[#1F3842] group-hover:text-[#D4A24D] transition-colors duration-300" />
                   </span>
                 </button>
                 <button className="relative flex items-center gap-0 border border-[#F5F1EA]/30 rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden">
@@ -65,9 +65,9 @@ export function CTASection() {
                   <span className="text-base font-medium pr-4 relative z-10 transition-colors duration-300 text-[#F5F1EA] group-hover:text-[#1F3842]">
                     {t.cta.secondaryCta}
                   </span>
-                  <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10">
+                  <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 transition-all duration-300">
                     <ArrowRight className="w-4 h-4 text-[#F5F1EA] group-hover:opacity-0 absolute transition-opacity duration-300" />
-                    <ArrowUpRight className="w-4 h-4 text-[#1F3842] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                    <ArrowUpRight className="w-4 h-4 text-[#1F3842] opacity-0 group-hover:opacity-100 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,1)] transition-all duration-300" />
                   </span>
                 </button>
               </div>

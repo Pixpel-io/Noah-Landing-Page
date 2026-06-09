@@ -16,8 +16,8 @@ export function WhyExistsSection() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <p className="text-sm text-[#7EA088] font-medium mb-3">
               {t.whyExists.sectionLabel}
@@ -43,8 +43,8 @@ export function WhyExistsSection() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
             className="flex flex-col items-center gap-6"
           >
             <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
@@ -63,9 +63,9 @@ export function WhyExistsSection() {
               <span className="text-sm font-semibold pr-3 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-white">
                 {t.whyExists.cta}
               </span>
-              <span className="w-8 h-8 rounded-full flex items-center justify-center relative z-10">
+              <span className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 group-hover:bg-white group-hover:shadow-[0_0_14px_rgba(255,255,255,0.9)] transition-all duration-300">
                 <ArrowRight className="w-4 h-4 group-hover:opacity-0 absolute transition-opacity duration-300 text-[#1F3842]" />
-                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:text-white text-[#1F3842]" />
+                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[#1F3842] group-hover:text-[#D4A24D]" />
               </span>
             </a>
           </motion.div>
@@ -76,7 +76,7 @@ export function WhyExistsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
           className="relative mt-8 sm:mt-12 bg-[#7EA088] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#7EA088]/30 transition-shadow duration-300"
         >
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />

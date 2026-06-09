@@ -18,10 +18,10 @@ export function StatsSection() {
     <section id="stats-section" className="py-16 md:py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="mb-12"
         >
           <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">{t.stats.sectionLabel}</p>
@@ -37,8 +37,8 @@ export function StatsSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ y: -6 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+              viewport={{ once: true, margin: "-50px" }}
               className="flex flex-col gap-3 cursor-default"
             >
               <div className="relative w-full aspect-[3/2] rounded-2xl overflow-hidden group">

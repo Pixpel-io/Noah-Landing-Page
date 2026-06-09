@@ -115,9 +115,9 @@ export function Header() {
               <span className="text-sm font-medium pr-3 relative z-10 text-white">
                 {t.nav.downloadApp}
               </span>
-              <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center relative z-10">
-                <ArrowRight className="w-3.5 h-3.5 group-hover:opacity-0 absolute transition-opacity duration-300 text-white" />
-                <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all duration-300 text-white" />
+              <span className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-white group-hover:shadow-[0_0_12px_rgba(255,255,255,0.8)] flex items-center justify-center relative z-10 transition-all duration-300">
+                <ArrowRight className="w-3.5 h-3.5 group-hover:opacity-0 absolute transition-opacity duration-300 text-white group-hover:text-[#D4A24D]" />
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all duration-300 text-white group-hover:text-[#D4A24D]" />
               </span>
             </button>
           </div>

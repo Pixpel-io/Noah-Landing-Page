@@ -19,8 +19,8 @@ export function NumbersSection() {
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="text-sm tracking-wide text-[#7EA088] font-semibold mb-10"
         >
           {t.numbersSection.sectionLabel}
@@ -30,8 +30,8 @@ export function NumbersSection() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1F3842] mb-6">
               {t.numbersSection.headline}
@@ -51,8 +51,8 @@ export function NumbersSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.05, y: -4 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.4, 0.25, 1] }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="bg-white border border-[#D9D2BE]/50 rounded-2xl p-5 text-center cursor-default hover:shadow-lg hover:shadow-[#1F3842]/5 transition-shadow duration-300"
               >
                 <stat.icon className="w-5 h-5 mx-auto mb-3" style={{ color: stat.color }} />
@@ -70,10 +70,10 @@ export function NumbersSection() {
 
       {/* Bottom quote banner */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+        viewport={{ once: true, margin: "-50px" }}
         className="max-w-7xl mx-auto mt-6"
       >
         <div className="relative bg-[#C17B50] rounded-full px-5 sm:px-8 md:px-10 py-3 sm:py-4 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#C17B50]/30 transition-shadow duration-300">

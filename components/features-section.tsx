@@ -16,11 +16,11 @@ export function FeaturesSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="mb-14"
         >
-          <p className="text-sm uppercase tracking-[0.2em] text-[#7EA088] font-semibold mb-4">
+          <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">
             {t.features.sectionLabel}
           </p>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1F3842]">
@@ -38,8 +38,8 @@ export function FeaturesSection() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.1, y: -4 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.08, ease: [0.25, 0.4, 0.25, 1] }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="flex flex-col items-center text-center cursor-default"
               >
                 <div

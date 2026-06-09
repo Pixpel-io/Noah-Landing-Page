@@ -19,8 +19,8 @@ export function ServicesSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="mb-14"
         >
           <p className="text-sm uppercase tracking-[0.2em] text-[#7EA088] font-semibold mb-4">{t.services.sectionLabel}</p>
@@ -40,8 +40,8 @@ export function ServicesSection() {
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ y: -4 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+                viewport={{ once: true, margin: "-50px" }}
                 className="flex flex-col items-start cursor-default"
               >
                 <div
@@ -61,8 +61,8 @@ export function ServicesSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="rounded-3xl overflow-hidden mb-20 group"
         >
           <img
@@ -76,8 +76,8 @@ export function ServicesSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center mb-0"
         >
           <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden group">
@@ -110,8 +110,8 @@ export function ServicesSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="mt-4"
         >
           <p className="text-sm font-semibold text-[#1F3842] mb-5">{t.services.easyToUse}</p>

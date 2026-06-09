@@ -18,8 +18,8 @@ export function WhyDifferentSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="bg-white rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
         >
           <div className="relative min-h-[220px] sm:min-h-[300px] md:min-h-[400px] border-l-4 border-[#D4A24D]">
@@ -47,8 +47,8 @@ export function WhyDifferentSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="relative rounded-3xl overflow-hidden group"
         >
           {/* Gradient background */}
@@ -83,11 +83,11 @@ export function WhyDifferentSection() {
               {t.whyDifferent.pillars.map((pillar, index) => {
                 const Icon = pillarIcons[index]
                 return (
-                  <div key={index} className="flex items-center gap-2.5 group/pill cursor-default">
-                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover/pill:bg-white/20 transition-colors duration-300">
-                      <Icon className="w-4 h-4 text-white/80" />
+                  <div key={index} className="flex items-center gap-2.5 cursor-default group/pill">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-white/10 group-hover/pill:bg-white/30 group-hover/pill:shadow-[0_0_14px_rgba(255,255,255,0.6)] transition-all duration-300">
+                      <Icon className="w-4 h-4 text-white/80 group-hover/pill:text-white group-hover/pill:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] transition-all duration-300" />
                     </div>
-                    <span className="text-xs sm:text-sm font-medium text-[#F5F1EA]/90">{pillar}</span>
+                    <span className="text-xs sm:text-sm font-medium text-[#F5F1EA]/90 group-hover/pill:text-white transition-colors duration-300">{pillar}</span>
                   </div>
                 )
               })}
@@ -97,10 +97,10 @@ export function WhyDifferentSection() {
 
         {/* Quote banner */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className="relative bg-[#1F3842] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#1F3842]/40 transition-shadow duration-300"
         >
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
