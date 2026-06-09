@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Twitter, Linkedin, Instagram, Heart, ArrowUpRight } from "lucide-react"
+import { Facebook, Linkedin, Instagram, Heart, ArrowUpRight } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
 export function Footer() {
@@ -35,7 +35,7 @@ export function Footer() {
               <p className="text-sm text-[#F5F1EA]/60 mb-6 max-w-[260px] leading-relaxed">{t.footer.tagline}</p>
               <div className="flex gap-3">
                 <Link href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-[#F5F1EA]/70 hover:bg-[#7EA088] hover:text-white hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
-                  <Twitter className="w-4 h-4" />
+                  <Facebook className="w-4 h-4" />
                 </Link>
                 <Link href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-[#F5F1EA]/70 hover:bg-[#7EA088] hover:text-white hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                   <Instagram className="w-4 h-4" />
@@ -62,7 +62,6 @@ export function Footer() {
               <h4 className="text-sm font-semibold text-[#F5F1EA] mb-5 uppercase tracking-wider">{t.footer.company}</h4>
               <ul className="space-y-3">
                 <li><Link href="#" className="text-sm text-[#F5F1EA]/60 hover:text-[#7EA088] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.about}</Link></li>
-                <li><Link href="#" className="text-sm text-[#F5F1EA]/60 hover:text-[#7EA088] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.blog}</Link></li>
               </ul>
             </div>
 
