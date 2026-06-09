@@ -78,21 +78,21 @@ export function Header() {
             <a
               href="#how-it-works"
               onClick={(e) => handleSmoothScroll(e, "how-it-works")}
-              className="relative text-sm text-[#4D6E7B] hover:text-[#1F3842] transition-all duration-300 cursor-pointer px-4 py-2 rounded-full hover:bg-[#1F3842]/5"
+              className="relative text-sm text-[#1F3842] font-medium hover:text-[#7EA088] transition-all duration-300 cursor-pointer px-4 py-2 rounded-full hover:bg-[#1F3842]/5"
             >
               {t.nav.discoverNoah}
             </a>
             <a
               href="#testimonials"
               onClick={(e) => handleSmoothScroll(e, "testimonials")}
-              className="relative text-sm text-[#4D6E7B] hover:text-[#1F3842] transition-all duration-300 cursor-pointer px-4 py-2 rounded-full hover:bg-[#1F3842]/5"
+              className="relative text-sm text-[#1F3842] font-medium hover:text-[#7EA088] transition-all duration-300 cursor-pointer px-4 py-2 rounded-full hover:bg-[#1F3842]/5"
             >
               {t.nav.testimonials}
             </a>
             <a
               href="#faq"
               onClick={(e) => handleSmoothScroll(e, "faq")}
-              className="relative text-sm text-[#4D6E7B] hover:text-[#1F3842] transition-all duration-300 cursor-pointer px-4 py-2 rounded-full hover:bg-[#1F3842]/5"
+              className="relative text-sm text-[#1F3842] font-medium hover:text-[#7EA088] transition-all duration-300 cursor-pointer px-4 py-2 rounded-full hover:bg-[#1F3842]/5"
             >
               {t.nav.faq}
             </a>
