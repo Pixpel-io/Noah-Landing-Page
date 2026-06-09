@@ -14,7 +14,7 @@ export function NumbersSection() {
   ]
 
   return (
-    <section className="py-16 px-4 sm:px-6">
+    <section className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto bg-[#F5F1EA] rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-12 lg:p-14">
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -59,7 +59,7 @@ export function NumbersSection() {
                 <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: stat.color }}>
                   {stat.value}
                 </p>
-                <p className="text-xs text-[#4D6E7B] leading-relaxed">
+                <p className="text-sm text-[#4D6E7B] leading-relaxed">
                   {stat.desc}
                 </p>
               </motion.div>

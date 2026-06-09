@@ -14,7 +14,7 @@ export function FAQSection() {
   }
 
   return (
-    <section id="faq" className="py-16 md:py-24 px-4 sm:px-6">
+    <section id="faq" className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,14 +37,14 @@ export function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.03 }}
               viewport={{ once: true }}
+              onClick={() => toggleIndex(index)}
               className={`rounded-2xl px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 cursor-pointer ${
                 openIndex === index
                   ? "border border-[#7EA088]/40 bg-[#7EA088]/5 shadow-md shadow-[#7EA088]/10"
                   : "border border-[#E5E5E5] hover:border-[#D9D2BE] hover:shadow-sm"
               }`}
             >
-              <button
-                onClick={() => toggleIndex(index)}
+              <div
                 className="w-full text-left flex items-center justify-between gap-4"
               >
                 <span className={`text-sm sm:text-base font-medium transition-colors duration-300 ${openIndex === index ? "text-[#7EA088]" : "text-[#1F3842]"}`}>
@@ -57,7 +57,7 @@ export function FAQSection() {
                     openIndex === index ? "text-[#7EA088]" : "text-[#4D6E7B]"
                   }`} />
                 </div>
-              </button>
+              </div>
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div

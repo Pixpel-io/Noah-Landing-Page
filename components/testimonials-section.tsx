@@ -67,7 +67,7 @@ export function TestimonialsSection() {
   }, [isPaused, isInitialized])
 
   return (
-    <section id="testimonials" className="py-16 md:py-24 px-4 sm:px-6">
+    <section id="testimonials" className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-left mb-16">
           <motion.div
@@ -76,7 +76,7 @@ export function TestimonialsSection() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-sm uppercase tracking-[0.2em] text-[#7EA088] font-semibold mb-4">{t.testimonials.sectionLabel}</p>
+            <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">{t.testimonials.sectionLabel}</p>
             <h2 className="font-serif text-4xl md:text-5xl font-bold leading-tight text-[#1F3842]">
               {t.testimonials.headline}
             </h2>
@@ -85,9 +85,6 @@ export function TestimonialsSection() {
 
         {/* Video testimonials carousel */}
         <div className="relative mb-16">
-          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
           <div
             ref={videoScrollRef}
             className="flex gap-5 overflow-x-hidden"
@@ -96,18 +93,18 @@ export function TestimonialsSection() {
             style={{ scrollBehavior: "auto" }}
           >
             {duplicatedVideos.map((card, index) => (
-              <div key={index} className="flex-shrink-0 w-[220px] sm:w-[260px]">
+              <div key={index} className="flex-shrink-0 w-[220px] sm:w-[260px] group/card cursor-pointer">
                 {/* Video thumbnail */}
-                <div className="relative rounded-2xl overflow-hidden mb-3 aspect-[4/5]">
+                <div className="relative rounded-2xl overflow-hidden mb-3 aspect-[4/5] transition-all duration-300 group-hover/card:shadow-xl group-hover/card:shadow-[#1F3842]/10 group-hover/card:-translate-y-1">
                   <img
                     src={card.image}
                     alt={card.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
                   />
                   {/* Play button overlay */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
-                      <Play className="w-6 h-6 text-[#1F3842] ml-1" fill="#1F3842" />
+                    <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg transition-all duration-300 group-hover/card:scale-110 group-hover/card:bg-white group-hover/card:shadow-[0_0_20px_rgba(126,160,136,0.4)]">
+                      <Play className="w-6 h-6 text-[#1F3842] ml-1 transition-colors duration-300 group-hover/card:text-[#7EA088]" fill="currentColor" />
                     </div>
                   </div>
                 </div>
