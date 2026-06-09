@@ -37,7 +37,7 @@ export const translations = {
       stat2Desc: "Forget to take their medicine during the week.",
       stat3Value: "70%",
       stat3Desc: "Don't understand or remember the diagnosis given at their visit.",
-      stat4Value: "2.500€",
+      stat4Value: "6.400€",
       stat4Desc: "Is the average yearly cost per frail person due to falls.",
       bottomQuote: "Noah is innovation with social impact",
     },
