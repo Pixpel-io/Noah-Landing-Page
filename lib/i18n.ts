@@ -38,7 +38,7 @@ export const translations = {
       stat3Value: "70%",
       stat3Desc: "Don't understand or remember the diagnosis given at their visit.",
       stat4Value: "6.400€",
-      stat4Desc: "Is the average yearly cost per frail person due to falls.",
+      stat4Desc: "Average yearly cost per person with dementia under loneliness",
       bottomQuote: "Noah is innovation with social impact",
     },
     stats: {
@@ -190,10 +190,6 @@ export const translations = {
           answer: "Yes. Family members receive a weekly activity report — whether you took your medications, attended your appointments, your general mood — but never the content of your conversations with Noah. What you tell Noah is yours alone.",
         },
         {
-          question: "Can my children set up NOAH for me?",
-          answer: "Yes. A family member can set up the app from their own phone — adding medications, medical appointments, and contacts — without needing to touch your phone.",
-        },
-        {
           question: "Does NOAH listen to my private conversations?",
           answer: "No. Noah only listens when you speak to it directly. It does not record in the background or share your conversations with anyone. Your privacy is our priority.",
         },
@@ -202,7 +198,7 @@ export const translations = {
           answer: "Yes. All your data is encrypted and stored securely. It is never sold or shared with third parties. We comply with the General Data Protection Regulation (GDPR) of the European Union.",
         },
         {
-          question: "Do I need to be good with smartphones to use NOAH?",
+          question: "Do I need to know how to use smartphones well to use NOAH?",
           answer: "No. Noah works by voice — you just have to talk to it. You don't need to type or navigate menus. If you have a family member willing to help you set it up, it's ready in 5 minutes.",
         },
         {
@@ -267,7 +263,7 @@ export const translations = {
       stat3Value: "70%",
       stat3Desc: "No entiende o recuerda el diagnóstico recibido en consulta.",
       stat4Value: "6.400€",
-      stat4Desc: "Es el coste anual medio por persona frágil, debido a caídas.",
+      stat4Desc: "Costo promedio anual por persona con demencia bajo soledad",
       bottomQuote: "Noah es innovación con impacto social",
     },
     stats: {
@@ -420,10 +416,6 @@ export const translations = {
           answer: "Sí. Los familiares reciben un informe semanal de actividad — si tomaste tus medicamentos, si fuiste a tus citas, tu estado de ánimo general — pero nunca el contenido de tus conversaciones con Noah. Lo que le dices a Noah es solo tuyo.",
         },
         {
-          question: "¿Mis hijos pueden configurar NOAH por mí?",
-          answer: "Sí. Un familiar puede configurar la app desde su propio teléfono — añadiendo medicamentos, citas médicas y contactos — sin necesidad de tocar tu teléfono.",
-        },
-        {
           question: "¿NOAH escucha mis conversaciones privadas?",
           answer: "No. Noah solo escucha cuando le hablas directamente. No graba en segundo plano ni comparte tus conversaciones con nadie. Tu privacidad es nuestra prioridad.",
         },
@@ -432,7 +424,7 @@ export const translations = {
           answer: "Sí. Todos tus datos están cifrados y almacenados de forma segura. Nunca se venden ni comparten con terceros. Cumplimos con el Reglamento General de Protección de Datos (RGPD) de la Unión Europea.",
         },
         {
-          question: "¿Necesito ser bueno con los smartphones para usar NOAH?",
+          question: "¿Necesito saber manejar bien los smartphones para usar NOAH?",
           answer: "No. Noah funciona por voz — solo tienes que hablarle. No necesitas escribir ni navegar por menús. Si tienes un familiar dispuesto a ayudarte a configurarlo, está listo en 5 minutos.",
         },
         {
