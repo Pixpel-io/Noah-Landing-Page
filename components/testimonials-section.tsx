@@ -67,9 +67,9 @@ export function TestimonialsSection() {
   }, [isPaused, isInitialized])
 
   return (
-    <section id="testimonials" className="py-20 md:py-32 px-4 sm:px-6">
+    <section id="testimonials" className="py-16 md:py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-left mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -85,8 +85,8 @@ export function TestimonialsSection() {
 
         {/* Video testimonials carousel */}
         <div className="relative mb-16">
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F5F1EA] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#F5F1EA] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
           <div
             ref={videoScrollRef}
