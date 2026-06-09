@@ -16,23 +16,36 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section className="pt-28 md:pt-32 pb-16 md:pb-20 px-4 sm:px-6 min-h-screen flex items-center relative overflow-hidden">
+    <section className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 min-h-screen flex items-center relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 -left-20 w-80 h-80 bg-[#7EA088]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#D4A24D]/8 rounded-full blur-3xl" />
+        <motion.div
+          animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 -left-20 w-80 h-80 bg-[#7EA088]/10 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ x: [0, -20, 0], y: [0, 20, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-20 right-10 w-96 h-96 bg-[#D4A24D]/8 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ x: [0, 15, 0], y: [0, 10, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-[#1F3842]/5 rounded-full blur-3xl"
+        />
       </div>
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 md:gap-12 items-center">
           {/* Left - Text content */}
           <div className={`transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold leading-[1.05] mb-6 text-[#1F3842]">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-[4.5rem] font-bold leading-[1.05] mb-4 sm:mb-6 text-[#1F3842]">
               {t.hero.headlinePart1}{" "}
               <span className="text-[#7EA088]">{t.hero.headlineHighlight}</span>{" "}
               {t.hero.headlinePart2}.
             </h1>
 
-            <p className="text-base sm:text-lg text-[#4D6E7B] leading-relaxed mb-10 max-w-md">
+            <p className="text-sm sm:text-base md:text-lg text-[#4D6E7B] leading-relaxed mb-6 sm:mb-10 max-w-md">
               {t.hero.description}
             </p>
 
@@ -42,8 +55,8 @@ export function HeroSection() {
                 <span className="text-base font-semibold pr-4 relative z-10 transition-colors duration-300 text-[#D4A24D] group-hover:text-[#1F3842]">
                   {t.hero.primaryCta}
                 </span>
-                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 bg-[#D4A24D] group-hover:bg-[#1F3842]/10">
-                  <ArrowUpRight className="w-4 h-4 text-[#1F3842]" />
+                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 bg-[#D4A24D] group-hover:bg-white group-hover:shadow-[0_0_12px_rgba(255,255,255,0.8)] transition-all duration-300">
+                  <ArrowUpRight className="w-4 h-4 text-[#1F3842] group-hover:text-[#D4A24D] transition-colors duration-300" />
                 </span>
               </button>
               <button className="relative flex items-center gap-0 border border-[#D9D2BE] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden">
@@ -51,9 +64,9 @@ export function HeroSection() {
                 <span className="text-base font-medium pr-4 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#F5F1EA]">
                   {t.hero.secondaryCta}
                 </span>
-                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10">
+                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 transition-all duration-300">
                   <ArrowRight className="w-4 h-4 text-[#1F3842] group-hover:opacity-0 absolute transition-opacity duration-300" />
-                  <ArrowUpRight className="w-4 h-4 text-[#F5F1EA] opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <ArrowUpRight className="w-4 h-4 text-[#F5F1EA] opacity-0 group-hover:opacity-100 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,1)] transition-all duration-300" />
                 </span>
               </button>
             </div>
@@ -98,8 +111,15 @@ export function HeroSection() {
                         />
                       ))}
                     </div>
-                    <div className="w-12 h-12 rounded-full bg-[#1F3842] flex items-center justify-center shadow-lg">
-                      <Mic className="w-5 h-5 text-[#F5F1EA]" />
+                    <div className="relative">
+                      <motion.div
+                        animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0, 0.4] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+                        className="absolute inset-0 rounded-full bg-[#1F3842]/30"
+                      />
+                      <div className="w-12 h-12 rounded-full bg-[#1F3842] flex items-center justify-center shadow-lg relative z-10">
+                        <Mic className="w-5 h-5 text-[#F5F1EA]" />
+                      </div>
                     </div>
                     <div className="flex items-center gap-[2px]">
                       {[...Array(5)].map((_, i) => (
@@ -128,7 +148,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -left-6 sm:-left-12 md:-left-16 top-[25%] bg-white rounded-2xl border border-[#D9D2BE]/60 shadow-xl shadow-[#1F3842]/10 p-3 sm:p-4 flex items-center gap-3 z-20"
+                className="hidden sm:flex absolute -left-6 sm:-left-12 md:-left-16 top-[25%] bg-white rounded-2xl border border-[#D9D2BE]/60 p-3 sm:p-4 items-center gap-3 z-20 cursor-pointer shadow-lg hover:-translate-y-2 hover:shadow-[0_14px_30px_rgba(212,162,77,0.25)] transition-all duration-300 animate-float"
               >
                 <div className="w-9 h-9 bg-[#D4A24D]/15 rounded-xl flex items-center justify-center">
                   <Calendar className="w-4 h-4 text-[#D4A24D]" />
@@ -143,7 +163,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 1.1, duration: 0.6 }}
-                className="absolute -right-6 sm:-right-12 md:-right-16 top-[48%] bg-white rounded-2xl border border-[#D9D2BE]/60 shadow-xl shadow-[#1F3842]/10 p-3 sm:p-4 flex items-center gap-3 z-20"
+                className="hidden sm:flex absolute -right-6 sm:-right-12 md:-right-16 top-[48%] bg-white rounded-2xl border border-[#D9D2BE]/60 p-3 sm:p-4 items-center gap-3 z-20 cursor-pointer shadow-lg hover:-translate-y-2 hover:shadow-[0_14px_30px_rgba(126,160,136,0.25)] transition-all duration-300 animate-float-delayed"
               >
                 <div className="w-9 h-9 bg-[#7EA088]/15 rounded-xl flex items-center justify-center">
                   <Pill className="w-4 h-4 text-[#7EA088]" />
@@ -158,7 +178,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isVisible ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 1.4, duration: 0.6 }}
-                className="absolute -left-4 sm:-left-10 md:-left-14 bottom-[28%] bg-white rounded-2xl border border-[#D9D2BE]/60 shadow-xl shadow-[#1F3842]/10 p-3 sm:p-4 flex items-center gap-3 z-20"
+                className="hidden sm:flex absolute -left-4 sm:-left-10 md:-left-14 bottom-[28%] bg-white rounded-2xl border border-[#D9D2BE]/60 p-3 sm:p-4 items-center gap-3 z-20 cursor-pointer shadow-lg hover:-translate-y-2 hover:shadow-[0_14px_30px_rgba(169,85,53,0.25)] transition-all duration-300 animate-float-slow"
               >
                 <div className="w-9 h-9 bg-[#A95535]/10 rounded-xl flex items-center justify-center">
                   <Phone className="w-4 h-4 text-[#A95535]" />
