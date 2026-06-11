@@ -1,11 +1,11 @@
 "use client"
 
-import { MessageCircle, Pill, Stethoscope, HeartHandshake, Brain, CheckCircle2 } from "lucide-react"
+import { MessageCircleMore, Pill, Stethoscope, HeartHandshake, Gamepad2, CheckCircle2 } from "lucide-react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
 
-const icons = [MessageCircle, Pill, Stethoscope, HeartHandshake, Brain]
+const icons = [MessageCircleMore, Pill, Stethoscope, HeartHandshake, Gamepad2]
 const colors = ["#7EA088", "#D4A24D", "#A95535", "#7EA088", "#D4A24D"]
 
 export function ServicesSection() {
@@ -23,14 +23,14 @@ export function ServicesSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-14"
         >
-          <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">{t.services.sectionLabel}</p>
-          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-[#1F3842] heading-glow cursor-default">
+          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">{t.services.sectionLabel}</p>
+          <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
             {t.services.headline}
           </h2>
         </motion.div>
 
         {/* 5 items in a horizontal row */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 mb-10">
           {t.services.items.map((item, index) => {
             const Icon = icons[index]
             const color = colors[index]
@@ -45,29 +45,36 @@ export function ServicesSection() {
                 className="flex flex-col items-start cursor-default"
               >
                 <div
-                  className="w-11 h-11 rounded-full border-2 flex items-center justify-center mb-4 transition-all duration-300 hover:scale-110 hover:shadow-md"
-                  style={{ borderColor: color }}
+                  className="mb-4 transition-all duration-300 hover:scale-110 cursor-pointer"
+                  onMouseEnter={(e) => {
+                    const icon = e.currentTarget.querySelector('svg')
+                    if (icon) icon.style.filter = `drop-shadow(0 0 8px ${color})`
+                  }}
+                  onMouseLeave={(e) => {
+                    const icon = e.currentTarget.querySelector('svg')
+                    if (icon) icon.style.filter = 'none'
+                  }}
                 >
-                  <Icon className="w-5 h-5" style={{ color }} strokeWidth={1.75} />
+                  <Icon className="w-13 h-13 transition-all duration-300" style={{ color }} strokeWidth={1.6} />
                 </div>
-                <h3 className="text-base font-bold text-[#1F3842] mb-1.5">{item.title}</h3>
-                <p className="text-sm text-[#4D6E7B] leading-relaxed">{item.description}</p>
+                <h3 className="text-[20px] font-bold text-[#1F3842] mb-1">{item.title}</h3>
+                <p className="text-base text-black leading-relaxed">{item.description}</p>
               </motion.div>
             )
           })}
         </div>
 
-        {/* Old lady image */}
+        {/* Services hero image */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="rounded-3xl overflow-hidden mb-20 group"
+          className="rounded-2xl overflow-hidden mb-20 group"
         >
           <img
-            src="/images/Old-Lady.png"
-            alt="Senior woman using phone"
+            src="/images/services-hero.png"
+            alt="Noah services overview"
             className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
           />
         </motion.div>
@@ -78,29 +85,24 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 items-center mb-0"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start mb-0"
         >
-          <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden group">
-            {/* Glowing ring effect behind the device */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="w-[45%] h-[45%] rounded-full bg-[#5CE0D8]/0 group-hover:bg-[#5CE0D8]/10 transition-all duration-700" />
-              <div className="absolute w-[42%] h-[42%] rounded-full border-2 border-[#5CE0D8]/0 group-hover:border-[#5CE0D8]/40 group-hover:shadow-[0_0_30px_rgba(92,224,216,0.3)] transition-all duration-700" />
-            </div>
+          <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden group">
             <Image
-              src="/images/Robot.png"
+              src="/images/device-image.png"
               alt="Noah portable device"
               fill
-              className="object-cover scale-80 transition-transform duration-700 group-hover:scale-[0.83]"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
-          <div>
-            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1F3842] mb-4 sm:mb-5 leading-tight">
+          <div className="pt-0">
+            <h3 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] font-normal text-[#1F3842] mb-6 leading-[0.9] heading-glow cursor-default">
               {t.services.buttonHeadline}
             </h3>
-            <p className="text-sm sm:text-base text-[#4D6E7B] leading-relaxed mb-3 sm:mb-4">
+            <p className="text-base text-black leading-[1.7] mb-5">
               {t.services.buttonDesc1}
             </p>
-            <p className="text-sm sm:text-base text-[#4D6E7B] leading-relaxed">
+            <p className="text-base text-black leading-[1.7]">
               {t.services.buttonDesc2}
             </p>
           </div>
@@ -112,14 +114,14 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-4"
+          className="mt-8"
         >
-          <p className="text-sm font-semibold text-[#1F3842] mb-5">{t.services.easyToUse}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+          <p className="text-[20px] font-medium text-[#6F6F6F] mb-4">{t.services.easyToUse}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">
             {t.services.buttonBullets.map((bullet, index) => (
-              <div key={index} className="flex items-start gap-3 py-3 border-b border-[#E5E5E5]">
-                <CheckCircle2 className="w-5 h-5 shrink-0 text-[#7EA088] mt-0.5" />
-                <p className="text-sm text-[#4D6E7B]">{bullet}</p>
+              <div key={index} className="flex items-center gap-3 py-4 border-b border-[#E5E5E5]">
+                <CheckCircle2 className="w-5 h-5 shrink-0 text-[#7EA088]" />
+                <p className="text-sm text-black">{bullet}</p>
               </div>
             ))}
           </div>

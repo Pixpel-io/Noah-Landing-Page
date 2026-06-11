@@ -69,15 +69,14 @@ export function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-left mb-16">
+        <div className="text-left mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">{t.testimonials.sectionLabel}</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold leading-tight text-[#1F3842]">
+            <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] font-normal leading-[0.9] text-[#1F3842] heading-glow cursor-default">
               {t.testimonials.headline}
             </h2>
           </motion.div>
@@ -93,9 +92,9 @@ export function TestimonialsSection() {
             style={{ scrollBehavior: "auto" }}
           >
             {duplicatedVideos.map((card, index) => (
-              <div key={index} className="flex-shrink-0 w-[220px] sm:w-[260px] group/card cursor-pointer">
+              <div key={index} className="shrink-0 w-52 sm:w-60 md:w-70 group/card cursor-pointer">
                 {/* Video thumbnail */}
-                <div className="relative rounded-2xl overflow-hidden mb-3 aspect-[4/5] transition-all duration-300 group-hover/card:shadow-xl group-hover/card:shadow-[#1F3842]/10 group-hover/card:-translate-y-1">
+                <div className="relative rounded-xl overflow-hidden mb-4 aspect-3/4 transition-all duration-300 group-hover/card:-translate-y-1">
                   <img
                     src={card.image}
                     alt={card.name}
@@ -103,16 +102,16 @@ export function TestimonialsSection() {
                   />
                   {/* Play button overlay */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-lg transition-all duration-300 group-hover/card:scale-110 group-hover/card:bg-white group-hover/card:shadow-[0_0_20px_rgba(126,160,136,0.4)]">
-                      <Play className="w-6 h-6 text-[#1F3842] ml-1 transition-colors duration-300 group-hover/card:text-[#7EA088]" fill="currentColor" />
-                    </div>
+                    <svg viewBox="0 0 48 48" className="w-24 h-24 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all duration-300 group-hover/card:scale-125 group-hover/card:drop-shadow-[0_0_20px_rgba(255,255,255,0.8)]">
+                      <polygon points="8,4 44,24 8,44" fill="none" stroke="white" strokeWidth="4.5" strokeLinejoin="round" className="transition-all duration-300 group-hover/card:fill-[rgba(255,255,255,0.15)]" />
+                    </svg>
                   </div>
                 </div>
                 {/* Quote + name */}
-                <p className="text-sm text-[#1F3842] leading-relaxed mb-2 line-clamp-3">
+                <p className="text-base text-black leading-relaxed mb-3 line-clamp-3">
                   &ldquo;{card.quote}&rdquo;
                 </p>
-                <p className="text-sm font-semibold text-[#1F3842]">{card.name}</p>
+                <p className="text-sm font-bold text-[#1F3842]">{card.name}</p>
                 <p className="text-xs text-[#7EA088]">{card.role}</p>
               </div>
             ))}
