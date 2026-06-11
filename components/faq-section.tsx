@@ -23,8 +23,8 @@ export function FAQSection() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <p className="text-sm uppercase tracking-[0.2em] text-[#7EA088] font-semibold mb-4">{t.faq.sectionLabel}</p>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1F3842]">
+          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">{t.faq.sectionLabel}</p>
+          <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
             {t.faq.headline}
           </h2>
         </motion.div>
@@ -38,9 +38,9 @@ export function FAQSection() {
               transition={{ duration: 0.4, delay: index * 0.03 }}
               viewport={{ once: true }}
               onClick={() => toggleIndex(index)}
-              className={`rounded-2xl px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 cursor-pointer ${
+              className={`rounded-2xl px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 cursor-pointer bg-white ${
                 openIndex === index
-                  ? "border border-[#7EA088]/40 bg-[#7EA088]/5 shadow-md shadow-[#7EA088]/10"
+                  ? "border border-[#7EA088]/40 shadow-md shadow-[#7EA088]/10"
                   : "border border-[#E5E5E5] hover:border-[#D9D2BE] hover:shadow-sm"
               }`}
             >
@@ -67,7 +67,7 @@ export function FAQSection() {
                     transition={{ duration: 0.35, ease: "easeOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="text-sm text-[#4D6E7B] leading-relaxed pt-3 border-t border-[#E5E5E5]/50 mt-3">
+                    <p className="text-base text-black leading-relaxed pt-3 border-t border-[#E5E5E5]/50 mt-3">
                       {faq.answer}
                     </p>
                   </motion.div>

@@ -24,13 +24,13 @@ export function StatsSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-12"
         >
-          <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">{t.stats.sectionLabel}</p>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-[#1F3842]">
+          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">{t.stats.sectionLabel}</p>
+          <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
             {t.stats.headline}
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {stats.map((stat, index) => (
             <motion.div
               key={index}
@@ -49,14 +49,14 @@ export function StatsSection() {
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="bg-[#F7F7F7] rounded-2xl p-3 sm:p-4 md:p-5 text-center flex flex-col items-center flex-1">
-                <h3 className="text-sm sm:text-base font-semibold text-[#1F3842] mb-1 sm:mb-2">
+              <div className="bg-white rounded-2xl p-3 sm:p-4 md:p-5 text-center flex flex-col items-center flex-1 border border-gray-200">
+                <h3 className="text-lg sm:text-[22px] font-semibold text-[#1F3842] mb-1 sm:mb-2">
                   {stat.title}
                 </h3>
-                <p className="text-2xl sm:text-3xl md:text-5xl font-bold mb-1 sm:mb-2" style={{ color: stat.color }}>
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-[80px] font-bold mb-1 sm:mb-2" style={{ color: stat.color }}>
                   {stat.value}
                 </p>
-                <p className="text-xs sm:text-sm text-[#4D6E7B] leading-relaxed">
+                <p className="text-sm sm:text-base lg:text-lg text-black leading-relaxed">
                   {stat.desc}
                 </p>
               </div>

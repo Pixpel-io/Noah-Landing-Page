@@ -20,15 +20,15 @@ export function FeaturesSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-14"
         >
-          <p className="text-sm tracking-wide text-[#7EA088] font-semibold mb-4">
+          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">
             {t.features.sectionLabel}
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1F3842]">
+          <h2 className="font-[family-name:var(--font-crimson)] text-3xl md:text-4xl lg:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
             {t.features.headline}
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
           {t.features.items.map((item, index) => {
             const Icon = icons[index]
             const color = colors[index]
@@ -48,9 +48,9 @@ export function FeaturesSection() {
                 >
                   <Icon className="w-6 h-6 text-white" strokeWidth={1.75} />
                 </div>
-                <h3 className="text-sm font-semibold text-[#1F3842] mb-1">{item.title}</h3>
+                <h3 className="text-base sm:text-lg md:text-[20px] font-semibold text-[#1F3842] mb-1">{item.title}</h3>
                 {item.description && (
-                  <p className="text-xs text-[#4D6E7B] leading-relaxed">{item.description}</p>
+                  <p className="text-base text-black leading-relaxed">{item.description}</p>
                 )}
               </motion.div>
             )

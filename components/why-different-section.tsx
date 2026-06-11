@@ -8,86 +8,85 @@ const pillarIcons = [MessageCircle, HeartPulse, Brain, ShieldAlert, Users]
 const pillarColors = ["#7EA088", "#D4A24D", "#A95535", "#D4A24D", "#7EA088"]
 
 export function WhyDifferentSection() {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
 
   return (
     <section className="py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto flex flex-col gap-16">
 
-        {/* Top block - white bg with image left, text right */}
+        {/* Top block - image left, text right */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="bg-white rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-start"
         >
-          <div className="relative min-h-[220px] sm:min-h-[300px] md:min-h-[400px] border-l-4 border-[#D4A24D]">
+          <div className="relative min-h-[300px] sm:min-h-[400px] md:min-h-[480px] rounded-2xl overflow-hidden group">
             <Image
-              src="/images/Smile.jpg"
-              alt="Senior man smiling with phone"
+              src="/images/why-different-image.png"
+              alt="Senior man using phone"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
-          <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-center">
-            <p className="text-sm tracking-wide text-[#7EA088] font-medium mb-4">
+          <div className="flex flex-col justify-start self-start pt-0">
+            <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-6 font-sans">
               {t.whyDifferent.sectionLabel}
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#1F3842] mb-4 sm:mb-6 leading-tight">
-              {t.whyDifferent.headline}
+            <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] font-normal text-[#1F3842] mb-6 leading-[0.9] heading-glow cursor-default">
+              More than a<br />friendly voice.<br />Real support that<br />truly works.
             </h2>
-            <p className="text-[#4D6E7B] leading-relaxed">
+            <p className="text-base text-black leading-relaxed max-w-sm">
               {t.whyDifferent.description}
             </p>
           </div>
         </motion.div>
 
-        {/* Bottom block - modern glass card */}
+        {/* Bottom block - Figma style: rounded card with border */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="relative rounded-3xl overflow-hidden group"
+          className="rounded-t-none rounded-b-xl border border-gray-200 overflow-hidden"
         >
-          {/* Gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1F3842] via-[#2B505C] to-[#1F3842]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-          <div className="relative flex flex-col sm:flex-row sm:items-center">
-            {/* Text content */}
-            <div className="flex-1 px-6 sm:px-10 py-8 sm:py-10 relative z-10">
-              <h2 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-[#F5F1EA] mb-3 leading-tight">
-                {t.whyDifferent.headline2}
-              </h2>
-              <p className="text-sm text-[#F5F1EA]/70 leading-relaxed max-w-md">
-                {t.whyDifferent.description2}
-              </p>
-            </div>
-
-            {/* Image */}
-            <div className="hidden sm:block relative w-[240px] md:w-[360px] h-[200px] md:h-[280px] rounded-2xl overflow-hidden m-4 mr-6 shrink-0">
-              <Image
-                src="/images/Couple2.png"
-                alt="Elderly couple together"
-                fill
-                className="object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
+          {/* Top section - full width image */}
+          <div className="relative w-full overflow-hidden rounded-t-xl bg-[#F5F1EA]">
+            <Image
+              src={locale === "es" ? "/images/Headline and icons(2).png" : "/images/Headline and icons.png"}
+              alt="Noah pillars overview"
+              width={1200}
+              height={300}
+              className="w-full h-auto object-contain"
+            />
           </div>
 
-          {/* Pillars row */}
-          <div className="relative border-t border-white/10 px-4 sm:px-10 py-4">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:justify-between items-center gap-3 md:gap-4">
+          {/* Pillars row - white bg */}
+          <div className="bg-[#F5F5F5] px-6 sm:px-10 py-5 border-t border-gray-200">
+            <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4 md:gap-6">
               {t.whyDifferent.pillars.map((pillar, index) => {
                 const Icon = pillarIcons[index]
+                const color = pillarColors[index]
                 return (
                   <div key={index} className="flex items-center gap-2.5 cursor-default group/pill">
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-white/10 group-hover/pill:bg-white/30 group-hover/pill:shadow-[0_0_14px_rgba(255,255,255,0.6)] transition-all duration-300">
-                      <Icon className="w-4 h-4 text-white/80 group-hover/pill:text-white group-hover/pill:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] transition-all duration-300" />
+                    <div
+                      className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 group-hover/pill:scale-110 group-hover/pill:shadow-[0_0_14px_rgba(0,0,0,0.15)]"
+                      style={{ borderColor: color, backgroundColor: 'transparent' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = color
+                        const icon = e.currentTarget.querySelector('svg')
+                        if (icon) { icon.style.color = 'white'; icon.style.filter = 'drop-shadow(0 0 6px rgba(255,255,255,0.9))' }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'transparent'
+                        const icon = e.currentTarget.querySelector('svg')
+                        if (icon) { icon.style.color = color; icon.style.filter = 'none' }
+                      }}
+                    >
+                      <Icon className="w-4 h-4 transition-all duration-300" style={{ color }} />
                     </div>
-                    <span className="text-xs sm:text-sm font-medium text-[#F5F1EA]/90 group-hover/pill:text-white transition-colors duration-300">{pillar}</span>
+                    <span className="text-base sm:text-lg md:text-[24px] font-normal text-[#1F3842]">{pillar}</span>
                   </div>
                 )
               })}
@@ -105,7 +104,7 @@ export function WhyDifferentSection() {
         >
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
           <Heart className="w-6 h-6 shrink-0 text-[#7EA088] relative z-10 group-hover:fill-white group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
-          <p className="text-white text-sm md:text-base leading-relaxed relative z-10">
+          <p className="text-white text-base md:text-[18px] leading-relaxed relative z-10">
             {t.whyDifferent.quote}
           </p>
         </motion.div>
