@@ -36,6 +36,7 @@ export default function Home() {
         <FeaturesSection />
         <CTASection />
         <TestimonialsSection />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6"><hr className="border-t border-gray-200" /></div>
         <FAQSection />
         <Footer />
       </motion.main>
