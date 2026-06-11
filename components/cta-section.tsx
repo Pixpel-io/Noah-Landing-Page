@@ -45,7 +45,7 @@ export function CTASection() {
 
             {/* Headline */}
             <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[50px] font-semibold text-white mb-6 max-w-3xl mx-auto leading-tight">
-              Give the ones you love most<br />the support they deserve
+              {t.cta.headline}
             </h2>
 
             {/* Description */}

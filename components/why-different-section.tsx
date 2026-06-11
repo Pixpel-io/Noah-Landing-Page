@@ -35,7 +35,7 @@ export function WhyDifferentSection() {
               {t.whyDifferent.sectionLabel}
             </p>
             <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] font-normal text-[#1F3842] mb-6 leading-[0.9] heading-glow cursor-default">
-              More than a<br />friendly voice.<br />Real support that<br />truly works.
+              {t.whyDifferent.headline}
             </h2>
             <p className="text-base text-black leading-relaxed max-w-sm">
               {t.whyDifferent.description}

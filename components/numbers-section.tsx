@@ -29,8 +29,7 @@ export function NumbersSection() {
               {t.numbersSection.sectionLabel}
             </p>
             <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-[40px] md:text-[50px] lg:text-[60px] leading-[0.9] tracking-tight text-black mb-12 heading-glow cursor-default">
-              A reality that affects millions<br />
-              of families
+              {t.numbersSection.headline}
             </h2>
             <p className="text-base text-[#6F6F6F] leading-[1.4] tracking-tight">
               {t.numbersSection.paragraph1}
