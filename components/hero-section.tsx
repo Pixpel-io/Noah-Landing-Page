@@ -22,8 +22,7 @@ export function HeroSection() {
           {/* Left - Text content */}
           <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <h1 className="font-[family-name:var(--font-crimson)] text-4xl sm:text-5xl md:text-7xl lg:text-[85px] font-normal leading-[0.8] mb-5 text-black">
-              Your friendly voice, always<br />
-              there for you.
+              {t.hero.headlinePart1}<br />{t.hero.headlinePart2}<br />{t.hero.headlinePart3}
             </h1>
 
             <p className="text-base text-black leading-relaxed mb-8 max-w-md">
