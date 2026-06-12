@@ -1,11 +1,14 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { Facebook, Linkedin, Instagram, Heart } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import { DownloadModal } from "./download-modal"
 
 export function Footer() {
   const { t } = useLanguage()
+  const [showDownload, setShowDownload] = useState(false)
 
   return (
     <footer id="contact" className="bg-white pt-12 pb-6 px-4 sm:px-6">
@@ -43,7 +46,7 @@ export function Footer() {
               <Link href="#" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                 <Instagram className="w-3.5 h-3.5" />
               </Link>
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="https://www.linkedin.com/company/noahlife-io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                 <Linkedin className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -63,7 +66,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               <li><Link href="#features" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.features}</Link></li>
               <li><Link href="#how-it-works" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.howItWorks}</Link></li>
-              <li><Link href="#" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.download}</Link></li>
+              <li><button onClick={() => setShowDownload(true)} className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.download}</button></li>
             </ul>
           </div>
 
@@ -83,6 +86,7 @@ export function Footer() {
           <p className="text-xs text-[#6B7280] flex items-center gap-1.5">{t.footer.madeWith} <Heart className="w-3 h-3 text-[#D4A24D] fill-[#D4A24D] animate-pulse" /></p>
         </div>
       </div>
+      <DownloadModal isOpen={showDownload} onClose={() => setShowDownload(false)} />
     </footer>
   )
 }
