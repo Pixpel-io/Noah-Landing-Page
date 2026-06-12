@@ -1,6 +1,6 @@
 "use client"
 
-import { Heart, ArrowUpRight, ArrowRight } from "lucide-react"
+import { Heart } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 
@@ -53,24 +53,6 @@ export function CTASection() {
               {t.cta.description}
             </p>
 
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="relative flex items-center gap-0 border border-[#D4A24D] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden">
-                <span className="absolute inset-0 rounded-full scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 bg-[#D4A24D]" />
-                <span className="text-base font-semibold pr-4 relative z-10 transition-colors duration-300 text-[#D4A24D] group-hover:text-[#1F3842]">
-                  {t.cta.primaryCta}
-                </span>
-                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 bg-[#D4A24D]">
-                  <ArrowUpRight className="w-4 h-4 text-[#1F3842]" />
-                </span>
-              </button>
-              <button className="relative flex items-center gap-0 border border-[#F5F1EA]/30 rounded-full px-6 py-2.5 transition-all duration-300 group overflow-hidden">
-                <span className="absolute inset-0 rounded-full scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 bg-[#F5F1EA]" />
-                <span className="text-base font-medium relative z-10 transition-colors duration-300 text-[#F5F1EA] group-hover:text-[#1F3842]">
-                  {t.cta.secondaryCta}
-                </span>
-              </button>
-            </div>
           </motion.div>
           </div>
         </div>

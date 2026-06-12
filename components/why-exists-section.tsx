@@ -2,7 +2,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
-import { CheckCircle2, Heart, ArrowRight, ArrowUpRight } from "lucide-react"
+import { CheckCircle2, Heart } from "lucide-react"
 
 export function WhyExistsSection() {
   const { t } = useLanguage()
@@ -58,19 +58,6 @@ export function WhyExistsSection() {
                 className="object-cover"
               />
             </div>
-            <a
-              href="#"
-              className="relative flex items-center gap-0 border border-[#D4A24D] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden hover:shadow-[0_0_20px_rgba(212,162,77,0.3)]"
-            >
-              <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#D4A24D]" />
-              <span className="text-sm font-semibold pr-3 relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-white">
-                {t.whyExists.cta}
-              </span>
-              <span className="w-8 h-8 rounded-full flex items-center justify-center relative z-10 group-hover:bg-white group-hover:shadow-[0_0_14px_rgba(255,255,255,0.9)] transition-all duration-300">
-                <ArrowRight className="w-4 h-4 group-hover:opacity-0 absolute transition-opacity duration-300 text-[#1F3842]" />
-                <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-all duration-300 text-[#1F3842] group-hover:text-[#D4A24D]" />
-              </span>
-            </a>
           </motion.div>
         </div>
 
