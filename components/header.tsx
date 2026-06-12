@@ -5,9 +5,11 @@ import { useState } from "react"
 import { Menu, X, ArrowRight, Globe } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
+import { DownloadModal } from "./download-modal"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [showDownload, setShowDownload] = useState(false)
   const { locale, t, toggleLocale } = useLanguage()
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -93,7 +95,7 @@ export function Header() {
             <span className="text-xs font-semibold text-[#1F3842] uppercase group-hover/lang:text-white transition-colors">{locale === "en" ? "ES" : "EN"}</span>
           </button>
 
-          <button className="relative flex items-center gap-2 border border-[#D4A24D] rounded-full px-5 py-2.5 overflow-hidden group/btn transition-all duration-300 hover:shadow-[0_0_16px_rgba(212,162,77,0.4)]">
+          <button onClick={() => setShowDownload(true)} className="relative flex items-center gap-2 border border-[#D4A24D] rounded-full px-5 py-2.5 overflow-hidden group/btn transition-all duration-300 hover:shadow-[0_0_16px_rgba(212,162,77,0.4)]">
             <span className="absolute inset-0 rounded-full bg-[#D4A24D] scale-x-0 origin-left group-hover/btn:scale-x-100 transition-transform duration-300" />
             <span className="text-sm font-medium text-[#D4A24D] group-hover/btn:text-white relative z-10 transition-colors duration-300">{t.nav.downloadApp}</span>
             <ArrowRight className="w-4 h-4 text-[#D4A24D] group-hover/btn:text-white relative z-10 transition-colors duration-300" />
@@ -151,7 +153,7 @@ export function Header() {
               >
                 {t.nav.faq}
               </a>
-              <button className="flex items-center gap-2 bg-[#D4A24D] rounded-full px-5 py-2.5 w-fit mt-2">
+              <button onClick={() => { setShowDownload(true); setIsOpen(false) }} className="flex items-center gap-2 bg-[#D4A24D] rounded-full px-5 py-2.5 w-fit mt-2">
                 <span className="text-sm font-medium text-white">{t.nav.downloadApp}</span>
                 <ArrowRight className="w-4 h-4 text-white" />
               </button>
@@ -159,6 +161,7 @@ export function Header() {
           </motion.nav>
         )}
       </AnimatePresence>
+      <DownloadModal isOpen={showDownload} onClose={() => setShowDownload(false)} />
     </header>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
-import { ArrowUpRight, Calendar, Phone, Mic, Pill } from "lucide-react"
+import { Calendar, Phone, Mic, Pill } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 
@@ -28,24 +28,6 @@ export function HeroSection() {
             <p className="text-base text-black leading-relaxed mb-8 max-w-md">
               {t.hero.description}
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="relative flex items-center gap-0 border border-[#D4A24D] rounded-full pl-6 pr-1.5 py-1.5 transition-all duration-300 group overflow-hidden">
-                <span className="absolute inset-0 rounded-full scale-x-0 origin-right group-hover:scale-x-100 transition-transform duration-300 bg-[#D4A24D]" />
-                <span className="text-base font-semibold pr-4 relative z-10 transition-colors duration-300 text-[#D4A24D] group-hover:text-[#1F3842]">
-                  {t.hero.primaryCta}
-                </span>
-                <span className="w-10 h-10 rounded-full flex items-center justify-center relative z-10 bg-[#D4A24D] transition-all duration-300">
-                  <ArrowUpRight className="w-4 h-4 text-[#1F3842] transition-colors duration-300" />
-                </span>
-              </button>
-              <button className="relative flex items-center gap-0 border border-[#D9D2BE] rounded-full px-6 py-2.5 transition-all duration-300 group overflow-hidden">
-                <span className="absolute inset-0 rounded-full scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 bg-[#7EA088]" />
-                <span className="text-base font-medium relative z-10 transition-colors duration-300 text-[#1F3842] group-hover:text-[#F5F1EA]">
-                  {t.hero.secondaryCta}
-                </span>
-              </button>
-            </div>
 
             {/* Trusted by */}
             <div className="mt-10 pt-6 border-t border-gray-200 max-w-lg">

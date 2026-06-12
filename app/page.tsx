@@ -32,11 +32,12 @@ export default function Home() {
         <StatsSection />
         <WhyDifferentSection />
         <WhyExistsSection />
+        <div className="px-4 sm:px-6 my-6"><hr className="max-w-7xl mx-auto border-t border-gray-200" /></div>
         <ServicesSection />
         <FeaturesSection />
         <CTASection />
         <TestimonialsSection />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6"><hr className="border-t border-gray-200" /></div>
+        <div className="px-4 sm:px-6"><hr className="max-w-7xl mx-auto border-t border-gray-200" /></div>
         <FAQSection />
         <Footer />
       </motion.main>

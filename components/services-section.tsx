@@ -12,7 +12,7 @@ export function ServicesSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="how-it-works" className="py-12 md:py-16 px-4 sm:px-6 relative overflow-hidden">
+    <section id="how-it-works" className="pt-4 md:pt-6 pb-2 md:pb-4 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Section label + headline */}
@@ -87,7 +87,7 @@ export function ServicesSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start mb-0"
         >
-          <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden group">
+          <div className="relative w-full aspect-[4/3] md:aspect-[16/9] rounded-2xl overflow-hidden group">
             <Image
               src="/images/device-image.png"
               alt="Noah portable device"
@@ -95,7 +95,7 @@ export function ServicesSection() {
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           </div>
-          <div className="pt-0">
+          <div className="pt-0 max-w-[420px]">
             <h3 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] font-normal text-[#1F3842] mb-6 leading-[0.9] heading-glow cursor-default">
               {t.services.buttonHeadline}
             </h3>
@@ -114,7 +114,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="mt-8"
+          className="mt-2"
         >
           <p className="text-[20px] font-medium text-[#6F6F6F] mb-4">{t.services.easyToUse}</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-0">

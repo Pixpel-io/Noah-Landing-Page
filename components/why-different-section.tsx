@@ -11,7 +11,7 @@ export function WhyDifferentSection() {
   const { t, locale } = useLanguage()
 
   return (
-    <section className="py-12 md:py-16 px-4 sm:px-6">
+    <section className="pt-6 md:pt-8 pb-2 md:pb-4 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto flex flex-col gap-16">
 
         {/* Top block - image left, text right */}
@@ -49,7 +49,7 @@ export function WhyDifferentSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="rounded-t-none rounded-b-xl border border-gray-200 overflow-hidden"
+          className="rounded-t-none rounded-b-xl border-t border-gray-200 overflow-hidden"
         >
           {/* Top section - full width image */}
           <div className="relative w-full overflow-hidden rounded-t-xl bg-[#F5F1EA]">
