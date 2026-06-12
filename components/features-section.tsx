@@ -11,7 +11,7 @@ export function FeaturesSection() {
   const { t } = useLanguage()
 
   return (
-    <section id="features" className="py-12 md:py-16 px-4 sm:px-6">
+    <section id="features" className="pt-6 md:pt-8 pb-2 md:pb-4 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -8,7 +8,7 @@ export function WhyExistsSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-12 md:py-16 px-4 sm:px-6">
+    <section className="pt-6 md:pt-8 pb-2 md:pb-4 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
 
         {/* Top border line */}

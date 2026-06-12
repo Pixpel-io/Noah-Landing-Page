@@ -8,7 +8,7 @@ export function CTASection() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-12 md:py-16 px-4 sm:px-6 relative overflow-hidden">
+    <section className="pt-6 md:pt-8 pb-2 md:pb-4 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="relative rounded-3xl overflow-hidden bg-[#1C4E59] text-center">
           <div className="absolute inset-0 overflow-hidden opacity-10">
