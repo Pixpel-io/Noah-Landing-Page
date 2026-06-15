@@ -27,6 +27,7 @@ import { isSupabaseConfigured } from '@/lib/supabase/config'
 import { getDashboardData } from '@/lib/dashboard/metrics'
 
 import { MessagesChart, SignupsChart } from './charts'
+import { NoahMark } from './noah-logo'
 import { StatCard } from './stat-card'
 
 export const metadata = { title: 'Dashboard · Noah AI' }
@@ -42,13 +43,13 @@ function SectionTitle({
   hint?: string
 }) {
   return (
-    <div className="mb-4 mt-10 first:mt-0">
+    <div className="reveal-fade mb-4 mt-12 first:mt-0">
       <div className="flex items-center gap-3">
-        <span className="bg-primary/70 h-4 w-1 rounded-full" />
+        <span className="from-primary to-accent h-4 w-1 rounded-full bg-linear-to-b" />
         <h2 className="font-serif text-lg font-semibold tracking-tight">
           {children}
         </h2>
-        <span className="bg-border/70 h-px flex-1" />
+        <span className="from-border h-px flex-1 bg-linear-to-r to-transparent" />
       </div>
       {hint ? (
         <p className="text-muted-foreground mt-1.5 pl-4 text-sm">{hint}</p>
@@ -78,23 +79,48 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <div className="border-border/60 bg-card/40 mb-8 flex flex-wrap items-end justify-between gap-3 rounded-2xl border p-6 backdrop-blur">
-        <div>
-          <h1 className="font-serif text-3xl font-semibold tracking-tight">
-            Overview
-          </h1>
-          <p className="text-muted-foreground mt-1 text-sm">
-            Aggregate, read-only metrics from the Noah AI production database.
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="bg-chart-1/15 text-chart-1 ring-chart-1/25 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ring-1">
-            <span className="bg-chart-1 size-1.5 animate-pulse rounded-full" />
-            Read-only
-          </span>
-          <span className="text-muted-foreground text-xs">
-            Updated {generated}
-          </span>
+      <div className="reveal border-border/60 relative mb-8 overflow-hidden rounded-3xl border p-7 sm:p-8">
+        {/* Layered gradient backdrop for the hero */}
+        <div
+          aria-hidden
+          className="from-card via-card to-secondary/50 absolute inset-0 -z-10 bg-linear-to-br"
+        />
+        <div
+          aria-hidden
+          className="bg-primary/15 absolute -right-16 -top-20 -z-10 size-64 rounded-full blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="bg-accent/15 absolute -bottom-24 -left-10 -z-10 size-56 rounded-full blur-3xl"
+        />
+
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="logo-lockup flex items-center gap-4">
+            <span className="logo-orb relative inline-flex shrink-0">
+              <NoahMark className="size-14" />
+            </span>
+            <div>
+              <span className="text-primary/90 text-xs font-semibold uppercase tracking-[0.18em]">
+                Noah AI · Analytics
+              </span>
+              <h1 className="font-serif mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">
+                Overview
+              </h1>
+              <p className="text-muted-foreground mt-1.5 max-w-xl text-sm">
+                Aggregate, read-only metrics from the Noah AI production
+                database — live counts, derived signals, and growth trends.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-col items-end gap-2">
+            <span className="bg-chart-1/12 text-chart-1 ring-chart-1/25 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ring-1">
+              <span className="dot-pulse bg-chart-1 size-1.5 rounded-full" />
+              Read-only · Live
+            </span>
+            <span className="text-muted-foreground text-xs">
+              Updated {generated}
+            </span>
+          </div>
         </div>
       </div>
 
@@ -117,32 +143,38 @@ export default async function DashboardPage() {
           title="Medication reminders"
           metric={data.medicationReminders}
           icon={AlarmClock}
+          index={0}
         />
         <StatCard
           title="Interaction time"
           metric={data.interactionMinutes}
           icon={Timer}
           unit="min"
+          index={1}
         />
         <StatCard
           title="Conversation messages"
           metric={data.conversationsMessages}
           icon={MessageSquare}
+          index={2}
         />
         <StatCard
           title="Medications tracked"
           metric={data.medicationsTracked}
           icon={Pill}
+          index={3}
         />
         <StatCard
           title="Emergency contacts"
           metric={data.emergencyContacts}
           icon={Phone}
+          index={4}
         />
         <StatCard
           title="Active users (messaged)"
           metric={data.activeUsers}
           icon={Users}
+          index={5}
         />
       </div>
 
@@ -150,17 +182,27 @@ export default async function DashboardPage() {
         Trends
       </SectionTitle>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <SignupsChart data={data.signupsByDay} />
-        <MessagesChart data={data.messagesByDay} />
+        <div className="reveal" style={{ ['--i' as string]: 0 }}>
+          <SignupsChart data={data.signupsByDay} />
+        </div>
+        <div className="reveal" style={{ ['--i' as string]: 1 }}>
+          <MessagesChart data={data.messagesByDay} />
+        </div>
       </div>
 
       <SectionTitle hint="User base from app_users.">Users</SectionTitle>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <StatCard title="Total users" metric={data.totalUsers} icon={Users} />
+        <StatCard
+          title="Total users"
+          metric={data.totalUsers}
+          icon={Users}
+          index={0}
+        />
         <StatCard
           title="New users (30 days)"
           metric={data.newUsers30d}
           icon={UserPlus}
+          index={1}
         />
       </div>
 
@@ -172,28 +214,38 @@ export default async function DashboardPage() {
           title="Appointments scheduled"
           metric={data.appointmentsScheduled}
           icon={CalendarClock}
+          index={0}
         />
         <StatCard
           title="Consultations recorded"
           metric={data.consultationsRecorded}
           icon={Mic}
+          index={1}
         />
         <StatCard
           title="Emergency calls triggered"
           metric={data.emergencyCallsTriggered}
           icon={Phone}
+          index={2}
         />
         <StatCard
           title="New subscriptions"
           metric={data.newSubscriptions}
           icon={UserPlus}
+          index={3}
         />
         <StatCard
           title="Ended subscriptions"
           metric={data.endedSubscriptions}
           icon={UserMinus}
+          index={4}
         />
-        <StatCard title="Sales" metric={data.sales} icon={ShoppingCart} />
+        <StatCard
+          title="Sales"
+          metric={data.sales}
+          icon={ShoppingCart}
+          index={5}
+        />
       </div>
 
       <div className="border-border/60 text-muted-foreground mt-12 flex items-center justify-center gap-2 border-t pt-6 text-xs">

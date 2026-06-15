@@ -5,13 +5,14 @@
  */
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { Activity } from 'lucide-react'
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { createClient } from '@/lib/supabase/server'
 import { isAdminEmail } from '@/lib/supabase/config'
 
 import { LoginForm } from './login-form'
+import { NoahMark } from '../dashboard/noah-logo'
+import { poppins } from '../dashboard/fonts'
 import '../dashboard/dashboard.css'
 
 export const metadata = {
@@ -38,13 +39,17 @@ export default async function LoginPage({
   }
 
   return (
-    <main className="dash-root flex min-h-dvh items-center justify-center px-4 py-12">
-      <Card className="w-full max-w-md">
+    <main className={`${poppins.variable} dash-root flex min-h-dvh items-center justify-center px-4 py-12`}>
+      <Card className="reveal w-full max-w-md">
         <CardHeader className="items-center text-center">
-          <span className="bg-primary/15 text-primary ring-primary/25 mb-2 flex size-12 items-center justify-center rounded-2xl ring-1">
-            <Activity className="size-6" />
+          <span className="logo-lockup mb-3 inline-flex">
+            <span className="logo-orb relative inline-flex">
+              <NoahMark className="size-16" />
+            </span>
           </span>
-          <CardTitle className="font-serif text-2xl">Noah AI Dashboard</CardTitle>
+          <CardTitle className="font-serif text-2xl">
+            Noah AI Dashboard
+          </CardTitle>
           <CardDescription className="text-base">
             Internal metrics console. Sign in with an authorised Google
             account to continue.

@@ -50,25 +50,29 @@ export function StatCard({
   metric,
   icon: Icon,
   unit,
+  index = 0,
 }: {
   title: string
   metric: Metric
   icon: LucideIcon
   unit?: string
+  /** Position in its grid — drives the staggered entrance delay. */
+  index?: number
 }) {
   const isPending = metric.status === 'pending'
 
   return (
     <Card
-      style={RAIL[metric.status]}
-      className={cn('stat-card gap-0 py-0', isPending && 'opacity-80')}
+      style={{ ...RAIL[metric.status], ['--i' as string]: index }}
+      className={cn('stat-card reveal gap-0 py-0', isPending && 'opacity-80')}
     >
+      <span className="corner-glow" aria-hidden />
       <CardContent className="px-5 py-5">
         <div className="flex items-start justify-between gap-2">
           <div className="flex items-center gap-2.5">
             <span
               className={cn(
-                'flex size-9 items-center justify-center rounded-xl',
+                'stat-icon flex size-9 items-center justify-center rounded-xl',
                 isPending
                   ? 'bg-muted text-muted-foreground'
                   : 'bg-primary/12 text-primary',
@@ -87,7 +91,11 @@ export function StatCard({
             )}
           >
             <span
-              className={cn('size-1.5 rounded-full', STATUS_DOT[metric.status])}
+              className={cn(
+                'size-1.5 rounded-full',
+                STATUS_DOT[metric.status],
+                metric.status === 'live' && 'dot-pulse',
+              )}
             />
             {STATUS_LABEL[metric.status]}
           </span>

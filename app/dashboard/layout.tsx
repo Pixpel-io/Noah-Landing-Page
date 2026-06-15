@@ -14,6 +14,7 @@ import { createClient } from '@/lib/supabase/server'
 import { isAdminEmail } from '@/lib/supabase/config'
 
 import { DashboardHeader } from './header'
+import { poppins } from './fonts'
 import './dashboard.css'
 
 export default async function DashboardLayout({
@@ -30,7 +31,7 @@ export default async function DashboardLayout({
 
   if (!isAdminEmail(user.email)) {
     return (
-      <main className="dash-root bg-background flex min-h-dvh items-center justify-center px-4">
+      <main className={`${poppins.variable} dash-root bg-background flex min-h-dvh items-center justify-center px-4`}>
         <div className="bg-card max-w-md rounded-2xl border p-8 text-center shadow-sm">
           <h1 className="font-serif text-2xl font-semibold">Access denied</h1>
           <p className="text-muted-foreground mt-3 text-sm">
@@ -49,7 +50,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="dash-root min-h-dvh">
+    <div className={`${poppins.variable} dash-root min-h-dvh`}>
       <DashboardHeader email={user.email ?? ''} />
       <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {children}
