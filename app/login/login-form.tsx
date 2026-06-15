@@ -6,6 +6,22 @@ import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/client'
 import { SITE_URL } from '@/lib/supabase/config'
 
+/**
+ * The origin to build the OAuth callback against. We ALWAYS prefer the
+ * live browser origin (`window.location.origin`) over the build-time
+ * SITE_URL: that way the callback lands on the exact host the user is
+ * on — e.g. www.noahlife.io vs noahlife.io vs a vercel preview — so the
+ * PKCE code-verifier cookie (set on this origin) is present when the
+ * callback runs. A www/non-www mismatch would otherwise drop that cookie
+ * and fail with "PKCE code verifier not found in storage".
+ */
+function resolveOrigin(): string {
+  if (typeof window !== 'undefined' && window.location?.origin) {
+    return window.location.origin
+  }
+  return SITE_URL
+}
+
 function GoogleIcon() {
   return (
     <svg viewBox="0 0 24 24" className="size-5" aria-hidden="true">
@@ -44,7 +60,7 @@ export function LoginForm({
     setError(undefined)
     const supabase = createClient()
 
-    const callback = new URL('/auth/callback', SITE_URL)
+    const callback = new URL('/auth/callback', resolveOrigin())
     callback.searchParams.set('next', redirectTo)
 
     const { error } = await supabase.auth.signInWithOAuth({
