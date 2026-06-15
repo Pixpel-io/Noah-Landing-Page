@@ -14,6 +14,7 @@ import { createClient } from '@/lib/supabase/server'
 import { isAdminEmail } from '@/lib/supabase/config'
 
 import { DashboardHeader } from './header'
+import './dashboard.css'
 
 export default async function DashboardLayout({
   children,
@@ -29,13 +30,13 @@ export default async function DashboardLayout({
 
   if (!isAdminEmail(user.email)) {
     return (
-      <main className="bg-background flex min-h-dvh items-center justify-center px-4">
-        <div className="max-w-md text-center">
+      <main className="dash-root bg-background flex min-h-dvh items-center justify-center px-4">
+        <div className="bg-card max-w-md rounded-2xl border p-8 text-center shadow-sm">
           <h1 className="font-serif text-2xl font-semibold">Access denied</h1>
           <p className="text-muted-foreground mt-3 text-sm">
-            <span className="font-medium">{user.email}</span> is not on the
-            authorised list for the Noah AI dashboard. If this is a mistake,
-            ask an administrator to add your email to the allowlist.
+            <span className="text-foreground font-medium">{user.email}</span> is
+            not on the authorised list for the Noah AI dashboard. If this is a
+            mistake, ask an administrator to add your email to the allowlist.
           </p>
           <form action="/auth/signout" method="post" className="mt-6">
             <Button type="submit" variant="outline">
@@ -48,7 +49,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="bg-background min-h-dvh">
+    <div className="dash-root min-h-dvh">
       <DashboardHeader email={user.email ?? ''} />
       <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         {children}

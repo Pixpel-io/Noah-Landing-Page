@@ -42,10 +42,16 @@ function SectionTitle({
   hint?: string
 }) {
   return (
-    <div className="mb-3 mt-8 first:mt-0">
-      <h2 className="font-serif text-lg font-semibold">{children}</h2>
+    <div className="mb-4 mt-10 first:mt-0">
+      <div className="flex items-center gap-3">
+        <span className="bg-primary/70 h-4 w-1 rounded-full" />
+        <h2 className="font-serif text-lg font-semibold tracking-tight">
+          {children}
+        </h2>
+        <span className="bg-border/70 h-px flex-1" />
+      </div>
       {hint ? (
-        <p className="text-muted-foreground text-sm">{hint}</p>
+        <p className="text-muted-foreground mt-1.5 pl-4 text-sm">{hint}</p>
       ) : null}
     </div>
   )
@@ -72,17 +78,24 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <div className="mb-6 flex flex-wrap items-end justify-between gap-2">
+      <div className="border-border/60 bg-card/40 mb-8 flex flex-wrap items-end justify-between gap-3 rounded-2xl border p-6 backdrop-blur">
         <div>
-          <h1 className="font-serif text-2xl font-semibold tracking-tight">
+          <h1 className="font-serif text-3xl font-semibold tracking-tight">
             Overview
           </h1>
-          <p className="text-muted-foreground text-sm">
-            Aggregate, read-only metrics from the Noah AI production
-            database.
+          <p className="text-muted-foreground mt-1 text-sm">
+            Aggregate, read-only metrics from the Noah AI production database.
           </p>
         </div>
-        <p className="text-muted-foreground text-xs">Updated {generated}</p>
+        <div className="flex items-center gap-2">
+          <span className="bg-chart-1/15 text-chart-1 ring-chart-1/25 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ring-1">
+            <span className="bg-chart-1 size-1.5 animate-pulse rounded-full" />
+            Read-only
+          </span>
+          <span className="text-muted-foreground text-xs">
+            Updated {generated}
+          </span>
+        </div>
       </div>
 
       {data.hadError ? (
@@ -183,12 +196,12 @@ export default async function DashboardPage() {
         <StatCard title="Sales" metric={data.sales} icon={ShoppingCart} />
       </div>
 
-      <p className="text-muted-foreground mt-10 flex items-center gap-2 text-xs">
+      <div className="border-border/60 text-muted-foreground mt-12 flex items-center justify-center gap-2 border-t pt-6 text-xs">
         <CreditCard className="size-3.5" />
-        Read-only dashboard. The production database is never modified from
+        Read-only dashboard — the production database is never modified from
         here.
         <CalendarCheck className="size-3.5" />
-      </p>
+      </div>
     </div>
   )
 }

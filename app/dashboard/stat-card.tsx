@@ -1,7 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
+import type { CSSProperties } from 'react'
 
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import type { Metric } from '@/lib/dashboard/metrics'
 
@@ -14,13 +14,35 @@ function formatValue(value: number | null, unit?: string): string {
 const STATUS_LABEL: Record<Metric['status'], string> = {
   live: 'Live',
   derived: 'Derived',
-  pending: 'Pending sync',
+  pending: 'Pending',
 }
 
-const STATUS_CLASS: Record<Metric['status'], string> = {
-  live: 'bg-chart-1/15 text-chart-4 border-chart-1/30',
-  derived: 'bg-chart-2/15 text-chart-4 border-chart-2/30',
-  pending: 'bg-muted text-muted-foreground border-border',
+const STATUS_DOT: Record<Metric['status'], string> = {
+  live: 'bg-chart-1',
+  derived: 'bg-chart-2',
+  pending: 'bg-muted-foreground/60',
+}
+
+const STATUS_PILL: Record<Metric['status'], string> = {
+  live: 'text-chart-1 bg-chart-1/10 border-chart-1/25',
+  derived: 'text-chart-2 bg-chart-2/10 border-chart-2/25',
+  pending: 'text-muted-foreground bg-muted/60 border-border',
+}
+
+/** Per-status accent rail gradient (CSS vars consumed by dashboard.css). */
+const RAIL: Record<Metric['status'], CSSProperties> = {
+  live: {
+    ['--accent-rail-from' as string]: 'var(--chart-1)',
+    ['--accent-rail-to' as string]: 'var(--chart-2)',
+  },
+  derived: {
+    ['--accent-rail-from' as string]: 'var(--chart-2)',
+    ['--accent-rail-to' as string]: 'var(--chart-3)',
+  },
+  pending: {
+    ['--accent-rail-from' as string]: 'var(--border)',
+    ['--accent-rail-to' as string]: 'var(--muted-foreground)',
+  },
 }
 
 export function StatCard({
@@ -37,31 +59,49 @@ export function StatCard({
   const isPending = metric.status === 'pending'
 
   return (
-    <Card className={cn('gap-3 py-5', isPending && 'opacity-90')}>
-      <CardHeader className="px-5">
+    <Card
+      style={RAIL[metric.status]}
+      className={cn('stat-card gap-0 py-0', isPending && 'opacity-80')}
+    >
+      <CardContent className="px-5 py-5">
         <div className="flex items-start justify-between gap-2">
-          <CardTitle className="text-muted-foreground flex items-center gap-2 text-sm font-medium">
-            <Icon className="size-4" />
-            {title}
-          </CardTitle>
-          <Badge
-            variant="outline"
-            className={cn('text-[10px] font-medium', STATUS_CLASS[metric.status])}
+          <div className="flex items-center gap-2.5">
+            <span
+              className={cn(
+                'flex size-9 items-center justify-center rounded-xl',
+                isPending
+                  ? 'bg-muted text-muted-foreground'
+                  : 'bg-primary/12 text-primary',
+              )}
+            >
+              <Icon className="size-4.5" />
+            </span>
+            <span className="text-muted-foreground text-sm font-medium">
+              {title}
+            </span>
+          </div>
+          <span
+            className={cn(
+              'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium',
+              STATUS_PILL[metric.status],
+            )}
           >
+            <span
+              className={cn('size-1.5 rounded-full', STATUS_DOT[metric.status])}
+            />
             {STATUS_LABEL[metric.status]}
-          </Badge>
+          </span>
         </div>
-      </CardHeader>
-      <CardContent className="px-5">
+
         <p
           className={cn(
-            'font-serif text-3xl font-semibold tracking-tight',
-            isPending && 'text-muted-foreground',
+            'metric-value font-serif mt-4 text-[2rem] font-semibold leading-none',
+            isPending ? 'text-muted-foreground' : 'text-foreground',
           )}
         >
           {formatValue(metric.value, unit)}
         </p>
-        <p className="text-muted-foreground mt-2 text-xs leading-relaxed">
+        <p className="text-muted-foreground mt-2.5 text-xs leading-relaxed">
           {metric.source}
         </p>
       </CardContent>

@@ -1,0 +1,107 @@
+/**
+ * Dashboard-scoped theme.
+ *
+ * IMPORTANT: every rule here is scoped under `.dash-root` so it can NEVER
+ * leak into the landing page. We re-declare the same shadcn design-token
+ * variables (--background, --card, --border, …) that globals.css defines
+ * on :root, but with a modern dark palette. Because these are CSS custom
+ * properties, every shadcn component rendered inside `.dash-root`
+ * (Card, Badge, Button, charts) inherits the dark values automatically —
+ * with zero changes to globals.css or any shared component.
+ */
+
+.dash-root {
+  /* Surfaces — deep slate / navy with subtle elevation steps */
+  --background: #0a0f1d;
+  --foreground: #e6edf6;
+  --card: #111829;
+  --card-foreground: #e6edf6;
+  --popover: #111829;
+  --popover-foreground: #e6edf6;
+
+  /* Brand accents carried over from the light theme */
+  --primary: #d4a24d; /* gold */
+  --primary-foreground: #1a1205;
+  --secondary: #182238;
+  --secondary-foreground: #e6edf6;
+  --muted: #182238;
+  --muted-foreground: #93a3bd;
+  --accent: #7ea088; /* sage green */
+  --accent-foreground: #07120c;
+  --destructive: #e06a4a;
+  --destructive-foreground: #1a0a06;
+
+  /* Lines + focus */
+  --border: #21304b;
+  --input: #21304b;
+  --ring: #d4a24d;
+
+  /* Chart palette tuned for a dark canvas */
+  --chart-1: #7ea088;
+  --chart-2: #d4a24d;
+  --chart-3: #e0855a;
+  --chart-4: #6aa9e9;
+  --chart-5: #9d8df1;
+
+  --radius: 0.875rem;
+
+  color: var(--foreground);
+  /* Ambient gradient glow behind the whole console */
+  background-color: var(--background);
+  background-image:
+    radial-gradient(60rem 60rem at 110% -10%, rgba(212, 162, 77, 0.1), transparent 60%),
+    radial-gradient(50rem 50rem at -10% 0%, rgba(126, 160, 136, 0.1), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Glassy, slightly translucent cards with a soft top highlight */
+.dash-root [data-slot='card'] {
+  background-color: color-mix(in oklab, var(--card) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-color: color-mix(in oklab, var(--border) 85%, transparent);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 18px 40px -24px rgba(0, 0, 0, 0.8);
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+/* Lift stat cards on hover for a tactile, modern feel */
+.dash-root .stat-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.05) inset,
+    0 22px 48px -22px rgba(0, 0, 0, 0.85);
+}
+
+/* Thin gradient accent rail down the left of each stat card */
+.dash-root .stat-card {
+  position: relative;
+  overflow: hidden;
+}
+.dash-root .stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    var(--accent-rail-from, var(--primary)),
+    var(--accent-rail-to, var(--accent))
+  );
+  opacity: 0.85;
+}
+
+/* Crisp tabular numerals for big metric values */
+.dash-root .metric-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* Soft grid lines inside recharts on the dark canvas */
+.dash-root .recharts-cartesian-grid line {
+  stroke: color-mix(in oklab, var(--border) 70%, transparent);
+}
