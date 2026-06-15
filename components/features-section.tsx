@@ -3,12 +3,50 @@
 import { Mic, Camera, FileText, CalendarClock, ShieldCheck, Bell } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
+import { useState, useRef, useEffect } from "react"
 
 const icons = [Mic, Camera, FileText, CalendarClock, ShieldCheck, Bell]
 const colors = ["#7EA088", "#D4A24D", "#A95535", "#1F3842", "#7EA088", "#D4A24D"]
 
 export function FeaturesSection() {
   const { t } = useLanguage()
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const sliderRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const slider = sliderRef.current
+    if (!slider) return
+
+    const handleScroll = () => {
+      const slideWidth = slider.offsetWidth
+      const scrollLeft = slider.scrollLeft
+      const newSlide = Math.round(scrollLeft / slideWidth)
+      setCurrentSlide(newSlide)
+    }
+
+    slider.addEventListener("scroll", handleScroll)
+    return () => slider.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Auto-scroll every 2.5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const nextSlide = (prev + 1) % icons.length
+        scrollToSlide(nextSlide)
+        return nextSlide
+      })
+    }, 2500)
+
+    return () => clearInterval(interval)
+  }, [icons.length])
+
+  const scrollToSlide = (index: number) => {
+    const slider = sliderRef.current
+    if (!slider) return
+    const slideWidth = slider.offsetWidth
+    slider.scrollTo({ left: slideWidth * index, behavior: "smooth" })
+  }
 
   return (
     <section id="features" className="pt-6 md:pt-8 pb-2 md:pb-4 px-4 sm:px-6">
@@ -28,7 +66,55 @@ export function FeaturesSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
+        {/* Mobile Slider */}
+        <div className="sm:hidden">
+          <div
+            ref={sliderRef}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {t.features.items.map((item, index) => {
+              const Icon = icons[index]
+              const color = colors[index]
+              return (
+                <div
+                  key={index}
+                  className="min-w-full snap-center px-2"
+                >
+                  <div className="flex flex-col items-center text-center py-6">
+                    <div
+                      className="w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-lg"
+                      style={{ backgroundColor: color }}
+                    >
+                      <Icon className="w-10 h-10 text-white" strokeWidth={1.75} />
+                    </div>
+                    <h3 className="text-[22px] font-semibold text-[#1F3842] mb-2">{item.title}</h3>
+                    {item.description && (
+                      <p className="text-base text-black leading-relaxed max-w-[280px]">{item.description}</p>
+                    )}
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Slider dots */}
+          <div className="flex justify-center gap-2 mt-4">
+            {t.features.items.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  currentSlide === index ? "bg-[#7EA088] w-6" : "bg-gray-300"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden sm:grid grid-cols-3 md:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
           {t.features.items.map((item, index) => {
             const Icon = icons[index]
             const color = colors[index]
