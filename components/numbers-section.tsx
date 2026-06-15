@@ -2,9 +2,12 @@
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 import { Users, Pill, Stethoscope, HeartHandshake, Heart } from "lucide-react"
+import { useState, useRef, useEffect } from "react"
 
 export function NumbersSection() {
   const { t } = useLanguage()
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const sliderRef = useRef<HTMLDivElement>(null)
 
   const stats = [
     { value: t.numbersSection.stat1Value, desc: t.numbersSection.stat1Desc, icon: Users, bgColor: "#7FA088" },
@@ -12,6 +15,41 @@ export function NumbersSection() {
     { value: t.numbersSection.stat3Value, desc: t.numbersSection.stat3Desc, icon: Stethoscope, bgColor: "#C76B49" },
     { value: t.numbersSection.stat4Value, desc: t.numbersSection.stat4Desc, icon: HeartHandshake, bgColor: "#7FA088" },
   ]
+
+  useEffect(() => {
+    const slider = sliderRef.current
+    if (!slider) return
+
+    const handleScroll = () => {
+      const slideWidth = slider.offsetWidth
+      const scrollLeft = slider.scrollLeft
+      const newSlide = Math.round(scrollLeft / slideWidth)
+      setCurrentSlide(newSlide)
+    }
+
+    slider.addEventListener("scroll", handleScroll)
+    return () => slider.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Auto-scroll every 2.5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const nextSlide = (prev + 1) % stats.length
+        scrollToSlide(nextSlide)
+        return nextSlide
+      })
+    }, 2500)
+
+    return () => clearInterval(interval)
+  }, [stats.length])
+
+  const scrollToSlide = (index: number) => {
+    const slider = sliderRef.current
+    if (!slider) return
+    const slideWidth = slider.offsetWidth
+    slider.scrollTo({ left: slideWidth * index, behavior: "smooth" })
+  }
 
   return (
     <section className="px-4 sm:px-6">
@@ -39,40 +77,89 @@ export function NumbersSection() {
             </p>
           </motion.div>
 
-          {/* Right - Stats grid */}
-          <div className="flex-1 pt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-0">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="flex flex-col items-start gap-4 py-10 pr-5 border-t border-[#E9E9E9] cursor-default"
+          {/* Right - Stats grid (Desktop) / Slider (Mobile) */}
+          <div className="flex-1 pt-10">
+            {/* Mobile Slider */}
+            <div className="sm:hidden">
+              <div
+                ref={sliderRef}
+                className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4"
+                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
               >
-                <div
-                  className="w-[54px] h-[54px] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
-                  onMouseEnter={(e) => {
-                    const icon = e.currentTarget.querySelector('svg')
-                    if (icon) icon.style.filter = `drop-shadow(0 0 8px ${stat.bgColor})`
-                  }}
-                  onMouseLeave={(e) => {
-                    const icon = e.currentTarget.querySelector('svg')
-                    if (icon) icon.style.filter = 'none'
-                  }}
+                {stats.map((stat, index) => (
+                  <div
+                    key={index}
+                    className="min-w-full snap-center px-2"
+                  >
+                    <div className="flex flex-col items-start gap-4 py-10 pr-5 border-t border-[#E9E9E9]">
+                      <div
+                        className="w-[54px] h-[54px] flex items-center justify-center transition-all duration-300"
+                      >
+                        <stat.icon className="w-10 h-10 transition-all duration-300" style={{ color: stat.bgColor }} strokeWidth={1.8} />
+                      </div>
+                      <div className="w-full">
+                        <p className="text-3xl font-medium leading-none tracking-tight text-black">
+                          {stat.value}
+                        </p>
+                        <p className="text-base text-[#6F6F6F] leading-[1.4] tracking-tight mt-5">
+                          {stat.desc}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Slider dots */}
+              <div className="flex justify-center gap-2 mt-4">
+                {stats.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => scrollToSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? "bg-[#7FA088] w-6" : "bg-gray-300"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Desktop Grid */}
+            <div className="hidden sm:grid grid-cols-2 gap-x-5 gap-y-0">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="flex flex-col items-start gap-4 py-10 pr-5 border-t border-[#E9E9E9] cursor-default"
                 >
-                  <stat.icon className="w-10 h-10 transition-all duration-300" style={{ color: stat.bgColor }} strokeWidth={1.8} />
-                </div>
-                <div className="w-full">
-                  <p className="text-3xl sm:text-[40px] font-medium leading-none tracking-tight text-black">
-                    {stat.value}
-                  </p>
-                  <p className="text-base text-[#6F6F6F] leading-[1.4] tracking-tight mt-5">
-                    {stat.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+                  <div
+                    className="w-[54px] h-[54px] flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer"
+                    onMouseEnter={(e) => {
+                      const icon = e.currentTarget.querySelector('svg')
+                      if (icon) icon.style.filter = `drop-shadow(0 0 8px ${stat.bgColor})`
+                    }}
+                    onMouseLeave={(e) => {
+                      const icon = e.currentTarget.querySelector('svg')
+                      if (icon) icon.style.filter = 'none'
+                    }}
+                  >
+                    <stat.icon className="w-10 h-10 transition-all duration-300" style={{ color: stat.bgColor }} strokeWidth={1.8} />
+                  </div>
+                  <div className="w-full">
+                    <p className="text-3xl sm:text-[40px] font-medium leading-none tracking-tight text-black">
+                      {stat.value}
+                    </p>
+                    <p className="text-base text-[#6F6F6F] leading-[1.4] tracking-tight mt-5">
+                      {stat.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
