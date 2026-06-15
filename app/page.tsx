@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
+import { MobileHeroSection } from "@/components/mobile-hero-section"
 import { NumbersSection } from "@/components/numbers-section"
 import { StatsSection } from "@/components/stats-section"
 import { WhyDifferentSection } from "@/components/why-different-section"
@@ -27,7 +28,14 @@ export default function Home() {
       >
         <ScrollEffects />
         <Header />
-        <HeroSection />
+        {/* Mobile Hero for smartphones only */}
+        <div className="block md:hidden">
+          <MobileHeroSection />
+        </div>
+        {/* Desktop Hero for tablets and larger screens */}
+        <div className="hidden md:block">
+          <HeroSection />
+        </div>
         <NumbersSection />
         <StatsSection />
         <WhyDifferentSection />
