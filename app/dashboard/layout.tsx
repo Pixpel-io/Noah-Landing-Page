@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/server'
 import { isAdminEmail } from '@/lib/supabase/config'
 
+import { ContentShell } from './content-shell'
 import { Sidebar } from './sidebar'
 import { Topbar } from './topbar'
 import { poppins } from './fonts'
@@ -58,12 +59,12 @@ export default async function DashboardLayout({
   return (
     <div className={`${poppins.variable} dash-root min-h-dvh`}>
       <Sidebar />
-      <div className="lg:pl-66">
+      <ContentShell>
         <Topbar email={user.email ?? ''} generated={generated} />
         <main className="mx-auto w-full max-w-6xl px-4 py-7 sm:px-6 lg:px-8">
           {children}
         </main>
-      </div>
+      </ContentShell>
     </div>
   )
 }

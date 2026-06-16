@@ -1,6 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
 import { ArrowUpRight } from 'lucide-react'
-import type { CSSProperties } from 'react'
 
 import { Card, CardContent } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
@@ -8,6 +7,16 @@ import type { Metric } from '@/lib/dashboard/metrics'
 
 function formatValue(value: number | null, unit?: string): string {
   if (value === null) return '—'
+  if (unit === 'min' && value > 60) {
+    const days = Math.floor(value / 1440)
+    const remainingMins = Math.round(value % 1440)
+    if (days > 0) {
+      return `${days}d ${remainingMins}m`
+    }
+    const hours = Math.floor(value / 60)
+    const mins = Math.round(value % 60)
+    return `${hours}h ${mins}m`
+  }
   const formatted = new Intl.NumberFormat('en-US').format(value)
   return unit ? `${formatted} ${unit}` : formatted
 }
@@ -19,32 +28,25 @@ const STATUS_LABEL: Record<Metric['status'], string> = {
 }
 
 const STATUS_DOT: Record<Metric['status'], string> = {
-  live: 'bg-chart-1',
-  derived: 'bg-chart-2',
-  pending: 'bg-muted-foreground/60',
+  live: 'bg-emerald-500',
+  derived: 'bg-violet-500',
+  pending: 'bg-red-500',
 }
 
 const STATUS_PILL: Record<Metric['status'], string> = {
-  live: 'text-chart-1 bg-chart-1/10 border-chart-1/25',
-  derived: 'text-chart-2 bg-chart-2/10 border-chart-2/25',
-  pending: 'text-muted-foreground bg-muted/60 border-border',
+  live: 'text-emerald-600 bg-emerald-50 border-emerald-200',
+  derived: 'text-violet-600 bg-violet-50 border-violet-200',
+  pending: 'text-red-600 bg-red-50 border-red-200',
 }
 
-/** Per-status accent rail gradient (CSS vars consumed by dashboard.css). */
-const RAIL: Record<Metric['status'], CSSProperties> = {
-  live: {
-    ['--accent-rail-from' as string]: 'var(--chart-1)',
-    ['--accent-rail-to' as string]: 'var(--chart-2)',
-  },
-  derived: {
-    ['--accent-rail-from' as string]: 'var(--chart-2)',
-    ['--accent-rail-to' as string]: 'var(--chart-5)',
-  },
-  pending: {
-    ['--accent-rail-from' as string]: 'var(--border)',
-    ['--accent-rail-to' as string]: 'var(--muted-foreground)',
-  },
-}
+const ICON_COLORS = [
+  'bg-gray-100 text-black stat-icon-well',
+  'bg-gray-100 text-black stat-icon-well',
+  'bg-gray-100 text-black stat-icon-well',
+  'bg-gray-100 text-black stat-icon-well',
+  'bg-gray-100 text-black stat-icon-well',
+  'bg-gray-100 text-black stat-icon-well',
+]
 
 /** Auto-loop animation applied to the icon well (defined in dashboard.css). */
 export type IconAnim =
@@ -78,7 +80,7 @@ export function StatCard({
 
   return (
     <Card
-      style={{ ...RAIL[metric.status], ['--i' as string]: index }}
+      style={{ ['--i' as string]: index }}
       className={cn('stat-card reveal gap-0 py-0', isPending && 'opacity-80')}
     >
       <span className="corner-glow" aria-hidden />
@@ -89,12 +91,7 @@ export function StatCard({
               'stat-icon flex size-10 items-center justify-center rounded-2xl',
               isPending
                 ? 'bg-muted text-muted-foreground'
-                : iconAnim === 'heartbeat'
-                  ? `icon-heartbeat`
-                  : 'bg-primary/12 text-primary',
-              !isPending && iconAnim && iconAnim !== 'heartbeat'
-                ? `icon-${iconAnim}`
-                : null,
+                : ICON_COLORS[index % ICON_COLORS.length],
             )}
           >
             <Icon className="size-5" />

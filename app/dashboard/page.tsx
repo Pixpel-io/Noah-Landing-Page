@@ -27,6 +27,7 @@ import { getDashboardData } from '@/lib/dashboard/metrics'
 
 import { MessagesChart, SignupsChart } from './charts'
 import { HeroSummary } from './hero-summary'
+import { PdfReportButton } from './pdf-report'
 import { StatCard } from './stat-card'
 
 export const metadata = { title: 'Dashboard · Noah AI' }
@@ -85,6 +86,11 @@ export default async function DashboardPage() {
           newUsers30d={data.newUsers30d}
         />
       </section>
+
+      {/* PDF Report Download */}
+      <div className="mt-6 flex justify-end">
+        <PdfReportButton data={data} />
+      </div>
 
       {data.hadError ? (
         <div className="border-destructive/40 bg-destructive/5 text-destructive mt-6 flex items-start gap-2 rounded-lg border p-4 text-sm">
@@ -158,26 +164,6 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <SectionTitle id="users" hint="User base from app_users.">
-        Users
-      </SectionTitle>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        <StatCard
-          title="Total users"
-          metric={data.totalUsers}
-          icon={Users}
-          index={0}
-          iconAnim="breathe"
-        />
-        <StatCard
-          title="New users (30 days)"
-          metric={data.newUsers30d}
-          icon={UserPlus}
-          index={1}
-          trend="30-day"
-          iconAnim="breathe"
-        />
-      </div>
 
       <SectionTitle
         id="pending"

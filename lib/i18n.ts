@@ -212,6 +212,7 @@ export const translations = {
       product: "Product",
       company: "Company",
       support: "Support",
+      legal: "Legal",
       copyright: "© 2026 Noah AI. All rights reserved.",
       madeWith: "Made with love for the ones who matter",
       links: {
@@ -223,6 +224,8 @@ export const translations = {
         blog: "Blog",
         contact: "Contact",
         faqLink: "FAQ",
+        privacy: "Privacy Policy",
+        terms: "Terms of Use",
       },
     },
   },
@@ -438,6 +441,7 @@ export const translations = {
       product: "Producto",
       company: "Empresa",
       support: "Soporte",
+      legal: "Legal",
       copyright: "© 2026 Noah IA. Todos los derechos reservados.",
       madeWith: "Hecho con amor para quienes importan",
       links: {
@@ -449,6 +453,8 @@ export const translations = {
         blog: "Blog",
         contact: "Contacto",
         faqLink: "Preguntas Frecuentes",
+        privacy: "Política de Privacidad",
+        terms: "Condiciones de Uso",
       },
     },
   },

@@ -163,3 +163,23 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #7EA088;
 }
+
+.noah-loader {
+  animation: noah-loader-pulse 1.4s ease-in-out infinite;
+}
+.noah-loader::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #D4A24D;
+  animation: noah-loader-spin 1s linear infinite;
+}
+@keyframes noah-loader-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes noah-loader-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}

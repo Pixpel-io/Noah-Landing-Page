@@ -1,141 +1,377 @@
 /**
- * Dashboard-scoped theme.
+ * Dashboard-scoped theme — Mira-style dark sidebar + Noah/Nora warm palette.
  *
- * IMPORTANT: every rule here is scoped under `.dash-root` so it can NEVER
- * leak into the landing page. We re-declare the same shadcn design-token
- * variables (--background, --card, --border, …) that globals.css defines
- * on :root, but with a modern LIGHT palette + Poppins. Because these are
- * CSS custom properties, every shadcn component rendered inside
- * `.dash-root` (Card, Badge, Button, charts) inherits the values
- * automatically — with zero changes to globals.css or any shared
- * component, and the font is scoped here so the landing page is untouched.
+ * Scoped under `.dash-root` so nothing leaks to the landing page.
+ * Uses the Nora AI "Vintage Rasta" palette: ink sidebar, cream background,
+ * sage/amber accents.
  */
 
 .dash-root {
-  /* Surfaces — a cool slate-tinted off-white with pure-white cards.
-     Crisp, premium, and modern. */
-  --background: #eef2f9;
-  --foreground: #0f1b2d;
+  /* Surfaces — pure white cards on light gray */
+  --background: #f4f6f9;
+  --foreground: #2d3436;
   --card: #ffffff;
-  --card-foreground: #0f1b2d;
+  --card-foreground: #2d3436;
   --popover: #ffffff;
-  --popover-foreground: #0f1b2d;
+  --popover-foreground: #2d3436;
 
-  /* Brand accents — a confident ocean-blue primary with a luminous cyan
-     accent. Stylish, high-contrast, and clearly not green or purple. */
-  --primary: #2563eb; /* ocean blue */
-  --primary-foreground: #f2f7ff;
-  --secondary: #e7eefb;
-  --secondary-foreground: #0f1b2d;
-  --muted: #eaeff8;
-  --muted-foreground: #5a6781;
-  --accent: #06b6d4; /* cyan */
-  --accent-foreground: #04323b;
-  --destructive: #e0533d;
-  --destructive-foreground: #fff6f3;
+  /* Brand accent — blue */
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #f8f9fa;
+  --secondary-foreground: #2d3436;
+  --muted: #f1f3f5;
+  --muted-foreground: #6b7280;
+  --accent: #60a5fa;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
 
   /* Lines + focus */
-  --border: #dde5f1;
-  --input: #dde5f1;
-  --ring: #2563eb;
+  --border: #e9ecef;
+  --input: #e9ecef;
+  --ring: #3b82f6;
 
-  /* Chart palette. NOTE: --chart-1 is the LIVE accent and --chart-2 is the
-     DERIVED accent — deliberately kept in different colour families
-     (emerald vs amber) so the two metric states never read as the same. */
-  --chart-1: #10b981; /* LIVE — emerald */
-  --chart-2: #f59e0b; /* DERIVED — amber */
-  --chart-3: #2563eb; /* ocean blue */
-  --chart-4: #06b6d4; /* cyan */
-  --chart-5: #ec4899; /* pink */
+  /* Chart palette */
+  --chart-1: #10b981; /* emerald — LIVE */
+  --chart-2: #fb923c; /* orange — DERIVED */
+  --chart-3: #3b82f6; /* blue */
+  --chart-4: #8b5cf6; /* purple */
+  --chart-5: #ef4444; /* red */
 
-  /* Semantic status accents (Live / Derived clearly distinct) */
-  --status-live: #10b981; /* emerald */
-  --status-derived: #f59e0b; /* amber */
+  --status-live: #10b981;
+  --status-derived: #fb923c;
 
-  /* Brand-token shorthands used by the logo + gradient text */
-  --brand-navy: #1f3842;
-  --brand-gold: #d4a24d;
+  --brand-navy: #2d3436;
+  --brand-gold: #fb923c;
 
-  --radius: 1rem;
+  --radius: 0.75rem;
 
-  /* Poppins for the whole dashboard — scoped here, never touches the
-     landing page (which keeps Inter / Playfair from the root layout). */
   font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   color: var(--foreground);
-
-  /* Soft ambient wash behind the console — ocean-blue + cyan haze */
   background-color: var(--background);
-  background-image:
-    radial-gradient(50rem 50rem at 105% -15%, rgba(37, 99, 235, 0.12), transparent 56%),
-    radial-gradient(46rem 46rem at -12% -6%, rgba(6, 182, 212, 0.13), transparent 54%),
-    radial-gradient(40rem 40rem at 50% 120%, rgba(16, 185, 129, 0.06), transparent 60%),
-    linear-gradient(180deg, #f6f9ff 0%, var(--background) 42%);
-  background-attachment: fixed;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
-/* ── App shell: sidebar + topbar ──────────────────────────────────── */
+/* ── Dark mode ───────────────────────────────────────────────────── */
+.dash-root.dark {
+  --background: #1a1d23;
+  --foreground: #e5e7eb;
+  --card: #22262d;
+  --card-foreground: #e5e7eb;
+  --popover: #22262d;
+  --popover-foreground: #e5e7eb;
+
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #2a2e36;
+  --secondary-foreground: #e5e7eb;
+  --muted: #2a2e36;
+  --muted-foreground: #9ca3af;
+  --accent: #60a5fa;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #374151;
+  --input: #374151;
+  --ring: #3b82f6;
+}
+
+.dash-root.dark .dash-sidebar {
+  background-color: #1f2228;
+  border-color: #374151;
+  box-shadow: 1px 0 0 0 #374151;
+}
+.dash-root.dark .dash-sidebar p,
+.dash-root.dark .dash-sidebar span {
+  color: #9ca3af;
+}
+.dash-root.dark .dash-sidebar .nav-link {
+  color: #d1d5db;
+}
+.dash-root.dark .dash-sidebar .nav-link:hover {
+  background-color: #2a2e36;
+  color: #f3f4f6;
+}
+.dash-root.dark .dash-sidebar .nav-link svg {
+  color: #6b7280;
+}
+.dash-root.dark .dash-sidebar .nav-link:hover svg {
+  color: #d1d5db;
+}
+.dash-root.dark .dash-sidebar form button {
+  color: #9ca3af;
+}
+
+
+.dash-root.dark .hero-stat {
+  background-color: var(--card);
+  border-color: var(--border);
+}
+
+.dash-root.dark .stat-icon-well {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #e5e7eb;
+}
+
+/* Dark mode status pills — filled background, white text */
+.dash-root.dark .stat-card span[class*='border-emerald'] {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+.dash-root.dark .stat-card span[class*='border-violet'] {
+  background-color: #8b5cf6;
+  border-color: #8b5cf6;
+  color: #ffffff;
+}
+.dash-root.dark .stat-card span[class*='border-red'] {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+}
+.dash-root.dark .stat-card span[class*='border-emerald'] span[class*='bg-emerald'] {
+  background-color: #ffffff;
+}
+.dash-root.dark .stat-card span[class*='border-violet'] span[class*='bg-violet'] {
+  background-color: #ffffff;
+}
+.dash-root.dark .stat-card span[class*='border-red'] span[class*='bg-red'] {
+  background-color: #ffffff;
+}
+
+/* Dark mode topbar pills — filled */
+.dash-root.dark .dash-topbar span[class*='bg-emerald-50'] {
+  background-color: #10b981;
+  color: #ffffff;
+  --tw-ring-color: #10b981;
+}
+.dash-root.dark .dash-topbar span[class*='bg-emerald-50'] span[class*='bg-emerald'] {
+  background-color: #ffffff;
+}
+.dash-root.dark [class*='bg-blue-50'] {
+  background-color: #3b82f6;
+  color: #ffffff;
+  --tw-ring-color: #3b82f6;
+}
+
+/* Dark mode profile dropdown & notifications */
+.dash-root.dark .absolute[class*="bg-white"] {
+  background-color: #22262d;
+}
+
+/* Dark mode cards — glassmorphism + subtle blue glow on hover */
+.dash-root.dark .stat-card {
+  border-color: rgba(55, 65, 81, 0.6);
+  background: linear-gradient(145deg, #22262d 0%, #1e2229 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+.dash-root.dark .stat-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.08), 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode chart cards */
+.dash-root.dark .chart-card {
+  background: linear-gradient(145deg, #22262d 0%, #1e2229 100%);
+  border-color: rgba(55, 65, 81, 0.6);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+.dash-root.dark .chart-card:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.08), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark mode section title bar */
+.dash-root.dark .from-primary {
+  --tw-gradient-from: #3b82f6;
+}
+
+/* Dark mode search bar */
+.dash-root.dark .dash-topbar input {
+  color: #e5e7eb;
+}
+.dash-root.dark .dash-topbar kbd {
+  background-color: #2a2e36;
+  border-color: #374151;
+  color: #9ca3af;
+}
+
+/* Dark mode hero banner — blue glow */
+.dash-root.dark .hero-banner {
+  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.2), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode promo card */
+.dash-root.dark .promo-card {
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+}
+
+/* Dark mode sidebar — subtle depth */
+.dash-root.dark .dash-sidebar {
+  background: linear-gradient(180deg, #1f2228 0%, #1a1d23 100%);
+  box-shadow: 1px 0 0 0 #374151, 4px 0 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode active nav link — brighter glow */
+.dash-root.dark .dash-sidebar .nav-link[aria-current='true'] {
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+}
+
+/* Dark mode sign-out hover */
+.dash-root.dark .dash-sidebar form button:hover {
+  background-color: #2a2e36;
+  color: #f3f4f6;
+}
+
+/* Dark mode topbar */
+.dash-root.dark .dash-topbar {
+  background: rgba(34, 38, 45, 0.8);
+  border: 1px solid rgba(55, 65, 81, 0.5);
+  backdrop-filter: blur(16px) saturate(1.3);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 9999px;
+}
+
+/* Dark mode notification bell hover */
+.dash-root.dark .dash-topbar button:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Dark mode PDF button */
+.dash-root.dark button[class*='bg-red-500'] {
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.25);
+}
+
+/* Dark mode footer text */
+.dash-root.dark .border-t {
+  border-color: #374151;
+}
+
+/* Dark mode scrollbar */
+.dash-root.dark ::-webkit-scrollbar {
+  width: 6px;
+}
+.dash-root.dark ::-webkit-scrollbar-track {
+  background: #1a1d23;
+}
+.dash-root.dark ::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+.dash-root.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Light mode scrollbar */
+.dash-root ::-webkit-scrollbar {
+  width: 6px;
+}
+.dash-root ::-webkit-scrollbar-track {
+  background: #f4f6f9;
+}
+.dash-root ::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+.dash-root ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ── Sidebar: white background ───────────────────────────────────── */
 
 .dash-root .dash-sidebar {
-  background-color: color-mix(in oklab, var(--card) 92%, var(--background));
+  background-color: #ffffff;
   border-color: var(--border);
-  box-shadow: 1px 0 0 0 rgba(21, 35, 59, 0.02);
-  backdrop-filter: blur(8px);
+  box-shadow: 1px 0 0 0 var(--border), 4px 0 16px rgba(0, 0, 0, 0.03);
 }
 
-.dash-root .dash-topbar {
-  background-color: color-mix(in oklab, var(--background) 72%, transparent);
-  border-color: color-mix(in oklab, var(--border) 90%, transparent);
+/* Text colors for white sidebar */
+.dash-root .dash-sidebar p,
+.dash-root .dash-sidebar span {
+  color: #6b7280;
+}
+.dash-root .dash-sidebar .promo-card p,
+.dash-root .dash-sidebar .promo-card span {
+  color: #ffffff;
 }
 
-/* Active nav link grows a soft left indicator on hover/active */
+.dash-root .dash-sidebar .nav-link {
+  color: #4b5563;
+  border-radius: 8px;
+}
+.dash-root .dash-sidebar .nav-link:hover {
+  background-color: #f4f6f9;
+  color: #2d3436;
+}
+.dash-root .dash-sidebar .nav-link[aria-current='true'] {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+.dash-root .dash-sidebar .nav-link[aria-current='true'] svg {
+  color: #ffffff;
+}
+.dash-root .dash-sidebar .nav-link svg {
+  color: #9ca3af;
+}
+.dash-root .dash-sidebar .nav-link:hover svg {
+  color: #4b5563;
+}
+
+/* Active nav indicator */
 .dash-root .nav-link {
   position: relative;
 }
 .dash-root .nav-link[aria-current='true']::before {
-  content: '';
-  position: absolute;
-  left: -4px;
-  top: 50%;
-  height: 56%;
-  width: 3px;
-  border-radius: 9999px;
-  background: linear-gradient(180deg, var(--primary), var(--accent));
-  transform: translateY(-50%);
+  display: none;
+}
+.dash-root .nav-link[aria-current='true'] .bg-primary {
+  background-color: #ffffff;
 }
 
-/* Sidebar promo card — ocean-blue gradient with a drifting glow */
+/* Sign-out button */
+.dash-root .dash-sidebar form button {
+  color: #6b7280;
+}
+.dash-root .dash-sidebar form button:hover {
+  background-color: #f4f6f9;
+  color: #2d3436;
+}
+
+/* Sidebar promo card */
 .dash-root .promo-card {
-  background:
-    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.18), transparent 55%),
-    linear-gradient(155deg, #3b82f6 0%, #2563eb 50%, #1542a8 100%);
-  box-shadow:
-    0 10px 30px -16px rgba(21, 66, 168, 0.85),
-    0 1px 0 0 rgba(255, 255, 255, 0.14) inset;
+  background: linear-gradient(145deg, #3b82f6 0%, #1e3a8a 100%);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 .dash-root .promo-card .promo-glow {
   position: absolute;
   right: -2rem;
   bottom: -2.5rem;
-  width: 9rem;
-  height: 9rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    rgba(6, 182, 212, 0.5),
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
   pointer-events: none;
+}
+
+/* ── Topbar ──────────────────────────────────────────────────────── */
+
+.dash-root .dash-topbar {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(233, 236, 239, 0.7);
+  backdrop-filter: blur(16px) saturate(1.3);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border-radius: 9999px;
 }
 
 /* ── Welcome hero ─────────────────────────────────────────────────── */
 
 .dash-root .hero-banner {
-  background:
-    radial-gradient(130% 120% at 8% 0%, rgba(255, 255, 255, 0.2), transparent 50%),
-    linear-gradient(150deg, #3b82f6 0%, #2563eb 46%, #143f9e 100%);
-  box-shadow:
-    0 24px 50px -28px rgba(21, 63, 158, 0.7),
-    0 1px 0 0 rgba(255, 255, 255, 0.16) inset;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2), 0 2px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
 }
 .dash-root .hero-orb {
   position: absolute;
@@ -148,7 +384,7 @@
   right: -2rem;
   width: 12rem;
   height: 12rem;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.5), transparent 68%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 68%);
   animation: dash-orb-float 9s ease-in-out infinite;
 }
 .dash-root .hero-orb-b {
@@ -156,54 +392,135 @@
   left: 25%;
   width: 10rem;
   height: 10rem;
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.55), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
   animation: dash-orb-float 11s ease-in-out 1s infinite reverse;
 }
 @keyframes dash-orb-float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(-12px, 10px) scale(1.08);
-  }
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-12px, 10px) scale(1.08); }
 }
 
-/* ── Auto-animated metric icons ───────────────────────────────────────
-   Each icon well runs a subtle, looping animation so the dashboard feels
-   alive at a glance — no hover needed. The heartbeat icon literally beats
-   and flashes the live-emerald colour on each pulse. */
+/* ── Dashboard loader ─────────────────────────────────────────────── */
+.dash-loader {
+  animation: dash-loader-pulse 1.4s ease-in-out infinite;
+}
+.dash-loader::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #3b82f6;
+  animation: dash-loader-spin 1s linear infinite;
+}
+@keyframes dash-loader-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes dash-loader-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
 
-/* Heartbeat — scales in a lub-dub rhythm AND flashes emerald on the beat */
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  45% { transform: rotate(14deg); }
+  60% { transform: rotate(-4deg); }
+  75% { transform: rotate(10deg); }
+  90% { transform: rotate(0deg); }
+}
+
+/* Headline KPI tiles */
+.dash-root .hero-stat {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(31, 56, 66, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.dash-root .hero-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(31, 56, 66, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-root .hero-orb { animation: none !important; }
+}
+
+/* ── Stat cards — clean, professional ────────────────────────────── */
+
+.dash-root .stat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+}
+
+/* No top bar — clean flat cards */
+.dash-root .stat-card::before {
+  display: none;
+}
+
+.dash-root .stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dash-root .stat-card .corner-glow {
+  display: none;
+}
+
+.dash-root .stat-card::after {
+  display: none;
+}
+
+.dash-root .stat-card .metric-value {
+  transition: color 200ms ease;
+}
+.dash-root .stat-card:hover .metric-value {
+  color: #1F3842;
+}
+.dash-root.dark .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+.dash-root.dark .stat-card:hover .metric-value {
+  color: #ffffff;
+}
+
+.dash-root .metric-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.dash-root .stat-card .stat-icon {
+  transition: transform 200ms ease;
+}
+.dash-root .stat-card:hover .stat-icon {
+  transform: scale(1.05);
+}
+
+/* ── Icon animations ─────────────────────────────────────────────── */
+
 @keyframes dash-heartbeat-icon {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  14% {
-    transform: scale(1.22);
-  }
-  28% {
-    transform: scale(1);
-  }
-  42% {
-    transform: scale(1.14);
-  }
-  56% {
-    transform: scale(1);
-  }
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.18); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.12); }
+  56% { transform: scale(1); }
 }
 @keyframes dash-heartbeat-tint {
-  0%,
-  60%,
-  100% {
+  0%, 60%, 100% {
     color: var(--status-live);
-    background-color: color-mix(in oklab, var(--status-live) 14%, transparent);
+    background-color: color-mix(in oklab, var(--status-live) 12%, transparent);
   }
-  14%,
-  42% {
+  14%, 42% {
     color: var(--status-live);
-    background-color: color-mix(in oklab, var(--status-live) 26%, transparent);
+    background-color: color-mix(in oklab, var(--status-live) 22%, transparent);
   }
 }
 .dash-root .icon-heartbeat {
@@ -212,71 +529,39 @@
 .dash-root .icon-heartbeat > svg {
   animation: dash-heartbeat-icon 1.6s ease-in-out infinite;
   transform-origin: center;
-  will-change: transform;
 }
 
-/* Gentle breathing pulse for users/people icons */
 @keyframes dash-icon-breathe {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.86;
-  }
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.88; }
 }
 .dash-root .icon-breathe > svg {
   animation: dash-icon-breathe 2.8s ease-in-out infinite;
   transform-origin: center;
 }
 
-/* Slow tick/rotate for time + reminder icons (clock hand feel) */
 @keyframes dash-icon-tick {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(8deg);
-  }
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(6deg); }
 }
 .dash-root .icon-tick > svg {
   animation: dash-icon-tick 3s ease-in-out infinite;
   transform-origin: center;
 }
 
-/* Bounce for message / chat icons */
 @keyframes dash-icon-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2.5px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
 }
 .dash-root .icon-bob > svg {
   animation: dash-icon-bob 2.2s ease-in-out infinite;
 }
 
-/* Ring/wiggle for the bell + phone icons */
 @keyframes dash-icon-wiggle {
-  0%,
-  92%,
-  100% {
-    transform: rotate(0deg);
-  }
-  94% {
-    transform: rotate(-9deg);
-  }
-  96% {
-    transform: rotate(8deg);
-  }
-  98% {
-    transform: rotate(-5deg);
-  }
+  0%, 92%, 100% { transform: rotate(0deg); }
+  94% { transform: rotate(-8deg); }
+  96% { transform: rotate(7deg); }
+  98% { transform: rotate(-4deg); }
 }
 .dash-root .icon-wiggle > svg {
   animation: dash-icon-wiggle 3.4s ease-in-out infinite;
@@ -294,469 +579,224 @@
   }
 }
 
-/* Headline KPI tiles in the hero strip */
-.dash-root .hero-stat {
-  background-color: var(--card);
-  border: 1px solid color-mix(in oklab, var(--border) 95%, transparent);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
-    0 14px 32px -28px rgba(21, 35, 59, 0.4);
-  transition:
-    transform 160ms ease,
-    border-color 160ms ease,
-    box-shadow 160ms ease;
-}
-.dash-root .hero-stat:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--primary) 32%, var(--border));
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.95) inset,
-    0 20px 40px -24px rgba(21, 35, 59, 0.42);
-}
+/* ── Brand logo ──────────────────────────────────────────────────── */
 
-@media (prefers-reduced-motion: reduce) {
-  .dash-root .hero-orb,
-  .dash-root .hero-banner span.animate-pulse {
-    animation: none !important;
-  }
-}
-
-/* Gradient brand wordmark */
 .dash-root .brand-wordmark {
-  background: linear-gradient(
-    100deg,
-    var(--primary) 0%,
-    var(--accent) 55%,
-    var(--chart-3) 100%
-  );
+  background: linear-gradient(100deg, #1e3a8a 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-/* ── Brand logo (landing-page mark) + creative hover ──────────────── */
-
-/* The SVG mark spins a full turn on hover, matching the landing nav. */
 .dash-root .logo-orb svg {
   transition: transform 600ms cubic-bezier(0.34, 1.3, 0.5, 1);
 }
 .dash-root .logo-lockup:hover .logo-orb svg {
   transform: rotate(360deg);
 }
-
-/* A soft sage glow ring blooms behind the orb on hover (landing style). */
 .dash-root .logo-orb::before {
   content: '';
   position: absolute;
   inset: -3px;
   border-radius: 9999px;
-  background: rgba(126, 160, 136, 0); /* #7EA088 sage */
-  box-shadow: 0 0 0 0 rgba(126, 160, 136, 0);
-  transition:
-    background 300ms ease,
-    box-shadow 300ms ease,
-    transform 300ms ease;
+  background: rgba(59, 130, 246, 0);
+  box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  transition: background 300ms ease, box-shadow 300ms ease;
 }
 .dash-root .logo-lockup:hover .logo-orb::before {
-  background: rgba(126, 160, 136, 0.22);
-  box-shadow: 0 0 18px 2px rgba(126, 160, 136, 0.5);
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 14px 2px rgba(59, 130, 246, 0.3);
 }
-
-/* The gold accent dot twinkles when you hover the lockup. */
 .dash-root .logo-orb svg circle:last-of-type {
   transform-box: fill-box;
   transform-origin: center;
   transition: filter 300ms ease;
 }
 .dash-root .logo-lockup:hover .logo-orb svg circle:last-of-type {
-  filter: drop-shadow(0 0 4px rgba(212, 162, 77, 0.9));
+  filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.9));
 }
-
-/* Wordmark glides to the brand sage on hover. */
 .dash-root .logo-word {
-  color: var(--brand-navy);
-  transition:
-    color 300ms ease,
-    letter-spacing 300ms ease;
+  color: #2d3436;
+  transition: color 300ms ease;
 }
 .dash-root .logo-lockup:hover .logo-word {
-  color: #7ea088;
-  letter-spacing: 0.04em;
+  color: #3b82f6;
 }
 
-/* Headings use Poppins too (markup tags them .font-serif). */
+/* Headings use Poppins */
 .dash-root .font-serif {
   font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.015em;
 }
 
-/* Clean, lightly elevated cards with a crisp top highlight */
+/* ── General card styling ────────────────────────────────────────── */
+
 .dash-root [data-slot='card'] {
   background-color: var(--card);
-  border-color: color-mix(in oklab, var(--border) 95%, transparent);
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
-    0 1px 2px 0 rgba(21, 35, 59, 0.04),
-    0 18px 40px -30px rgba(21, 35, 59, 0.4);
-  transition:
-    border-color 160ms ease,
-    transform 160ms ease,
-    box-shadow 160ms ease;
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(31, 56, 66, 0.06);
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
-/* Lift stat cards on hover for a tactile, modern feel */
-.dash-root .stat-card:hover {
+/* ── Button & interactive hover effects ───────────────────────────── */
+
+/* All buttons get a smooth transition */
+.dash-root button,
+.dash-root a {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Nav links — smooth slide + glow */
+.dash-root .dash-sidebar .nav-link {
+  transition: all 200ms ease;
+  position: relative;
+}
+.dash-root .dash-sidebar .nav-link:hover {
+  transform: translateX(4px);
+  background-color: #f4f6f9;
+}
+.dash-root .dash-sidebar .nav-link[aria-current='true']:hover {
+  transform: translateX(4px);
+  filter: brightness(1.1);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Topbar buttons — subtle press */
+.dash-root .dash-topbar button:active {
+  transform: scale(0.95);
+}
+
+/* Download Report & action buttons — press effect */
+.dash-root main button,
+.dash-root main a {
+  position: relative;
+}
+.dash-root main button:active,
+.dash-root main a:active {
+  transform: scale(0.96);
+}
+
+/* Range toggle buttons — pop on hover */
+.dash-root main button[class*='rounded-md']:hover {
+  transform: translateY(-1px);
+}
+
+/* Sign-out button */
+.dash-root .dash-sidebar form button:hover {
+  transform: translateX(4px);
+}
+
+/* Promo card link — bounce */
+.dash-root .promo-card a:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--primary) 38%, var(--border));
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.95) inset,
-    0 1px 2px 0 rgba(21, 35, 59, 0.05),
-    0 24px 46px -26px rgba(21, 35, 59, 0.45);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+.dash-root .promo-card a:active {
+  transform: translateY(0px) scale(0.95);
 }
 
-/* Gradient accent rail down the left of each stat card — widens on hover */
-.dash-root .stat-card {
+/* Status pills — subtle glow on hover */
+.dash-root .stat-card span[class*='rounded-full']:hover {
+  filter: brightness(1.1);
+}
+
+/* Hero stat cards — lift on hover */
+.dash-root .hero-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Chart cards ─────────────────────────────────────────────────── */
+
+.dash-root .chart-card {
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
-.dash-root .stat-card::before {
-  content: '';
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 3px;
-  background: linear-gradient(
-    180deg,
-    var(--accent-rail-from, var(--primary)),
-    var(--accent-rail-to, var(--accent))
-  );
-  opacity: 0.85;
-  transition:
-    width 220ms ease,
-    opacity 220ms ease;
-}
-.dash-root .stat-card:hover::before {
-  width: 5px;
-  opacity: 1;
+.dash-root .chart-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.2);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.06), 0 4px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* A faint top-corner glow blooms toward the icon on hover */
-.dash-root .stat-card .corner-glow {
-  position: absolute;
-  top: -2.5rem;
-  left: -2.5rem;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 9999px;
-  background: radial-gradient(
-    circle,
-    color-mix(in oklab, var(--accent-rail-from, var(--primary)) 26%, transparent),
-    transparent 70%
-  );
-  opacity: 0;
-  transform: scale(0.8);
-  transition:
-    opacity 260ms ease,
-    transform 260ms ease;
-  pointer-events: none;
-}
-.dash-root .stat-card:hover .corner-glow {
-  opacity: 1;
-  transform: scale(1);
+.dash-root .chart-card .live-scan {
+  display: none;
 }
 
-/* The metric value nudges up + brightens on hover for a lively feel */
-.dash-root .stat-card .metric-value {
-  transition:
-    transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1),
-    color 220ms ease;
-}
-.dash-root .stat-card:hover .metric-value {
-  transform: translateY(-2px);
-}
-
-/* Crisp tabular numerals for big metric values */
-.dash-root .metric-value {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-}
-
-/* Soft grid lines inside recharts on the light canvas */
 .dash-root .recharts-cartesian-grid line {
   stroke: color-mix(in oklab, var(--border) 70%, transparent);
 }
 
-/* ─────────────────────────────────────────────────────────────────────
-   Motion & effects
-   ───────────────────────────────────────────────────────────────────── */
-
-@keyframes dash-rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes dash-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes dash-sheen {
-  0% {
-    transform: translateX(-120%) skewX(-18deg);
-  }
-  60%,
-  100% {
-    transform: translateX(260%) skewX(-18deg);
-  }
-}
-
-@keyframes dash-glow-drift {
-  0% {
-    background-position:
-      108% -12%,
-      -12% -4%,
-      0 0;
-  }
-  50% {
-    background-position:
-      96% 4%,
-      4% 8%,
-      0 0;
-  }
-  100% {
-    background-position:
-      108% -12%,
-      -12% -4%,
-      0 0;
-  }
-}
-
-@keyframes dash-pulse-ring {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in oklab, var(--chart-1) 55%, transparent);
-  }
-  70% {
-    box-shadow: 0 0 0 6px transparent;
-  }
-  100% {
-    box-shadow: 0 0 0 0 transparent;
-  }
-}
-
-/* Slowly drift the ambient wash for a living background */
-.dash-root {
-  background-size:
-    140% 140%,
-    140% 140%,
-    100% 100%;
-  animation: dash-glow-drift 22s ease-in-out infinite;
-}
-
-/* Staggered entrance — applied to .reveal elements; the index sets delay */
-.dash-root .reveal {
-  opacity: 0;
-  animation: dash-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(var(--i, 0) * 65ms + 40ms);
-  will-change: transform, opacity;
-}
-
-.dash-root .reveal-fade {
-  opacity: 0;
-  animation: dash-fade 0.6s ease forwards;
-  animation-delay: calc(var(--i, 0) * 65ms);
-}
-
-/* Hover sheen sweep across stat cards */
-.dash-root .stat-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 45%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.55),
-    transparent
-  );
-  opacity: 0;
-  pointer-events: none;
-}
-.dash-root .stat-card:hover::after {
-  opacity: 1;
-  animation: dash-sheen 0.9s ease forwards;
-}
-
-/* Icon chip springs slightly on card hover */
-.dash-root .stat-card .stat-icon {
-  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.dash-root .stat-card:hover .stat-icon {
-  transform: translateY(-1px) scale(1.08) rotate(-3deg);
-}
-
-/* Live status dot — gentle attention pulse */
-.dash-root .dot-pulse {
-  animation: dash-pulse-ring 2s ease-out infinite;
-}
-
-/* Charts ease in their drawing */
-.dash-root .recharts-area-area,
-.dash-root .recharts-bar-rectangle {
-  animation: dash-fade 0.8s ease both;
-}
-
-/* ── Chart cards ──────────────────────────────────────────────────── */
-
-/* Lift + accent the whole chart card on hover */
-.dash-root .chart-card {
-  position: relative;
-  overflow: hidden;
-  transition:
-    transform 200ms ease,
-    border-color 200ms ease,
-    box-shadow 200ms ease;
-}
-
-/* Auto-running "live scan" beam — a faint vertical line of light sweeps
-   left→right across the plot forever, like a monitoring oscilloscope, so
-   the chart visibly reads as LIVE without any interaction. */
-.dash-root .chart-card .live-scan {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in oklab, var(--scan-color, var(--chart-1)) 0%, transparent) 46%,
-    color-mix(in oklab, var(--scan-color, var(--chart-1)) 22%, transparent) 50%,
-    color-mix(in oklab, var(--scan-color, var(--chart-1)) 0%, transparent) 54%,
-    transparent 100%
-  );
-  background-size: 36% 100%;
-  background-repeat: no-repeat;
-  mix-blend-mode: multiply;
-  animation: dash-scan 4.4s linear infinite;
-}
-@keyframes dash-scan {
-  0% {
-    background-position: -40% 0;
-  }
-  100% {
-    background-position: 140% 0;
-  }
-}
-.dash-root .chart-card:hover {
-  transform: translateY(-3px);
-  border-color: color-mix(in oklab, var(--primary) 32%, var(--border));
-  box-shadow:
-    0 1px 0 0 rgba(255, 255, 255, 0.95) inset,
-    0 28px 54px -28px rgba(21, 35, 59, 0.5);
-}
-
-/* Bars brighten + grow subtly when their card is hovered */
 .dash-root .chart-card .recharts-bar-rectangle {
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+  transition: opacity 180ms ease;
   transform-box: fill-box;
   transform-origin: bottom;
 }
 .dash-root .chart-card:hover .recharts-bar-rectangle {
-  opacity: 0.82;
+  opacity: 0.85;
 }
 .dash-root .chart-card .recharts-bar-rectangle:hover {
   opacity: 1;
-  transform: scaleY(1.04);
 }
 
-/* Glowing active dot on the area chart */
 .dash-root .chart-active-dot {
-  filter: drop-shadow(0 0 6px color-mix(in oklab, var(--chart-1) 70%, transparent));
-  animation: dash-fade 0.25s ease both;
+  filter: drop-shadow(0 0 4px color-mix(in oklab, var(--chart-1) 60%, transparent));
 }
 
-/* The area stroke gets a soft glow on card hover */
-.dash-root .chart-card .recharts-area-curve {
-  transition: filter 220ms ease;
-}
-.dash-root .chart-card:hover .recharts-area-curve {
-  filter: drop-shadow(0 4px 10px color-mix(in oklab, var(--chart-1) 35%, transparent));
-}
-
-/* Polished tooltip surface */
 .dash-root .recharts-tooltip-wrapper .border-border\/50,
 .dash-root [data-slot='card'] .recharts-default-tooltip {
   border-radius: 0.75rem;
 }
 
-/* ── "Alive" / live effects ───────────────────────────────────────── */
+/* ── Motion & entrance ───────────────────────────────────────────── */
 
-/* The area fill gently breathes — opacity ebbs and flows forever, so
-   the chart never looks static. */
-@keyframes dash-breathe {
-  0%,
-  100% {
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 0.62;
-  }
-}
-.dash-root .chart-card .recharts-area-area {
-  transform-box: fill-box;
-  transform-origin: bottom;
-  animation:
-    dash-fade 0.8s ease both,
-    dash-breathe 4.5s ease-in-out 0.8s infinite;
+@keyframes dash-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* The area stroke draws itself on load, then a highlight dash keeps
-   travelling along the line so the trend feels like it's flowing. */
-@keyframes dash-draw {
-  from {
-    stroke-dashoffset: var(--len, 1200);
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes dash-flow {
-  to {
-    stroke-dashoffset: -340;
-  }
-}
-.dash-root .chart-card .recharts-area-curve {
-  stroke-linecap: round;
+@keyframes dash-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* Live ticker dot — a pulsing ring riding the end of the line. We render
-   it as a recharts <Dot> tagged .live-dot; the ring is a ::after-style
-   companion circle handled inline. This class gives it the heartbeat. */
+.dash-root .reveal {
+  opacity: 0;
+  animation: dash-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 60ms + 40ms);
+}
+
+.dash-root .reveal-fade {
+  opacity: 0;
+  animation: dash-fade 0.5s ease forwards;
+  animation-delay: calc(var(--i, 0) * 60ms);
+}
+
+/* Live status dot pulse */
+@keyframes dash-pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--chart-1) 50%, transparent); }
+  70% { box-shadow: 0 0 0 5px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+.dash-root .dot-pulse {
+  animation: dash-pulse-ring 2s ease-out infinite;
+}
+
+/* Charts fade in */
+.dash-root .recharts-area-area,
+.dash-root .recharts-bar-rectangle {
+  animation: dash-fade 0.7s ease both;
+}
+
+/* Live dot heartbeat */
 @keyframes dash-heartbeat {
-  0% {
-    r: 4;
-    opacity: 1;
-  }
-  70% {
-    r: 11;
-    opacity: 0;
-  }
-  100% {
-    r: 4;
-    opacity: 0;
-  }
+  0% { r: 4; opacity: 1; }
+  70% { r: 10; opacity: 0; }
+  100% { r: 4; opacity: 0; }
 }
 .dash-root .live-ring {
   transform-box: fill-box;
@@ -764,46 +804,87 @@
   animation: dash-heartbeat 1.8s ease-out infinite;
 }
 .dash-root .live-core {
-  filter: drop-shadow(0 0 5px color-mix(in oklab, var(--chart-1) 80%, transparent));
+  filter: drop-shadow(0 0 4px color-mix(in oklab, var(--chart-1) 70%, transparent));
 }
 
-/* Bars get a soft continuous shimmer wash so the volume chart also
-   feels live, not frozen. */
-@keyframes dash-bar-shimmer {
-  0%,
-  100% {
-    opacity: 0.92;
+/* ── Mobile responsive ────────────────────────────────────────────── */
+
+@media (max-width: 639px) {
+  /* Smaller hero text on mobile */
+  .dash-root .hero-banner h1 {
+    font-size: 1.4rem;
   }
-  50% {
-    opacity: 0.74;
+  .dash-root .hero-banner p {
+    font-size: 0.8rem;
   }
-}
-.dash-root .chart-card .recharts-bar-rectangles {
-  animation: dash-bar-shimmer 3.8s ease-in-out infinite;
-}
-/* Don't let the breathing fight the hover state. */
-.dash-root .chart-card:hover .recharts-area-area,
-.dash-root .chart-card:hover .recharts-bar-rectangles {
-  animation-play-state: paused;
-  opacity: 1;
+
+  /* Stat cards — full width, tighter padding */
+  .dash-root .stat-card .px-5 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Metric values slightly smaller on mobile */
+  .dash-root .metric-value {
+    font-size: 1.8rem;
+  }
+
+  /* Charts — prevent overflow */
+  .dash-root .chart-card {
+    overflow-x: auto;
+  }
+
+  /* Section title smaller */
+  .dash-root h2[class*='font-serif'] {
+    font-size: 1rem;
+  }
+
+  /* Profile dropdown align */
+  .dash-root .dash-topbar .absolute[class*='w-64'] {
+    right: -0.5rem;
+    width: 260px;
+  }
+
+  /* Notification dropdown */
+  .dash-root .dash-topbar .absolute[class*='w-72'] {
+    right: -2rem;
+    width: 280px;
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .dash-root .chart-card .recharts-area-area,
-  .dash-root .chart-card .recharts-bar-rectangles,
-  .dash-root .live-ring {
-    animation: none !important;
-    opacity: 1 !important;
+@media (max-width: 479px) {
+  /* Even smaller hero on very small phones */
+  .dash-root .hero-banner {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  .dash-root .hero-banner h1 {
+    font-size: 1.2rem;
+    margin-top: 0.75rem;
+  }
+
+  /* Main content tighter padding */
+  .dash-root main {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Topbar tighter */
+  .dash-root .dash-topbar > div {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    gap: 0.5rem;
   }
 }
 
-/* Respect reduced-motion preferences */
+/* ── Reduced motion ──────────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   .dash-root,
   .dash-root .reveal,
   .dash-root .reveal-fade,
-  .dash-root .stat-card:hover::after,
-  .dash-root .dot-pulse {
+  .dash-root .dot-pulse,
+  .dash-root .live-ring {
     animation: none !important;
     opacity: 1 !important;
   }

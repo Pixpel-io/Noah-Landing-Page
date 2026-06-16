@@ -20,6 +20,7 @@ import {
   LogOut,
   Smartphone,
   Users,
+  X,
 } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
@@ -36,7 +37,6 @@ const PRIMARY: NavItem[] = [
   { id: 'overview', label: 'Overview', icon: LayoutDashboard },
   { id: 'engagement', label: 'Engagement', icon: Activity },
   { id: 'trends', label: 'Trends', icon: LineChart },
-  { id: 'users', label: 'Users', icon: Users },
 ]
 
 const SECONDARY: NavItem[] = [
@@ -55,48 +55,66 @@ function NavLink({
   item,
   active,
   onNavigate,
+  onSelect,
+  accentColor,
 }: {
   item: NavItem
   active: boolean
   onNavigate: () => void
+  onSelect: (id: string) => void
+  accentColor: string
 }) {
   const Icon = item.icon
   return (
     <button
       type="button"
       onClick={() => {
+        onSelect(item.id)
         scrollToSection(item.id)
         onNavigate()
       }}
       aria-current={active ? 'true' : undefined}
       className={cn(
         'nav-link group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
-        active
-          ? 'bg-primary/12 text-primary'
-          : 'text-muted-foreground hover:bg-secondary hover:text-foreground',
+        !active && 'text-muted-foreground hover:bg-secondary hover:text-foreground',
       )}
+      style={active ? { color: '#ffffff' } : undefined}
     >
       <Icon
         className={cn(
           'size-4.5 shrink-0 transition-transform group-hover:scale-110',
-          active ? 'text-primary' : 'text-muted-foreground',
+          !active && 'text-muted-foreground',
         )}
+        style={active ? { color: '#ffffff' } : undefined}
       />
       {item.label}
       {active ? (
-        <span className="bg-primary ml-auto size-1.5 rounded-full" />
+        <span className="ml-auto size-1.5 rounded-full bg-white" />
       ) : null}
     </button>
   )
 }
 
 export function Sidebar() {
+  const accentColor = '#fb923c'
   const [active, setActive] = useState('overview')
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
+  const [promoHidden, setPromoHidden] = useState(false)
 
-  // Listen for the topbar's hamburger toggle (mobile drawer).
+  // On mount, check screen size for initial state
   useEffect(() => {
-    const toggle = () => setOpen((v) => !v)
+    if (window.innerWidth < 1024) setOpen(false)
+  }, [])
+
+  // Listen for the topbar's hamburger toggle.
+  useEffect(() => {
+    const toggle = () => {
+      setOpen((v) => {
+        const next = !v
+        window.dispatchEvent(new CustomEvent('noah-dash:sidebar-state', { detail: next }))
+        return next
+      })
+    }
     window.addEventListener('noah-dash:toggle-sidebar', toggle)
     return () => window.removeEventListener('noah-dash:toggle-sidebar', toggle)
   }, [])
@@ -134,12 +152,23 @@ export function Sidebar() {
 
       <aside
         className={cn(
-          'dash-sidebar fixed inset-y-0 left-0 z-40 flex w-[264px] flex-col border-r p-4 transition-transform lg:translate-x-0',
+          'dash-sidebar fixed inset-y-0 left-0 z-40 flex w-[264px] flex-col border-r p-4 transition-transform',
           open ? 'translate-x-0' : '-translate-x-full',
         )}
       >
-        <div className="px-2 pb-2 pt-1">
+        <div className="flex items-center justify-between px-2 pb-2 pt-1">
           <NoahLogo subLabel="Analytics" />
+          <button
+            type="button"
+            aria-label="Close sidebar"
+            onClick={() => {
+              setOpen(false)
+              window.dispatchEvent(new CustomEvent('noah-dash:sidebar-state', { detail: false }))
+            }}
+            className="text-muted-foreground hover:bg-secondary hover:text-foreground rounded-lg p-1.5 transition-colors"
+          >
+            <X className="size-5" />
+          </button>
         </div>
 
         <nav className="mt-5 flex-1 space-y-1">
@@ -151,7 +180,9 @@ export function Sidebar() {
               key={item.id}
               item={item}
               active={active === item.id}
-              onNavigate={() => setOpen(false)}
+              onNavigate={() => { if (window.innerWidth < 1024) setOpen(false) }}
+              onSelect={setActive}
+              accentColor={accentColor}
             />
           ))}
 
@@ -163,30 +194,42 @@ export function Sidebar() {
               key={item.id}
               item={item}
               active={active === item.id}
-              onNavigate={() => setOpen(false)}
+              onNavigate={() => { if (window.innerWidth < 1024) setOpen(false) }}
+              onSelect={setActive}
+              accentColor={accentColor}
             />
           ))}
         </nav>
 
-        {/* App promo card — the Donezo "download our mobile app" tile */}
-        <div className="promo-card relative mt-4 overflow-hidden rounded-2xl p-4 text-white">
-          <span aria-hidden className="promo-glow" />
-          <Smartphone className="size-5" />
-          <p className="mt-2.5 text-sm font-semibold leading-snug">
-            Noah on your phone
-          </p>
-          <p className="mt-1 text-xs text-white/75">
-            The full elder-care companion — reminders, voice & emergencies.
-          </p>
-          <a
-            href="https://noahcares.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary mt-3 inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold transition-transform hover:scale-[1.03]"
-          >
-            Learn more
-          </a>
-        </div>
+        {/* App promo card */}
+        {!promoHidden && (
+          <div className="promo-card relative mt-4 overflow-hidden rounded-2xl p-4 text-white">
+            <button
+              type="button"
+              aria-label="Dismiss"
+              onClick={() => setPromoHidden(true)}
+              className="absolute right-2 top-2 rounded-full p-1 text-white/70 transition-colors hover:bg-white/15 hover:text-white"
+            >
+              <X className="size-4" />
+            </button>
+            <span aria-hidden className="promo-glow" />
+            <Smartphone className="size-5" />
+            <p className="mt-2.5 text-sm font-semibold leading-snug">
+              Noah on your phone
+            </p>
+            <p className="mt-1 text-xs text-white/75">
+              The full elder-care companion — reminders, voice & emergencies.
+            </p>
+            <a
+              href="https://noahcares.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1.5 text-xs font-semibold text-black transition-transform hover:scale-[1.03]"
+            >
+              Learn more
+            </a>
+          </div>
+        )}
 
         <form action="/auth/signout" method="post" className="mt-3">
           <button
