@@ -2,18 +2,21 @@
 import Image from "next/image"
 import { Calendar, Phone, Pill } from "lucide-react"
 import { motion } from "framer-motion"
+import { useLanguage } from "@/lib/language-context"
 
 export function MobileHeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="bg-white pt-20 px-4 pb-8 flex flex-col items-center">
       {/* Text Content */}
       <div className="flex flex-col items-center gap-4 mb-8 max-w-[343px]">
         <h1 className="font-[family-name:var(--font-crimson)] text-[52px] leading-[95%] tracking-tight text-center text-black font-normal">
-          Your friendly voice, always there for you.
+          {t.hero.headlinePart1} {t.hero.headlinePart2} {t.hero.headlinePart3}
         </h1>
 
         <p className="text-[13px] leading-[145%] text-center text-[#6F6F6F]">
-          Noah helps older adults live with more independence and confidence through a simple, natural, and easy voice experience that keeps them company and is available 24 hours a day.
+          {t.hero.description}
         </p>
       </div>
 
@@ -56,7 +59,7 @@ export function MobileHeroSection() {
               </div>
             </div>
             <div className="bg-black rounded-lg px-4 py-2">
-              <span className="text-white text-sm font-medium">Tap to talk</span>
+              <span className="text-white text-sm font-medium">{t.hero.tapToSpeak}</span>
             </div>
           </motion.div>
         </div>
@@ -74,8 +77,8 @@ export function MobileHeroSection() {
               <Calendar className="w-full h-full" strokeWidth={1.8} />
             </div>
             <div className="flex-1">
-              <p className="text-[12px] font-bold text-black leading-tight">Dr. Martínez - Recorded</p>
-              <p className="text-[10px] text-black/70 leading-tight">Visit summary ready</p>
+              <p className="text-[12px] font-bold text-black leading-tight">{t.hero.drRecorded}</p>
+              <p className="text-[10px] text-black/70 leading-tight">{t.hero.aiSummary}</p>
             </div>
           </motion.div>
 
@@ -90,8 +93,8 @@ export function MobileHeroSection() {
               <Phone className="w-full h-full" strokeWidth={1.8} />
             </div>
             <div className="flex-1">
-              <p className="text-[12px] font-bold text-black leading-tight">Emergency</p>
-              <p className="text-[10px] text-black/70 leading-tight">Call with just one touch</p>
+              <p className="text-[12px] font-bold text-black leading-tight">{t.hero.emergency}</p>
+              <p className="text-[10px] text-black/70 leading-tight">{t.hero.oneTapCall}</p>
             </div>
           </motion.div>
 
@@ -106,21 +109,11 @@ export function MobileHeroSection() {
               <Pill className="w-full h-full" strokeWidth={1.8} />
             </div>
             <div className="flex-1">
-              <p className="text-[12px] font-bold text-black leading-tight">"Add 500mg aspirin"</p>
-              <p className="text-[10px] text-black/70 leading-tight">Added by voice</p>
+              <p className="text-[12px] font-bold text-black leading-tight">{t.hero.addAspirin}</p>
+              <p className="text-[10px] text-black/70 leading-tight">{t.hero.doneViaVoice}</p>
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* CTA Buttons */}
-      <div className="w-full max-w-[343px] flex flex-col gap-3">
-        <button className="w-full bg-[#D4A24D] rounded-full py-3.5 px-6">
-          <span className="text-white text-base font-bold">Talk to NOAH</span>
-        </button>
-        <button className="w-full bg-white border-2 border-[#D4A24D] rounded-full py-3.5 px-6">
-          <span className="text-black text-base font-bold">See how it works</span>
-        </button>
       </div>
     </section>
   )

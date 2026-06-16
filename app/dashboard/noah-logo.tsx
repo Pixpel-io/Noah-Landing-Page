@@ -23,7 +23,7 @@ export function NoahMark({ className }: { className?: string }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <circle cx="25" cy="11" r="1.8" fill="#D4A24D" />
+      <circle cx="25" cy="11" r="1.8" fill="#3b82f6" />
     </svg>
   )
 }

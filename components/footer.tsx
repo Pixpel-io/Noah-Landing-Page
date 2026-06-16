@@ -16,7 +16,7 @@ export function Footer() {
         {/* Top divider */}
         <div className="border-t border-[#D9D2BE]/50 mb-10" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 md:gap-12 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-8 md:gap-12 mb-12">
           {/* Logo + tagline + socials */}
           <div className="col-span-2 sm:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4 group">
@@ -76,6 +76,15 @@ export function Footer() {
             <ul className="space-y-2.5">
               <li><Link href="#" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.contact}</Link></li>
               <li><Link href="#faq" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.faqLink}</Link></li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h4 className="text-[18px] font-bold text-[#1F3842] mb-4 font-[family-name:var(--font-dm-sans)]">{t.footer.legal}</h4>
+            <ul className="space-y-2.5">
+              <li><Link href="/privacy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.privacy}</Link></li>
+              <li><Link href="/terms" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.terms}</Link></li>
             </ul>
           </div>
         </div>
