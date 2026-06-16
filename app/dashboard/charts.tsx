@@ -119,7 +119,11 @@ export function SignupsChart({ data }: { data: TimePoint[] }) {
   const latestTotal = cumulative.at(-1)?.total ?? 0
 
   return (
-    <Card className="chart-card group">
+    <Card
+      className="chart-card group"
+      style={{ ['--scan-color' as string]: 'var(--chart-1)' }}
+    >
+      <span className="live-scan" aria-hidden />
       <CardHeader>
         <div className="flex items-start justify-between gap-2">
           <div>

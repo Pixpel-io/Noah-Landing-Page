@@ -1,4 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import type { CSSProperties } from 'react'
 
 import { Card, CardContent } from '@/components/ui/card'
@@ -37,7 +38,7 @@ const RAIL: Record<Metric['status'], CSSProperties> = {
   },
   derived: {
     ['--accent-rail-from' as string]: 'var(--chart-2)',
-    ['--accent-rail-to' as string]: 'var(--chart-3)',
+    ['--accent-rail-to' as string]: 'var(--chart-5)',
   },
   pending: {
     ['--accent-rail-from' as string]: 'var(--border)',
@@ -45,12 +46,24 @@ const RAIL: Record<Metric['status'], CSSProperties> = {
   },
 }
 
+/** Auto-loop animation applied to the icon well (defined in dashboard.css). */
+export type IconAnim =
+  | 'heartbeat'
+  | 'breathe'
+  | 'tick'
+  | 'bob'
+  | 'wiggle'
+
 export function StatCard({
   title,
   metric,
   icon: Icon,
   unit,
   index = 0,
+  /** Optional human note shown as a subtle trend chip (e.g. "30-day window"). */
+  trend,
+  /** Auto-running icon animation — only plays when the metric isn't pending. */
+  iconAnim,
 }: {
   title: string
   metric: Metric
@@ -58,6 +71,8 @@ export function StatCard({
   unit?: string
   /** Position in its grid — drives the staggered entrance delay. */
   index?: number
+  trend?: string
+  iconAnim?: IconAnim
 }) {
   const isPending = metric.status === 'pending'
 
@@ -69,21 +84,21 @@ export function StatCard({
       <span className="corner-glow" aria-hidden />
       <CardContent className="px-5 py-5">
         <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-2.5">
-            <span
-              className={cn(
-                'stat-icon flex size-9 items-center justify-center rounded-xl',
-                isPending
-                  ? 'bg-muted text-muted-foreground'
+          <span
+            className={cn(
+              'stat-icon flex size-10 items-center justify-center rounded-2xl',
+              isPending
+                ? 'bg-muted text-muted-foreground'
+                : iconAnim === 'heartbeat'
+                  ? `icon-heartbeat`
                   : 'bg-primary/12 text-primary',
-              )}
-            >
-              <Icon className="size-4.5" />
-            </span>
-            <span className="text-muted-foreground text-sm font-medium">
-              {title}
-            </span>
-          </div>
+              !isPending && iconAnim && iconAnim !== 'heartbeat'
+                ? `icon-${iconAnim}`
+                : null,
+            )}
+          >
+            <Icon className="size-5" />
+          </span>
           <span
             className={cn(
               'inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-[10px] font-medium',
@@ -101,15 +116,26 @@ export function StatCard({
           </span>
         </div>
 
-        <p
-          className={cn(
-            'metric-value font-serif mt-4 text-[2rem] font-semibold leading-none',
-            isPending ? 'text-muted-foreground' : 'text-foreground',
-          )}
-        >
-          {formatValue(metric.value, unit)}
-        </p>
-        <p className="text-muted-foreground mt-2.5 text-xs leading-relaxed">
+        <p className="text-muted-foreground mt-4 text-sm font-medium">{title}</p>
+
+        <div className="mt-1 flex items-end justify-between gap-2">
+          <p
+            className={cn(
+              'metric-value font-serif text-[2.1rem] font-semibold leading-none',
+              isPending ? 'text-muted-foreground' : 'text-foreground',
+            )}
+          >
+            {formatValue(metric.value, unit)}
+          </p>
+          {trend && !isPending ? (
+            <span className="text-chart-1 bg-chart-1/10 mb-0.5 inline-flex items-center gap-0.5 rounded-md px-1.5 py-0.5 text-[10px] font-semibold">
+              <ArrowUpRight className="size-3" />
+              {trend}
+            </span>
+          ) : null}
+        </div>
+
+        <p className="text-muted-foreground/90 mt-2.5 text-xs leading-relaxed">
           {metric.source}
         </p>
       </CardContent>

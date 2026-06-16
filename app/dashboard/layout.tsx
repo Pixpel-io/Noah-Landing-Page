@@ -13,7 +13,8 @@ import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/server'
 import { isAdminEmail } from '@/lib/supabase/config'
 
-import { DashboardHeader } from './header'
+import { Sidebar } from './sidebar'
+import { Topbar } from './topbar'
 import { poppins } from './fonts'
 import './dashboard.css'
 
@@ -49,11 +50,19 @@ export default async function DashboardLayout({
     )
   }
 
+  const generated = new Date().toLocaleString('en-US', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  })
+
   return (
     <div className={`${poppins.variable} dash-root min-h-dvh`}>
-      <DashboardHeader email={user.email ?? ''} />
-      <div className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        {children}
+      <Sidebar />
+      <div className="lg:pl-66">
+        <Topbar email={user.email ?? ''} generated={generated} />
+        <main className="mx-auto w-full max-w-6xl px-4 py-7 sm:px-6 lg:px-8">
+          {children}
+        </main>
       </div>
     </div>
   )

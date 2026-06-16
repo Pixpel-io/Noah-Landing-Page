@@ -12,38 +12,45 @@
  */
 
 .dash-root {
-  /* Surfaces — cool indigo-tinted off-white with pure-white cards */
-  --background: #eef1fb;
-  --foreground: #161f38;
+  /* Surfaces — a cool slate-tinted off-white with pure-white cards.
+     Crisp, premium, and modern. */
+  --background: #eef2f9;
+  --foreground: #0f1b2d;
   --card: #ffffff;
-  --card-foreground: #161f38;
+  --card-foreground: #0f1b2d;
   --popover: #ffffff;
-  --popover-foreground: #161f38;
+  --popover-foreground: #0f1b2d;
 
-  /* Brand accents — vivid indigo primary + teal accent + gold highlight.
-     Modern, energetic, and still on-brand with Noah's navy + gold. */
-  --primary: #4f46e5; /* indigo */
-  --primary-foreground: #f5f6ff;
-  --secondary: #e9ecfb;
-  --secondary-foreground: #161f38;
-  --muted: #e9ecfb;
-  --muted-foreground: #5e6a8a;
-  --accent: #0ea5a4; /* teal */
-  --accent-foreground: #f0fdfb;
+  /* Brand accents — a confident ocean-blue primary with a luminous cyan
+     accent. Stylish, high-contrast, and clearly not green or purple. */
+  --primary: #2563eb; /* ocean blue */
+  --primary-foreground: #f2f7ff;
+  --secondary: #e7eefb;
+  --secondary-foreground: #0f1b2d;
+  --muted: #eaeff8;
+  --muted-foreground: #5a6781;
+  --accent: #06b6d4; /* cyan */
+  --accent-foreground: #04323b;
   --destructive: #e0533d;
   --destructive-foreground: #fff6f3;
 
   /* Lines + focus */
-  --border: #dfe3f4;
-  --input: #dfe3f4;
-  --ring: #4f46e5;
+  --border: #dde5f1;
+  --input: #dde5f1;
+  --ring: #2563eb;
 
-  /* Vibrant chart palette tuned for a light canvas */
-  --chart-1: #4f46e5; /* indigo */
-  --chart-2: #0ea5a4; /* teal */
-  --chart-3: #f5a623; /* gold */
-  --chart-4: #ec4899; /* pink */
-  --chart-5: #8b5cf6; /* violet */
+  /* Chart palette. NOTE: --chart-1 is the LIVE accent and --chart-2 is the
+     DERIVED accent — deliberately kept in different colour families
+     (emerald vs amber) so the two metric states never read as the same. */
+  --chart-1: #10b981; /* LIVE — emerald */
+  --chart-2: #f59e0b; /* DERIVED — amber */
+  --chart-3: #2563eb; /* ocean blue */
+  --chart-4: #06b6d4; /* cyan */
+  --chart-5: #ec4899; /* pink */
+
+  /* Semantic status accents (Live / Derived clearly distinct) */
+  --status-live: #10b981; /* emerald */
+  --status-derived: #f59e0b; /* amber */
 
   /* Brand-token shorthands used by the logo + gradient text */
   --brand-navy: #1f3842;
@@ -56,14 +63,262 @@
   font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   color: var(--foreground);
 
-  /* Vivid ambient wash behind the console */
+  /* Soft ambient wash behind the console — ocean-blue + cyan haze */
   background-color: var(--background);
   background-image:
-    radial-gradient(50rem 50rem at 105% -15%, rgba(79, 70, 229, 0.14), transparent 56%),
-    radial-gradient(46rem 46rem at -12% -6%, rgba(14, 165, 164, 0.13), transparent 54%),
-    radial-gradient(40rem 40rem at 50% 120%, rgba(245, 166, 35, 0.08), transparent 60%),
-    linear-gradient(180deg, #f7f9ff 0%, var(--background) 42%);
+    radial-gradient(50rem 50rem at 105% -15%, rgba(37, 99, 235, 0.12), transparent 56%),
+    radial-gradient(46rem 46rem at -12% -6%, rgba(6, 182, 212, 0.13), transparent 54%),
+    radial-gradient(40rem 40rem at 50% 120%, rgba(16, 185, 129, 0.06), transparent 60%),
+    linear-gradient(180deg, #f6f9ff 0%, var(--background) 42%);
   background-attachment: fixed;
+}
+
+/* ── App shell: sidebar + topbar ──────────────────────────────────── */
+
+.dash-root .dash-sidebar {
+  background-color: color-mix(in oklab, var(--card) 92%, var(--background));
+  border-color: var(--border);
+  box-shadow: 1px 0 0 0 rgba(21, 35, 59, 0.02);
+  backdrop-filter: blur(8px);
+}
+
+.dash-root .dash-topbar {
+  background-color: color-mix(in oklab, var(--background) 72%, transparent);
+  border-color: color-mix(in oklab, var(--border) 90%, transparent);
+}
+
+/* Active nav link grows a soft left indicator on hover/active */
+.dash-root .nav-link {
+  position: relative;
+}
+.dash-root .nav-link[aria-current='true']::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 50%;
+  height: 56%;
+  width: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  transform: translateY(-50%);
+}
+
+/* Sidebar promo card — ocean-blue gradient with a drifting glow */
+.dash-root .promo-card {
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.18), transparent 55%),
+    linear-gradient(155deg, #3b82f6 0%, #2563eb 50%, #1542a8 100%);
+  box-shadow:
+    0 10px 30px -16px rgba(21, 66, 168, 0.85),
+    0 1px 0 0 rgba(255, 255, 255, 0.14) inset;
+}
+.dash-root .promo-card .promo-glow {
+  position: absolute;
+  right: -2rem;
+  bottom: -2.5rem;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(6, 182, 212, 0.5),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ── Welcome hero ─────────────────────────────────────────────────── */
+
+.dash-root .hero-banner {
+  background:
+    radial-gradient(130% 120% at 8% 0%, rgba(255, 255, 255, 0.2), transparent 50%),
+    linear-gradient(150deg, #3b82f6 0%, #2563eb 46%, #143f9e 100%);
+  box-shadow:
+    0 24px 50px -28px rgba(21, 63, 158, 0.7),
+    0 1px 0 0 rgba(255, 255, 255, 0.16) inset;
+}
+.dash-root .hero-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(2px);
+}
+.dash-root .hero-orb-a {
+  top: -3rem;
+  right: -2rem;
+  width: 12rem;
+  height: 12rem;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.5), transparent 68%);
+  animation: dash-orb-float 9s ease-in-out infinite;
+}
+.dash-root .hero-orb-b {
+  bottom: -4rem;
+  left: 25%;
+  width: 10rem;
+  height: 10rem;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.55), transparent 70%);
+  animation: dash-orb-float 11s ease-in-out 1s infinite reverse;
+}
+@keyframes dash-orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-12px, 10px) scale(1.08);
+  }
+}
+
+/* ── Auto-animated metric icons ───────────────────────────────────────
+   Each icon well runs a subtle, looping animation so the dashboard feels
+   alive at a glance — no hover needed. The heartbeat icon literally beats
+   and flashes the live-emerald colour on each pulse. */
+
+/* Heartbeat — scales in a lub-dub rhythm AND flashes emerald on the beat */
+@keyframes dash-heartbeat-icon {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.22);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.14);
+  }
+  56% {
+    transform: scale(1);
+  }
+}
+@keyframes dash-heartbeat-tint {
+  0%,
+  60%,
+  100% {
+    color: var(--status-live);
+    background-color: color-mix(in oklab, var(--status-live) 14%, transparent);
+  }
+  14%,
+  42% {
+    color: var(--status-live);
+    background-color: color-mix(in oklab, var(--status-live) 26%, transparent);
+  }
+}
+.dash-root .icon-heartbeat {
+  animation: dash-heartbeat-tint 1.6s ease-in-out infinite;
+}
+.dash-root .icon-heartbeat > svg {
+  animation: dash-heartbeat-icon 1.6s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Gentle breathing pulse for users/people icons */
+@keyframes dash-icon-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.86;
+  }
+}
+.dash-root .icon-breathe > svg {
+  animation: dash-icon-breathe 2.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Slow tick/rotate for time + reminder icons (clock hand feel) */
+@keyframes dash-icon-tick {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+.dash-root .icon-tick > svg {
+  animation: dash-icon-tick 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Bounce for message / chat icons */
+@keyframes dash-icon-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.5px);
+  }
+}
+.dash-root .icon-bob > svg {
+  animation: dash-icon-bob 2.2s ease-in-out infinite;
+}
+
+/* Ring/wiggle for the bell + phone icons */
+@keyframes dash-icon-wiggle {
+  0%,
+  92%,
+  100% {
+    transform: rotate(0deg);
+  }
+  94% {
+    transform: rotate(-9deg);
+  }
+  96% {
+    transform: rotate(8deg);
+  }
+  98% {
+    transform: rotate(-5deg);
+  }
+}
+.dash-root .icon-wiggle > svg {
+  animation: dash-icon-wiggle 3.4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-root .icon-heartbeat,
+  .dash-root .icon-heartbeat > svg,
+  .dash-root .icon-breathe > svg,
+  .dash-root .icon-tick > svg,
+  .dash-root .icon-bob > svg,
+  .dash-root .icon-wiggle > svg {
+    animation: none !important;
+  }
+}
+
+/* Headline KPI tiles in the hero strip */
+.dash-root .hero-stat {
+  background-color: var(--card);
+  border: 1px solid color-mix(in oklab, var(--border) 95%, transparent);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 14px 32px -28px rgba(21, 35, 59, 0.4);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.dash-root .hero-stat:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--primary) 32%, var(--border));
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.95) inset,
+    0 20px 40px -24px rgba(21, 35, 59, 0.42);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dash-root .hero-orb,
+  .dash-root .hero-banner span.animate-pulse {
+    animation: none !important;
+  }
 }
 
 /* Gradient brand wordmark */
@@ -365,10 +620,42 @@
 
 /* Lift + accent the whole chart card on hover */
 .dash-root .chart-card {
+  position: relative;
+  overflow: hidden;
   transition:
     transform 200ms ease,
     border-color 200ms ease,
     box-shadow 200ms ease;
+}
+
+/* Auto-running "live scan" beam — a faint vertical line of light sweeps
+   left→right across the plot forever, like a monitoring oscilloscope, so
+   the chart visibly reads as LIVE without any interaction. */
+.dash-root .chart-card .live-scan {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklab, var(--scan-color, var(--chart-1)) 0%, transparent) 46%,
+    color-mix(in oklab, var(--scan-color, var(--chart-1)) 22%, transparent) 50%,
+    color-mix(in oklab, var(--scan-color, var(--chart-1)) 0%, transparent) 54%,
+    transparent 100%
+  );
+  background-size: 36% 100%;
+  background-repeat: no-repeat;
+  mix-blend-mode: multiply;
+  animation: dash-scan 4.4s linear infinite;
+}
+@keyframes dash-scan {
+  0% {
+    background-position: -40% 0;
+  }
+  100% {
+    background-position: 140% 0;
+  }
 }
 .dash-root .chart-card:hover {
   transform: translateY(-3px);

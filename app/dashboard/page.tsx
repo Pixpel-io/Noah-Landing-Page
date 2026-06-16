@@ -7,13 +7,12 @@
  * state and the reason, never a fabricated number.
  */
 import {
+  Activity,
   AlarmClock,
   AlertTriangle,
-  CalendarCheck,
   CalendarClock,
-  CreditCard,
-  MessageSquare,
   Mic,
+  MessageSquare,
   Phone,
   Pill,
   ShoppingCart,
@@ -27,7 +26,7 @@ import { isSupabaseConfigured } from '@/lib/supabase/config'
 import { getDashboardData } from '@/lib/dashboard/metrics'
 
 import { MessagesChart, SignupsChart } from './charts'
-import { NoahMark } from './noah-logo'
+import { HeroSummary } from './hero-summary'
 import { StatCard } from './stat-card'
 
 export const metadata = { title: 'Dashboard · Noah AI' }
@@ -36,14 +35,16 @@ export const metadata = { title: 'Dashboard · Noah AI' }
 export const dynamic = 'force-dynamic'
 
 function SectionTitle({
+  id,
   children,
   hint,
 }: {
+  id?: string
   children: React.ReactNode
   hint?: string
 }) {
   return (
-    <div className="reveal-fade mb-4 mt-12 first:mt-0">
+    <div id={id} className="reveal-fade mb-4 mt-11 scroll-mt-24 first:mt-0">
       <div className="flex items-center gap-3">
         <span className="from-primary to-accent h-4 w-1 rounded-full bg-linear-to-b" />
         <h2 className="font-serif text-lg font-semibold tracking-tight">
@@ -72,60 +73,21 @@ export default async function DashboardPage() {
   }
 
   const data = await getDashboardData()
-  const generated = new Date(data.generatedAt).toLocaleString('en-US', {
-    dateStyle: 'medium',
-    timeStyle: 'short',
-  })
 
   return (
     <div>
-      <div className="reveal border-border/60 relative mb-8 overflow-hidden rounded-3xl border p-7 sm:p-8">
-        {/* Layered gradient backdrop for the hero */}
-        <div
-          aria-hidden
-          className="from-card via-card to-secondary/50 absolute inset-0 -z-10 bg-linear-to-br"
+      {/* Welcome hero + headline KPIs */}
+      <section id="overview" className="scroll-mt-24">
+        <HeroSummary
+          totalUsers={data.totalUsers}
+          activeUsers={data.activeUsers}
+          conversationsMessages={data.conversationsMessages}
+          newUsers30d={data.newUsers30d}
         />
-        <div
-          aria-hidden
-          className="bg-primary/15 absolute -right-16 -top-20 -z-10 size-64 rounded-full blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="bg-accent/15 absolute -bottom-24 -left-10 -z-10 size-56 rounded-full blur-3xl"
-        />
-
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="logo-lockup flex items-center gap-4">
-            <span className="logo-orb relative inline-flex shrink-0">
-              <NoahMark className="size-14" />
-            </span>
-            <div>
-              <span className="text-primary/90 text-xs font-semibold uppercase tracking-[0.18em]">
-                Noah AI · Analytics
-              </span>
-              <h1 className="font-serif mt-1 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Overview
-              </h1>
-              <p className="text-muted-foreground mt-1.5 max-w-xl text-sm">
-                Aggregate, read-only metrics from the Noah AI production
-                database — live counts, derived signals, and growth trends.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col items-end gap-2">
-            <span className="bg-chart-1/12 text-chart-1 ring-chart-1/25 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ring-1">
-              <span className="dot-pulse bg-chart-1 size-1.5 rounded-full" />
-              Read-only · Live
-            </span>
-            <span className="text-muted-foreground text-xs">
-              Updated {generated}
-            </span>
-          </div>
-        </div>
-      </div>
+      </section>
 
       {data.hadError ? (
-        <div className="border-destructive/40 bg-destructive/5 text-destructive mb-6 flex items-start gap-2 rounded-lg border p-4 text-sm">
+        <div className="border-destructive/40 bg-destructive/5 text-destructive mt-6 flex items-start gap-2 rounded-lg border p-4 text-sm">
           <AlertTriangle className="mt-0.5 size-4 shrink-0" />
           <p>
             Some queries failed — the affected cards show “—”. This is
@@ -135,7 +97,7 @@ export default async function DashboardPage() {
         </div>
       ) : null}
 
-      <SectionTitle hint="Real-time counts from production tables.">
+      <SectionTitle id="engagement" hint="Real-time counts from production tables.">
         Engagement &amp; care
       </SectionTitle>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -144,6 +106,7 @@ export default async function DashboardPage() {
           metric={data.medicationReminders}
           icon={AlarmClock}
           index={0}
+          iconAnim="tick"
         />
         <StatCard
           title="Interaction time"
@@ -151,34 +114,39 @@ export default async function DashboardPage() {
           icon={Timer}
           unit="min"
           index={1}
+          iconAnim="tick"
         />
         <StatCard
           title="Conversation messages"
           metric={data.conversationsMessages}
           icon={MessageSquare}
           index={2}
+          iconAnim="bob"
         />
         <StatCard
           title="Medications tracked"
           metric={data.medicationsTracked}
           icon={Pill}
           index={3}
+          iconAnim="breathe"
         />
         <StatCard
           title="Emergency contacts"
           metric={data.emergencyContacts}
           icon={Phone}
           index={4}
+          iconAnim="wiggle"
         />
         <StatCard
           title="Active users (messaged)"
           metric={data.activeUsers}
-          icon={Users}
+          icon={Activity}
           index={5}
+          iconAnim="heartbeat"
         />
       </div>
 
-      <SectionTitle hint="Cumulative growth and daily volume.">
+      <SectionTitle id="trends" hint="Cumulative growth and daily volume.">
         Trends
       </SectionTitle>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -190,23 +158,31 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <SectionTitle hint="User base from app_users.">Users</SectionTitle>
+      <SectionTitle id="users" hint="User base from app_users.">
+        Users
+      </SectionTitle>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <StatCard
           title="Total users"
           metric={data.totalUsers}
           icon={Users}
           index={0}
+          iconAnim="breathe"
         />
         <StatCard
           title="New users (30 days)"
           metric={data.newUsers30d}
           icon={UserPlus}
           index={1}
+          trend="30-day"
+          iconAnim="breathe"
         />
       </div>
 
-      <SectionTitle hint="Not yet persisted to Supabase — see each card for the reason. These will light up once the phase-2 server-side sync (documented in the app's metrics store and launch roadmap) lands. No values are estimated here.">
+      <SectionTitle
+        id="pending"
+        hint="Not yet persisted to Supabase — see each card for the reason. These will light up once the phase-2 server-side sync (documented in the app's metrics store and launch roadmap) lands. No values are estimated here."
+      >
         Pending server-side sync
       </SectionTitle>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -248,11 +224,9 @@ export default async function DashboardPage() {
         />
       </div>
 
-      <div className="border-border/60 text-muted-foreground mt-12 flex items-center justify-center gap-2 border-t pt-6 text-xs">
-        <CreditCard className="size-3.5" />
+      <div className="border-border/60 text-muted-foreground mt-12 flex items-center justify-center gap-2 border-t pt-6 text-center text-xs">
         Read-only dashboard — the production database is never modified from
         here.
-        <CalendarCheck className="size-3.5" />
       </div>
     </div>
   )
