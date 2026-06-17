@@ -28,7 +28,7 @@
  *   'derived' — computed from real production data (clearly labelled)
  *   'pending' — no production source yet; we say so instead of faking it
  */
-import { createAdminClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 export type MetricStatus = 'live' | 'derived' | 'pending'
 

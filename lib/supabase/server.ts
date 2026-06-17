@@ -8,9 +8,8 @@
  */
 import { cookies } from 'next/headers'
 import { createServerClient } from '@supabase/ssr'
-import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 
-import { SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, SUPABASE_URL } from './config'
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from './config'
 
 export async function createClient() {
   const cookieStore = await cookies()
@@ -35,12 +34,3 @@ export async function createClient() {
   })
 }
 
-/**
- * Admin client using the service_role key — bypasses RLS.
- * Use ONLY for server-side read-only dashboard metrics.
- */
-export function createAdminClient() {
-  return createSupabaseClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
-    auth: { persistSession: false },
-  })
-}
