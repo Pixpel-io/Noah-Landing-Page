@@ -10,6 +10,8 @@
  * shared custom event.
  */
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import {
   Activity,
   CalendarClock,
@@ -57,14 +59,33 @@ function NavLink({
   onNavigate,
   onSelect,
   accentColor,
+  isOnSubpage,
 }: {
   item: NavItem
   active: boolean
   onNavigate: () => void
   onSelect: (id: string) => void
   accentColor: string
+  isOnSubpage: boolean
 }) {
   const Icon = item.icon
+
+  if (isOnSubpage) {
+    return (
+      <Link
+        href={`/dashboard#${item.id}`}
+        onClick={onNavigate}
+        className={cn(
+          'nav-link group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
+          'text-muted-foreground hover:bg-secondary hover:text-foreground',
+        )}
+      >
+        <Icon className="text-muted-foreground size-4.5 shrink-0 transition-transform group-hover:scale-110" />
+        {item.label}
+      </Link>
+    )
+  }
+
   return (
     <button
       type="button"
@@ -95,11 +116,55 @@ function NavLink({
   )
 }
 
+function PageLink({
+  href,
+  label,
+  icon: Icon,
+  isActive,
+  onNavigate,
+}: {
+  href: string
+  label: string
+  icon: typeof LayoutDashboard
+  isActive: boolean
+  onNavigate: () => void
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onNavigate}
+      className={cn(
+        'nav-link group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors',
+        isActive
+          ? ''
+          : 'text-muted-foreground hover:bg-secondary hover:text-foreground',
+      )}
+      style={isActive ? { color: '#ffffff' } : undefined}
+      aria-current={isActive ? 'true' : undefined}
+    >
+      <Icon
+        className={cn(
+          'size-4.5 shrink-0 transition-transform group-hover:scale-110',
+          !isActive && 'text-muted-foreground',
+        )}
+        style={isActive ? { color: '#ffffff' } : undefined}
+      />
+      {label}
+      {isActive ? (
+        <span className="ml-auto size-1.5 rounded-full bg-white" />
+      ) : null}
+    </Link>
+  )
+}
+
 export function Sidebar() {
   const accentColor = '#fb923c'
+  const pathname = usePathname()
   const [active, setActive] = useState('overview')
   const [open, setOpen] = useState(true)
   const [promoHidden, setPromoHidden] = useState(false)
+
+  const isUsersPage = pathname?.startsWith('/dashboard/users')
 
   // On mount, check screen size for initial state
   useEffect(() => {
@@ -179,12 +244,24 @@ export function Sidebar() {
             <NavLink
               key={item.id}
               item={item}
-              active={active === item.id}
+              active={active === item.id && !isUsersPage}
               onNavigate={() => { if (window.innerWidth < 1024) setOpen(false) }}
               onSelect={setActive}
               accentColor={accentColor}
+              isOnSubpage={isUsersPage ?? false}
             />
           ))}
+
+          <p className="text-muted-foreground/70 px-3 pb-1.5 pt-5 text-[10px] font-semibold uppercase tracking-[0.14em]">
+            Data
+          </p>
+          <PageLink
+            href="/dashboard/users"
+            label="Users"
+            icon={Users}
+            isActive={isUsersPage ?? false}
+            onNavigate={() => { if (window.innerWidth < 1024) setOpen(false) }}
+          />
 
           <p className="text-muted-foreground/70 px-3 pb-1.5 pt-5 text-[10px] font-semibold uppercase tracking-[0.14em]">
             More
@@ -193,10 +270,11 @@ export function Sidebar() {
             <NavLink
               key={item.id}
               item={item}
-              active={active === item.id}
+              active={active === item.id && !isUsersPage}
               onNavigate={() => { if (window.innerWidth < 1024) setOpen(false) }}
               onSelect={setActive}
               accentColor={accentColor}
+              isOnSubpage={isUsersPage ?? false}
             />
           ))}
         </nav>
