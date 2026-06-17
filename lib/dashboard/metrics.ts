@@ -28,7 +28,7 @@
  *   'derived' — computed from real production data (clearly labelled)
  *   'pending' — no production source yet; we say so instead of faking it
  */
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/server'
 
 export type MetricStatus = 'live' | 'derived' | 'pending'
 
@@ -80,7 +80,7 @@ const pending = (source: string): Metric => ({
 
 /** Count rows in a table with a HEAD request (no payload transferred). */
 async function countRows(
-  supabase: Awaited<ReturnType<typeof createClient>>,
+  supabase: ReturnType<typeof createAdminClient>,
   table: string,
 ): Promise<number | null> {
   const { count, error } = await supabase
@@ -147,7 +147,7 @@ function bucketByDay(timestamps: string[]): TimePoint[] {
 }
 
 export async function getDashboardData(): Promise<DashboardData> {
-  const supabase = await createClient()
+  const supabase = createAdminClient()
   const now = new Date()
   const thirtyDaysAgoIso = new Date(
     now.getTime() - 30 * 24 * 60 * 60 * 1000,
