@@ -40,10 +40,10 @@ export function Footer() {
               {t.footer.tagline}
             </p>
             <div className="flex gap-3">
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="https://www.facebook.com/profile.php?id=61590901582384" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                 <Facebook className="w-3.5 h-3.5" />
               </Link>
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="https://www.instagram.com/noahlife.io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                 <Instagram className="w-3.5 h-3.5" />
               </Link>
               <Link href="https://www.linkedin.com/company/noahlife-io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
