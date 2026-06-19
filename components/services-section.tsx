@@ -152,7 +152,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="rounded-2xl overflow-hidden mb-20 group"
+          className="rounded-2xl overflow-hidden mb-6 group"
         >
           <img
             src="/images/services-hero.png"
