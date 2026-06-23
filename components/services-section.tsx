@@ -1,12 +1,12 @@
 "use client"
 
-import { MessageCircleMore, Pill, Stethoscope, HeartHandshake, Gamepad2 } from "lucide-react"
+import { MessageCircleMore, Pill, Stethoscope, HeartHandshake } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
 import { useState, useRef, useEffect } from "react"
 
-const icons = [MessageCircleMore, Pill, Stethoscope, HeartHandshake, Gamepad2]
-const colors = ["#7EA088", "#D4A24D", "#A95535", "#7EA088", "#D4A24D"]
+const icons = [MessageCircleMore, Pill, Stethoscope, HeartHandshake]
+const colors = ["#7EA088", "#D4A24D", "#A95535", "#7EA088"]
 
 export function ServicesSection() {
   const { t } = useLanguage()
@@ -112,7 +112,7 @@ export function ServicesSection() {
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden sm:grid grid-cols-3 md:grid-cols-5 gap-6 md:gap-8 mb-10">
+        <div className="hidden sm:grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-10">
           {t.services.items.map((item, index) => {
             const Icon = icons[index]
             const color = colors[index]
