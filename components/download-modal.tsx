@@ -57,7 +57,7 @@ export function DownloadModal({ isOpen, onClose }: DownloadModalProps) {
               </a>
 
               <a
-                href="https://play.google.com/store"
+                href="https://play.google.com/store/apps/details?id=com.noahai.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 px-5 py-4 bg-black rounded-xl hover:bg-gray-900 transition-colors group"
