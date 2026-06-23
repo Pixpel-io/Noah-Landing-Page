@@ -85,6 +85,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               <li><Link href="/privacy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.privacy}</Link></li>
               <li><Link href="/terms" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.terms}</Link></li>
+              <li><Link href="/cookie-policy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.cookies}</Link></li>
             </ul>
           </div>
         </div>

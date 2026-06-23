@@ -9,12 +9,12 @@ export function LegalFooter() {
   const t = locale === "es" ? es : en
 
   return (
-    <footer className="bg-white pt-12 pb-6 px-4 sm:px-6">
+    <footer className="bg-white pt-10 sm:pt-12 pb-6 px-3 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="border-t border-[#D9D2BE]/50 mb-10" />
+        <div className="border-t border-[#D9D2BE]/50 mb-8 sm:mb-10" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 md:gap-12 mb-12">
-          <div className="col-span-2 sm:col-span-1">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-6 sm:gap-8 md:gap-12 mb-10 sm:mb-12">
+          <div className="col-span-2 sm:col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4 group">
               <div className="relative">
                 <svg width="32" height="32" viewBox="0 0 36 36" fill="none" className="transition-transform duration-500 group-hover:rotate-[360deg]">
@@ -30,38 +30,39 @@ export function LegalFooter() {
               {t.tagline}
             </p>
             <div className="flex gap-3">
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="#" className="w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                 <Facebook className="w-3.5 h-3.5" />
               </Link>
-              <Link href="#" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="#" className="w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                 <Instagram className="w-3.5 h-3.5" />
               </Link>
-              <Link href="https://www.linkedin.com/company/noahlife-io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="https://www.linkedin.com/company/noahlife-io/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
                 <Linkedin className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
 
           <div>
-            <h4 className="text-[18px] font-bold text-[#1F3842] mb-4">{t.company}</h4>
-            <ul className="space-y-2.5">
-              <li><Link href="/" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.about}</Link></li>
+            <h4 className="text-base sm:text-[18px] font-bold text-[#1F3842] mb-3 sm:mb-4">{t.company}</h4>
+            <ul className="space-y-2 sm:space-y-2.5">
+              <li><Link href="/" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200 py-0.5">{t.about}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-[18px] font-bold text-[#1F3842] mb-4">{t.product}</h4>
-            <ul className="space-y-2.5">
-              <li><Link href="/#features" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.features}</Link></li>
-              <li><Link href="/#how-it-works" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.howItWorks}</Link></li>
+            <h4 className="text-base sm:text-[18px] font-bold text-[#1F3842] mb-3 sm:mb-4">{t.product}</h4>
+            <ul className="space-y-2 sm:space-y-2.5">
+              <li><Link href="/#features" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200 py-0.5">{t.features}</Link></li>
+              <li><Link href="/#how-it-works" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200 py-0.5">{t.howItWorks}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-[18px] font-bold text-[#1F3842] mb-4">{t.legal}</h4>
-            <ul className="space-y-2.5">
-              <li><Link href="/privacy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.privacy}</Link></li>
-              <li><Link href="/terms" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.terms}</Link></li>
+            <h4 className="text-base sm:text-[18px] font-bold text-[#1F3842] mb-3 sm:mb-4">{t.legal}</h4>
+            <ul className="space-y-2 sm:space-y-2.5">
+              <li><Link href="/privacy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200 py-0.5">{t.privacy}</Link></li>
+              <li><Link href="/terms" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200 py-0.5">{t.terms}</Link></li>
+              <li><Link href="/cookie-policy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200 py-0.5">{t.cookies}</Link></li>
             </ul>
           </div>
         </div>
@@ -85,6 +86,7 @@ const en = {
   howItWorks: "How it works",
   privacy: "Privacy Policy",
   terms: "Terms of Use",
+  cookies: "Cookie Policy",
   copyright: "© 2025 Noah Life. All rights reserved.",
   madeWith: "Made with love for the ones who matter",
 }
@@ -99,6 +101,7 @@ const es = {
   howItWorks: "Cómo funciona",
   privacy: "Política de Privacidad",
   terms: "Condiciones de Uso",
+  cookies: "Política de Cookies",
   copyright: "© 2025 Noah Life. Todos los derechos reservados.",
   madeWith: "Hecho con amor para quienes importan",
 }
