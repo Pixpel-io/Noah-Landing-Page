@@ -10,10 +10,10 @@ export function NumbersSection() {
   const sliderRef = useRef<HTMLDivElement>(null)
 
   const stats = [
-    { value: t.numbersSection.stat1Value, desc: t.numbersSection.stat1Desc, icon: Users, bgColor: "#7FA088" },
-    { value: t.numbersSection.stat2Value, desc: t.numbersSection.stat2Desc, icon: Pill, bgColor: "#D4A24D" },
-    { value: t.numbersSection.stat3Value, desc: t.numbersSection.stat3Desc, icon: Stethoscope, bgColor: "#C76B49" },
-    { value: t.numbersSection.stat4Value, desc: t.numbersSection.stat4Desc, icon: HeartHandshake, bgColor: "#7FA088" },
+    { value: t.numbersSection.stat1Value, desc: t.numbersSection.stat1Desc, icon: Users, bgColor: "#FEA060" },
+    { value: t.numbersSection.stat2Value, desc: t.numbersSection.stat2Desc, icon: Pill, bgColor: "#D86262" },
+    { value: t.numbersSection.stat3Value, desc: t.numbersSection.stat3Desc, icon: Stethoscope, bgColor: "#734163" },
+    { value: t.numbersSection.stat4Value, desc: t.numbersSection.stat4Desc, icon: HeartHandshake, bgColor: "#F2CA1D" },
   ]
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export function NumbersSection() {
             viewport={{ once: true, margin: "-50px" }}
             className="lg:max-w-[418px] shrink-0"
           >
-            <p className="text-base sm:text-[20px] tracking-wide text-[#7EA088] font-normal mb-8 sm:mb-12 font-sans">
+            <p className="text-base sm:text-[20px] tracking-wide text-[#D86262] font-normal mb-8 sm:mb-12 font-sans">
               {t.numbersSection.sectionLabel}
             </p>
             <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-[40px] md:text-[50px] lg:text-[60px] leading-[0.9] tracking-tight text-black mb-12 heading-glow cursor-default">
@@ -117,7 +117,7 @@ export function NumbersSection() {
                     key={index}
                     onClick={() => scrollToSlide(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      currentSlide === index ? "bg-[#7FA088] w-6" : "bg-gray-300"
+                      currentSlide === index ? "bg-[#D86262] w-6" : "bg-gray-300"
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
@@ -172,7 +172,7 @@ export function NumbersSection() {
         viewport={{ once: true, margin: "-50px" }}
         className="max-w-7xl mx-auto mt-6"
       >
-        <div className="relative bg-[#C17B50] rounded-full px-5 sm:px-8 md:px-10 py-3 sm:py-4 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#C17B50]/30 transition-shadow duration-300">
+        <div className="relative bg-[#734163] rounded-full px-5 sm:px-8 md:px-10 py-3 sm:py-4 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#734163]/30 transition-shadow duration-300">
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
           <Heart className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-white group-hover:fill-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
           <p className="text-white text-sm sm:text-base md:text-[18px] font-medium text-center relative z-10">

@@ -3,6 +3,7 @@
 import './legal.css'
 import { LegalHeader } from './legal-header'
 import { LegalFooter } from './legal-footer'
+import { LegalLoader } from './legal-loader'
 import { LanguageProvider, useLanguage } from '@/lib/language-context'
 
 export default function PrivacyPage() {
@@ -19,9 +20,10 @@ function PrivacyContent() {
 
   return (
     <div className="min-h-screen bg-white">
+      <LegalLoader color="#734163" />
       <LegalHeader />
 
-      <div className="legal-page pt-18">
+      <div className="legal-page pt-18" style={{"--accent": "#734163"} as React.CSSProperties}>
         <header className="legal-header">
           <span className="legal-badge">{t.badge}</span>
           <h1>{t.title}</h1>
@@ -53,11 +55,10 @@ function PrivacyContent() {
               <p>{t.sections.controller.desc}</p>
               <div className="legal-card">
                 <ul>
-                  <li><strong>[YOUR REGISTERED COMPANY NAME]</strong></li>
-                  <li>[Registered address, Spain]</li>
-                  <li>NIF / CIF: [NIF/CIF NUMBER]</li>
-                  <li>{t.sections.controller.contact}: <a href="mailto:privacy@noahlife.io">privacy@noahlife.io</a></li>
-                  <li>DPO: [DPO name and email]</li>
+                  <li><strong>Pixpel LDA</strong></li>
+                  <li>Rua das Merces 41, Funchal, Madeira, Portugal 9000-224</li>
+                  <li>{t.sections.controller.contact}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>DPO: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
                 </ul>
               </div>
               <p>{t.sections.controller.authority} <a href="https://www.aepd.es" target="_blank" rel="noopener">aepd.es</a></p>
@@ -159,7 +160,7 @@ function PrivacyContent() {
               <ul>
                 {t.sections.transfers.items.map((item, i) => <li key={i}>{item}</li>)}
               </ul>
-              <p>{t.sections.transfers.contact} <a href="mailto:privacy@noahlife.io">privacy@noahlife.io</a></p>
+              <p>{t.sections.transfers.contact} <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></p>
             </section>
 
             <section id="retention">
@@ -189,7 +190,7 @@ function PrivacyContent() {
                   </div>
                 ))}
               </div>
-              <p>{t.sections.rights.contact} <a href="mailto:privacy@noahlife.io">privacy@noahlife.io</a></p>
+              <p>{t.sections.rights.contact} <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></p>
               <h3>{t.sections.rights.inApp}</h3>
               <ul>
                 {t.sections.rights.inAppItems.map((item, i) => <li key={i}>{item}</li>)}
@@ -230,9 +231,9 @@ function PrivacyContent() {
               <h2>{t.sections.contact.title}</h2>
               <div className="legal-card">
                 <ul>
-                  <li>{t.sections.contact.privacy}: <a href="mailto:privacy@noahlife.io">privacy@noahlife.io</a></li>
-                  <li>DPO: [DPO_EMAIL_OR_NAME]</li>
-                  <li>{t.sections.contact.postal}: [YOUR REGISTERED OFFICE ADDRESS]</li>
+                  <li>{t.sections.contact.privacy}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>DPO: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>{t.sections.contact.postal}: Rua das Merces 41, Funchal, Madeira, Portugal 9000-224</li>
                   <li>AEPD: <a href="https://www.aepd.es" target="_blank" rel="noopener">aepd.es</a></li>
                 </ul>
               </div>
@@ -251,8 +252,8 @@ const en = {
   title: "Privacy Policy",
   subtitle: "How Noah Life collects, uses, and protects your personal data. GDPR & LOPDGDD compliant.",
   version: "Version 1.0",
-  lastUpdated: "Last updated: [PUBLICATION DATE]",
-  effective: "Effective: [PUBLICATION DATE]",
+  lastUpdated: "Last updated: June 24, 2026",
+  effective: "Effective: June 24, 2026",
   onThisPage: "On this page",
   toc: [
     { href: "#controller", label: "Data controller" },
@@ -377,7 +378,7 @@ const en = {
     },
     children: {
       title: "9. Children",
-      desc: "Noah is designed for adults aged 50+. We do not knowingly collect data from children under 14 (Spain’s digital consent age). Contact privacy@noahlife.io if you believe a child has used the app.",
+      desc: "Noah is designed for adults aged 50+. We do not knowingly collect data from children under 14 (Spain’s digital consent age). Contact contact@noahlife.io if you believe a child has used the app.",
     },
     automated: {
       title: "10. Automated decision-making",
@@ -404,8 +405,8 @@ const es = {
   title: "Política de Privacidad",
   subtitle: "Cómo Noah Life recopila, utiliza y protege tus datos personales. Cumplimiento RGPD y LOPDGDD.",
   version: "Versión 1.0",
-  lastUpdated: "Última actualización: [FECHA DE PUBLICACIÓN]",
-  effective: "Vigente desde: [FECHA DE PUBLICACIÓN]",
+  lastUpdated: "Última actualización: 24 de junio de 2026",
+  effective: "Vigente desde: 24 de junio de 2026",
   onThisPage: "En esta página",
   toc: [
     { href: "#controller", label: "Responsable del tratamiento" },
@@ -530,7 +531,7 @@ const es = {
     },
     children: {
       title: "9. Menores",
-      desc: "Noah está diseñado para adultos de 50+. No recopilamos datos de menores de 14 años (edad de consentimiento digital en España). Contacta privacy@noahlife.io si crees que un menor ha usado la app.",
+      desc: "Noah está diseñado para adultos de 50+. No recopilamos datos de menores de 14 años (edad de consentimiento digital en España). Contacta contact@noahlife.io si crees que un menor ha usado la app.",
     },
     automated: {
       title: "10. Decisiones automatizadas",

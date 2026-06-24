@@ -29,7 +29,7 @@ export function ScrollEffects() {
       {/* Scroll progress bar */}
       <div className="fixed top-0 left-0 right-0 z-[100] h-[3px]">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#7EA088] via-[#D4A24D] to-[#7EA088]"
+          className="h-full bg-gradient-to-r from-[#D86262] via-[#734163] to-[#D86262]"
           style={{ width: `${scrollProgress}%` }}
           transition={{ duration: 0.1 }}
         />
@@ -44,7 +44,7 @@ export function ScrollEffects() {
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.3 }}
             onClick={scrollToTop}
-            className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1F3842] text-white shadow-lg shadow-[#1F3842]/20 flex items-center justify-center hover:bg-[#7EA088] transition-colors duration-300 group"
+            className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#D86262] text-white shadow-lg shadow-[#D86262]/20 flex items-center justify-center hover:bg-[#734163] transition-colors duration-300 group"
           >
             <ArrowUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform duration-300" />
           </motion.button>

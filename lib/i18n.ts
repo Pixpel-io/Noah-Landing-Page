@@ -56,6 +56,7 @@ export const translations = {
       stat4Value: "55%",
       stat4Title: "Health & Medications",
       stat4Desc: "Leave the doctor without understanding what they were told",
+      quote: "Behind every statistic is a person who deserves to feel safe, supported, and cared for.",
     },
     whyDifferent: {
       sectionLabel: "Why is Noah different?",
@@ -268,6 +269,7 @@ export const translations = {
       stat4Value: "55%",
       stat4Title: "Salud y Medicamentos",
       stat4Desc: "Ha salido del médico sin entender lo que le dijeron.",
+      quote: "Detrás de cada estadística hay una persona que merece sentirse segura, apoyada y cuidada.",
     },
     whyDifferent: {
       sectionLabel: "¿Por qué es Noah diferente?",
