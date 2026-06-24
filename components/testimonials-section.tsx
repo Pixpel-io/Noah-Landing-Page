@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import { Play, Pause } from "lucide-react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/language-context"
@@ -36,52 +36,9 @@ const videoCards = [
 ]
 
 export function TestimonialsSection() {
-  const [isPaused, setIsPaused] = useState(false)
-  const [isInitialized, setIsInitialized] = useState(false)
   const [playingIndex, setPlayingIndex] = useState<number | null>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const { t, locale } = useLanguage()
-
-  const duplicatedVideos = [...videoCards, ...videoCards, ...videoCards]
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsInitialized(true)
-    }, 100)
-    return () => clearTimeout(timer)
-  }, [])
-
-  useEffect(() => {
-    if (!isInitialized || !scrollRef.current) return
-
-    const scrollContainer = scrollRef.current
-    let animationFrameId: number
-    let isActive = true
-
-    const scroll = () => {
-      if (!isActive || !scrollContainer || isPaused || playingIndex !== null) {
-        animationFrameId = requestAnimationFrame(scroll)
-        return
-      }
-
-      scrollContainer.scrollLeft += 0.8
-      const maxScroll = scrollContainer.scrollWidth / 3
-
-      if (scrollContainer.scrollLeft >= maxScroll) {
-        scrollContainer.scrollLeft = 0
-      }
-
-      animationFrameId = requestAnimationFrame(scroll)
-    }
-
-    animationFrameId = requestAnimationFrame(scroll)
-
-    return () => {
-      isActive = false
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [isPaused, isInitialized, playingIndex])
 
   const handlePlay = (index: number) => {
     if (playingIndex === index) {
@@ -116,51 +73,43 @@ export function TestimonialsSection() {
           </motion.div>
         </div>
 
-        {/* Video testimonials carousel */}
-        <div className="relative mb-16">
-          <div
-            ref={scrollRef}
-            className="flex gap-5 overflow-x-hidden"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            style={{ scrollBehavior: "auto" }}
-          >
-            {duplicatedVideos.map((card, index) => (
-              <div key={index} className="shrink-0 w-44 sm:w-60 md:w-70 group/card cursor-pointer">
-                {/* Video thumbnail */}
-                <div
-                  className="relative rounded-xl overflow-hidden mb-4 aspect-3/4 bg-black"
-                  onClick={() => handlePlay(index)}
-                >
-                  <video
-                    ref={(el) => { videoRefs.current[index] = el }}
-                    src={card.video}
-                    poster={card.poster}
-                    playsInline
-                    preload="none"
-                    onEnded={handleVideoEnd}
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Play/Pause overlay */}
-                  <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${playingIndex === index ? "opacity-0 hover:opacity-100" : "opacity-100"}`}>
-                    <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 transition-transform duration-300 group-hover/card:scale-110">
-                      {playingIndex === index ? (
-                        <Pause className="w-6 h-6 text-white" fill="white" />
-                      ) : (
-                        <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
-                      )}
-                    </div>
+        {/* Video testimonials grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          {videoCards.map((card, index) => (
+            <div key={index} className="group/card cursor-pointer">
+              {/* Video thumbnail */}
+              <div
+                className="relative rounded-xl overflow-hidden mb-4 aspect-3/4 bg-black"
+                onClick={() => handlePlay(index)}
+              >
+                <video
+                  ref={(el) => { videoRefs.current[index] = el }}
+                  src={card.video}
+                  poster={card.poster}
+                  playsInline
+                  preload="none"
+                  onEnded={handleVideoEnd}
+                  className="w-full h-full object-cover"
+                />
+                {/* Play/Pause overlay */}
+                <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${playingIndex === index ? "opacity-0 hover:opacity-100" : "opacity-100"}`}>
+                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 transition-transform duration-300 group-hover/card:scale-110">
+                    {playingIndex === index ? (
+                      <Pause className="w-6 h-6 text-white" fill="white" />
+                    ) : (
+                      <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+                    )}
                   </div>
                 </div>
-                {/* Quote + name */}
-                <p className="text-base text-black leading-relaxed mb-3 line-clamp-3">
-                  &ldquo;{locale === "es" ? card.quoteEs : card.quoteEn}&rdquo;
-                </p>
-                <p className="text-sm font-bold text-[#1F3842]">{card.name}</p>
-                <p className="text-xs text-[#D86262]">{locale === "es" ? card.roleEs : card.roleEn}</p>
               </div>
-            ))}
-          </div>
+              {/* Quote + name */}
+              <p className="text-base text-black leading-relaxed mb-3 line-clamp-3">
+                &ldquo;{locale === "es" ? card.quoteEs : card.quoteEn}&rdquo;
+              </p>
+              <p className="text-sm font-bold text-[#1F3842]">{card.name}</p>
+              <p className="text-xs text-[#D86262]">{locale === "es" ? card.roleEs : card.roleEn}</p>
+            </div>
+          ))}
         </div>
 
       </div>
