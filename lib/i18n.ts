@@ -134,7 +134,7 @@ export const translations = {
         {
           name: "Jean-Pierre Duval",
           role: "User, age 68",
-          content: "The emergency button saved me once already. I fell and was able to call my son immediately. The app is so simple — even I can use it without help.",
+          content: "The emergency button saved me once already. I fell and was able to call my son immediately. The app is so simple,even I can use it without help.",
         },
         {
           name: "Sophie Martin",
@@ -144,7 +144,7 @@ export const translations = {
         {
           name: "Dr. Amira Hassan",
           role: "Family Medicine",
-          content: "The accessibility features are outstanding. High contrast, large touch targets, voice input — this is how all health apps should be designed for older adults.",
+          content: "The accessibility features are outstanding. High contrast, large touch targets, voice input,this is how all health apps should be designed for older adults.",
         },
       ],
     },
@@ -155,7 +155,7 @@ export const translations = {
       items: [
         {
           question: "Does NOAH AI replace my doctor?",
-          answer: "No. Noah is a daily support companion, not a doctor. It helps you remember what your doctor told you, reminds you to take your medications, and keeps you company — but for any symptoms or medical concerns, you should always consult your doctor.",
+          answer: "No. Noah is a daily support companion, not a doctor. It helps you remember what your doctor told you, reminds you to take your medications, and keeps you company,but for any symptoms or medical concerns, you should always consult your doctor.",
         },
         {
           question: "What happens during the recording of a medical visit?",
@@ -171,7 +171,7 @@ export const translations = {
         },
         {
           question: "Can my family check on me without invading my privacy?",
-          answer: "Yes. Family members receive a weekly activity report — whether you took your medications, attended your appointments, your general mood — but never the content of your conversations with Noah. What you tell Noah is yours alone.",
+          answer: "Yes. Family members receive a weekly activity report,whether you took your medications, attended your appointments, your general mood,but never the content of your conversations with Noah. What you tell Noah is yours alone.",
         },
         {
           question: "Does NOAH listen to my private conversations?",
@@ -183,7 +183,7 @@ export const translations = {
         },
         {
           question: "Do I need to know how to use smartphones well to use NOAH?",
-          answer: "No. Noah works by voice — you just have to talk to it. You don't need to type or navigate menus. If you have a family member willing to help you set it up, it's ready in 5 minutes.",
+          answer: "No. Noah works by voice,you just have to talk to it. You don't need to type or navigate menus. If you have a family member willing to help you set it up, it's ready in 5 minutes.",
         },
         {
           question: "How much does NOAH cost and who pays for it?",
@@ -197,7 +197,7 @@ export const translations = {
       company: "Company",
       support: "Support",
       legal: "Legal",
-      copyright: "© 2026 Noah AI. All rights reserved.",
+      copyright: "© Pixpel LDA. All rights reserved.",
       madeWith: "Made with love for the ones who matter",
       links: {
         features: "Features",
@@ -358,7 +358,7 @@ export const translations = {
         {
           name: "Dra. Amira Hassan",
           role: "Medicina Familiar",
-          content: "Las funciones de accesibilidad son excepcionales. Alto contraste, áreas de toque grandes, entrada de voz — así es como todas las apps de salud deberían diseñarse para adultos mayores.",
+          content: "Las funciones de accesibilidad son excepcionales. Alto contraste, áreas de toque grandes, entrada de voz,así es como todas las apps de salud deberían diseñarse para adultos mayores.",
         },
       ],
     },
@@ -369,7 +369,7 @@ export const translations = {
       items: [
         {
           question: "¿NOAH AI reemplaza a mi médico?",
-          answer: "No. Noah es un compañero de apoyo diario, no un doctor. Te ayuda a recordar lo que te dijo el médico, te recuerda tomar tus medicamentos y te hace compañía — pero ante cualquier síntoma o preocupación médica, siempre debes consultar a tu doctor.",
+          answer: "No. Noah es un compañero de apoyo diario, no un doctor. Te ayuda a recordar lo que te dijo el médico, te recuerda tomar tus medicamentos y te hace compañía,pero ante cualquier síntoma o preocupación médica, siempre debes consultar a tu doctor.",
         },
         {
           question: "¿Qué pasa durante la grabación de una visita médica?",
@@ -385,7 +385,7 @@ export const translations = {
         },
         {
           question: "¿Mi familia puede saber cómo estoy sin invadir mi privacidad?",
-          answer: "Sí. Los familiares reciben un informe semanal de actividad — si tomaste tus medicamentos, si fuiste a tus citas, tu estado de ánimo general — pero nunca el contenido de tus conversaciones con Noah. Lo que le dices a Noah es solo tuyo.",
+          answer: "Sí. Los familiares reciben un informe semanal de actividad,si tomaste tus medicamentos, si fuiste a tus citas, tu estado de ánimo general,pero nunca el contenido de tus conversaciones con Noah. Lo que le dices a Noah es solo tuyo.",
         },
         {
           question: "¿NOAH escucha mis conversaciones privadas?",
@@ -397,7 +397,7 @@ export const translations = {
         },
         {
           question: "¿Necesito saber manejar bien los smartphones para usar NOAH?",
-          answer: "No. Noah funciona por voz — solo tienes que hablarle. No necesitas escribir ni navegar por menús. Si tienes un familiar dispuesto a ayudarte a configurarlo, está listo en 5 minutos.",
+          answer: "No. Noah funciona por voz,solo tienes que hablarle. No necesitas escribir ni navegar por menús. Si tienes un familiar dispuesto a ayudarte a configurarlo, está listo en 5 minutos.",
         },
         {
           question: "¿Cuánto cuesta NOAH y quién lo paga?",
@@ -411,7 +411,7 @@ export const translations = {
       company: "Empresa",
       support: "Soporte",
       legal: "Legal",
-      copyright: "© 2026 Noah IA. Todos los derechos reservados.",
+      copyright: "© Pixpel LDA. Todos los derechos reservados.",
       madeWith: "Hecho con amor para quienes importan",
       links: {
         features: "Funciones",
