@@ -115,7 +115,7 @@ html {
 
 /* Smooth gradient text for headings on hover */
 .heading-glow:hover {
-  background: linear-gradient(135deg, #1F3842 0%, #7EA088 50%, #1F3842 100%);
+  background: linear-gradient(135deg, #1F3842 0%, #D86262 50%, #1F3842 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -161,7 +161,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7EA088;
+  background: #D86262;
 }
 
 .noah-loader {
@@ -173,7 +173,7 @@ html {
   inset: -6px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #D4A24D;
+  border-top-color: #D86262;
   animation: noah-loader-spin 1s linear infinite;
 }
 @keyframes noah-loader-spin {

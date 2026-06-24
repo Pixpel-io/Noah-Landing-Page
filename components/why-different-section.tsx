@@ -2,10 +2,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
-import { MessageCircle, HeartPulse, Brain, ShieldAlert, Users, Heart } from "lucide-react"
-
-const pillarIcons = [MessageCircle, HeartPulse, Brain, ShieldAlert, Users]
-const pillarColors = ["#7EA088", "#D4A24D", "#A95535", "#D4A24D", "#7EA088"]
+import { Heart } from "lucide-react"
 
 export function WhyDifferentSection() {
   const { t, locale } = useLanguage()
@@ -31,7 +28,7 @@ export function WhyDifferentSection() {
             />
           </div>
           <div className="flex flex-col justify-start self-start pt-0">
-            <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-6 font-sans">
+            <p className="text-[20px] tracking-wide text-[#D86262] font-normal mb-6 font-sans">
               {t.whyDifferent.sectionLabel}
             </p>
             <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] font-normal text-[#1F3842] mb-6 leading-[0.9] heading-glow cursor-default">
@@ -62,36 +59,6 @@ export function WhyDifferentSection() {
             />
           </div>
 
-          {/* Pillars row - white bg */}
-          <div className="bg-[#F5F5F5] px-6 sm:px-10 py-5 border-t border-gray-200">
-            <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4 md:gap-6">
-              {t.whyDifferent.pillars.map((pillar, index) => {
-                const Icon = pillarIcons[index]
-                const color = pillarColors[index]
-                return (
-                  <div key={index} className="flex items-center gap-2.5 cursor-default group/pill">
-                    <div
-                      className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 group-hover/pill:scale-110 group-hover/pill:shadow-[0_0_14px_rgba(0,0,0,0.15)]"
-                      style={{ borderColor: color, backgroundColor: 'transparent' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = color
-                        const icon = e.currentTarget.querySelector('svg')
-                        if (icon) { icon.style.color = 'white'; icon.style.filter = 'drop-shadow(0 0 6px rgba(255,255,255,0.9))' }
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'transparent'
-                        const icon = e.currentTarget.querySelector('svg')
-                        if (icon) { icon.style.color = color; icon.style.filter = 'none' }
-                      }}
-                    >
-                      <Icon className="w-4 h-4 transition-all duration-300" style={{ color }} />
-                    </div>
-                    <span className="text-base sm:text-lg md:text-[24px] font-normal text-[#1F3842]">{pillar}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
         </motion.div>
 
         {/* Quote banner */}
@@ -100,10 +67,10 @@ export function WhyDifferentSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
           viewport={{ once: true, margin: "-50px" }}
-          className="relative bg-[#1F3842] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#1F3842]/40 transition-shadow duration-300"
+          className="relative bg-[#734163] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#734163]/40 transition-shadow duration-300"
         >
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          <Heart className="w-6 h-6 shrink-0 text-[#7EA088] relative z-10 group-hover:fill-white group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
+          <Heart className="w-6 h-6 shrink-0 text-[#D86262] relative z-10 group-hover:fill-white group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
           <p className="text-white text-base md:text-[18px] leading-relaxed relative z-10">
             {t.whyDifferent.quote}
           </p>

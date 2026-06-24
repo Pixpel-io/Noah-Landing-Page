@@ -45,11 +45,8 @@ export function HeroSection() {
           {/* Right - Hero image composition matching Figma */}
           <div className={`relative transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
             <div className="relative w-full min-h-[360px] sm:min-h-[480px] md:min-h-[540px]">
-              {/* Green background - left strip */}
-              <div className="absolute top-[30%] left-0 bottom-[8%] w-[25%] bg-[#7FA088] rounded-[20px]" />
-              <div className="absolute top-[30%] right-0 bottom-[8%] w-[25%] bg-[#7FA088]" />
-              {/* Green background - bottom area */}
-              <div className="absolute top-[65%] left-0 right-0 h-[29%] bg-[#7FA088] rounded-s-[20px]" />
+              {/* Gradient background - unified L-shape */}
+              <div className="absolute top-[30%] left-0 right-0 bottom-[8%] rounded-l-[20px] rounded-tr-none rounded-br-none" style={{background: "linear-gradient(135deg, #D86262, #734163)"}} />
 
               {/* iPad/Tablet frame - large, centered-right */}
               <div className="absolute top-[2%] left-[12%] right-[12%] z-10">
@@ -69,7 +66,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={isVisible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 1.4, duration: 0.5 }}
-                className="absolute bottom-[10%] left-[35%] sm:left-[40%] flex flex-col items-center gap-2 z-20"
+                className="absolute bottom-[10%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20"
               >
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-[2px]">
@@ -95,7 +92,7 @@ export function HeroSection() {
                       transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
                       className="absolute inset-0 rounded-full bg-white/30"
                     />
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1F3842] flex items-center justify-center shadow-lg relative z-10">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#241A21] flex items-center justify-center shadow-lg relative z-10">
                       <Mic className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                     </div>
                   </div>
@@ -127,8 +124,8 @@ export function HeroSection() {
                 transition={{ delay: 0.8, duration: 0.6 }}
                 className="absolute bottom-[45%] sm:bottom-[40%] left-0 sm:-left-20 bg-white rounded-xl border border-black px-4 sm:px-5 py-3 sm:py-4 flex items-center gap-3 sm:gap-4 z-30 shadow-lg cursor-pointer hover:-translate-y-2 hover:shadow-[0_14px_30px_rgba(126,160,136,0.25)] transition-all duration-300 animate-float"
               >
-                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#7FA088]/15 rounded-lg flex items-center justify-center">
-                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-[#7FA088]" />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 bg-[#D86262]/15 rounded-lg flex items-center justify-center">
+                  <Calendar className="w-5 h-5 sm:w-6 sm:h-6 text-[#D86262]" />
                 </div>
                 <div>
                   <p className="text-sm sm:text-base font-bold text-[#1F3842] font-[family-name:var(--font-crimson)]">{t.hero.drRecorded}</p>

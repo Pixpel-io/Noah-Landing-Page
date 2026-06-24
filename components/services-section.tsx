@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/language-context"
 import { useState, useRef, useEffect } from "react"
 
 const icons = [MessageCircleMore, Pill, Stethoscope, HeartHandshake]
-const colors = ["#7EA088", "#D4A24D", "#A95535", "#7EA088"]
+const colors = ["#FEA060", "#D86262", "#734163", "#FEA060"]
 
 export function ServicesSection() {
   const { t } = useLanguage()
@@ -60,7 +60,7 @@ export function ServicesSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-14"
         >
-          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">{t.services.sectionLabel}</p>
+          <p className="text-[20px] tracking-wide text-[#D86262] font-normal mb-4 font-sans">{t.services.sectionLabel}</p>
           <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
             {t.services.headline}
           </h2>
@@ -81,7 +81,7 @@ export function ServicesSection() {
                   key={index}
                   className="min-w-full snap-center px-4"
                 >
-                  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 flex flex-col items-center text-center mx-auto max-w-[320px]">
+                  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 flex flex-col items-center text-center mx-auto max-w-[290px]">
                     <div
                       className="w-16 h-16 rounded-full flex items-center justify-center mb-6 transition-transform duration-300"
                       style={{ backgroundColor: `${color}20`, border: `2px solid ${color}` }}
@@ -103,7 +103,7 @@ export function ServicesSection() {
                 key={index}
                 onClick={() => scrollToSlide(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? "bg-[#7EA088] w-8" : "bg-gray-300 w-2"
+                  currentSlide === index ? "bg-[#D86262] w-8" : "bg-gray-300 w-2"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

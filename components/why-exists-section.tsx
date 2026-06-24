@@ -22,7 +22,7 @@ export function WhyExistsSection() {
             transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
             viewport={{ once: true, margin: "-50px" }}
           >
-            <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-6 font-sans">
+            <p className="text-[20px] tracking-wide text-[#D86262] font-normal mb-6 font-sans">
               {t.whyExists.sectionLabel}
             </p>
             <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] font-normal text-[#1F3842] mb-8 leading-[0.9] heading-glow cursor-default">
@@ -35,7 +35,7 @@ export function WhyExistsSection() {
             <div className="flex flex-col">
               {t.whyExists.bullets.map((bullet, index) => (
                 <div key={index} className="flex items-center gap-3 py-4 border-t border-gray-200">
-                  <CheckCircle2 className="w-5 h-5 shrink-0 text-[#7EA088]" />
+                  <CheckCircle2 className="w-5 h-5 shrink-0 text-[#734163]" />
                   <p className="text-base text-black">{bullet}</p>
                 </div>
               ))}
@@ -67,7 +67,7 @@ export function WhyExistsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true, margin: "-50px" }}
-          className="relative mt-8 sm:mt-12 bg-[#7EA088] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#7EA088]/30 transition-shadow duration-300"
+          className="relative mt-8 sm:mt-12 bg-[#FEA060] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#FEA060]/30 transition-shadow duration-300"
         >
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
           <Heart className="w-6 h-6 shrink-0 text-white relative z-10 group-hover:fill-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />

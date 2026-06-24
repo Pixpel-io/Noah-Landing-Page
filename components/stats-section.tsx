@@ -2,6 +2,7 @@
 import { motion, useInView } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
+import { Heart } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
 
 export function StatsSection() {
@@ -10,10 +11,10 @@ export function StatsSection() {
   const sliderRef = useRef<HTMLDivElement>(null)
 
   const stats = [
-    { value: t.stats.stat1Value, title: t.stats.stat1Title, desc: t.stats.stat1Desc, color: "#7EA088", image: "/images/Lonely.jpg" },
-    { value: t.stats.stat2Value, title: t.stats.stat2Title, desc: t.stats.stat2Desc, color: "#D4A24D", image: "/images/Memory.jpg" },
-    { value: t.stats.stat3Value, title: t.stats.stat3Title, desc: t.stats.stat3Desc, color: "#A95535", image: "/images/Family.jpg" },
-    { value: t.stats.stat4Value, title: t.stats.stat4Title, desc: t.stats.stat4Desc, color: "#1F3842", image: "/images/Medication.jpg" },
+    { value: t.stats.stat1Value, title: t.stats.stat1Title, desc: t.stats.stat1Desc, color: "#FEA060", image: "/images/Lonely.jpg" },
+    { value: t.stats.stat2Value, title: t.stats.stat2Title, desc: t.stats.stat2Desc, color: "#D86262", image: "/images/Memory.jpg" },
+    { value: t.stats.stat3Value, title: t.stats.stat3Title, desc: t.stats.stat3Desc, color: "#734163", image: "/images/Family.jpg" },
+    { value: t.stats.stat4Value, title: t.stats.stat4Title, desc: t.stats.stat4Desc, color: "#F2CA1D", image: "/images/Medication.jpg" },
   ]
 
   useEffect(() => {
@@ -61,7 +62,7 @@ export function StatsSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-12"
         >
-          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">{t.stats.sectionLabel}</p>
+          <p className="text-[20px] tracking-wide text-[#D86262] font-normal mb-4 font-sans">{t.stats.sectionLabel}</p>
           <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
             {t.stats.headline}
           </h2>
@@ -111,7 +112,7 @@ export function StatsSection() {
                 key={index}
                 onClick={() => scrollToSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? "bg-[#7EA088] w-6" : "bg-gray-300"
+                  currentSlide === index ? "bg-[#D86262] w-6" : "bg-gray-300"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -153,6 +154,23 @@ export function StatsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Quote banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-8"
+        >
+          <div className="relative bg-[#D86262] rounded-full px-5 sm:px-8 md:px-10 py-3 sm:py-4 flex items-center justify-center gap-2 sm:gap-3 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#D86262]/30 transition-shadow duration-300">
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+            <Heart className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-white group-hover:fill-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
+            <p className="text-white text-sm sm:text-base md:text-[18px] font-medium text-center relative z-10">
+              {t.stats.quote}
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
