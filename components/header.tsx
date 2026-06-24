@@ -91,7 +91,7 @@ export function Header() {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-[#734163] hover:text-white transition-colors group/lang"
             title={locale === "en" ? "Cambiar a Español" : "Switch to English"}
           >
-            <Globe className="w-4 h-4 text-[#4D6E7B] group-hover/lang:text-white transition-colors" />
+            <Globe className="w-4 h-4 text-[#734163] group-hover/lang:text-white transition-colors" />
             <span className="text-xs font-semibold text-[#1F3842] uppercase group-hover/lang:text-white transition-colors">{locale === "en" ? "ES" : "EN"}</span>
           </button>
 
@@ -108,7 +108,7 @@ export function Header() {
             onClick={toggleLocale}
             className="flex items-center gap-1.5 px-2.5 py-1.5"
           >
-            <Globe className="w-3.5 h-3.5 text-[#4D6E7B]" />
+            <Globe className="w-3.5 h-3.5 text-[#734163]" />
             <span className="text-xs font-semibold text-[#1F3842] uppercase">{locale === "en" ? "ES" : "EN"}</span>
           </button>
 

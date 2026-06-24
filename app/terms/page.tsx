@@ -3,6 +3,7 @@
 import '../privacy/legal.css'
 import { LegalHeader } from '../privacy/legal-header'
 import { LegalFooter } from '../privacy/legal-footer'
+import { LegalLoader } from '../privacy/legal-loader'
 import { LanguageProvider, useLanguage } from '@/lib/language-context'
 
 export default function TermsPage() {
@@ -19,9 +20,10 @@ function TermsContent() {
 
   return (
     <div className="min-h-screen bg-white">
+      <LegalLoader color="#D86262" />
       <LegalHeader />
 
-      <div className="legal-page pt-18">
+      <div className="legal-page pt-18" style={{"--accent": "#D86262"} as React.CSSProperties}>
         <header className="legal-header">
           <span className="legal-badge">{t.badge}</span>
           <h1>{t.title}</h1>
@@ -52,11 +54,10 @@ function TermsContent() {
               <h2>{t.sections.who.title}</h2>
               <div className="legal-card">
                 <ul>
-                  <li><strong>[YOUR REGISTERED COMPANY NAME]</strong></li>
-                  <li>[Registered address, Spain]</li>
-                  <li>NIF / CIF: [NIF/CIF NUMBER]</li>
-                  <li>{t.sections.who.legal}: <a href="mailto:legal@noahlife.io">legal@noahlife.io</a></li>
-                  <li>{t.sections.who.privacy}: <a href="mailto:privacy@noahlife.io">privacy@noahlife.io</a></li>
+                  <li><strong>Pixpel LDA</strong></li>
+                  <li>Rua das Merces 41, Funchal, Madeira, Portugal 9000-224</li>
+                  <li>{t.sections.who.legal}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>{t.sections.who.privacy}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
                 </ul>
               </div>
             </section>
@@ -177,10 +178,10 @@ function TermsContent() {
               <h2>{t.sections.contact.title}</h2>
               <div className="legal-card">
                 <ul>
-                  <li>{t.sections.contact.general}: <a href="mailto:hello@noahlife.io">hello@noahlife.io</a></li>
-                  <li>{t.sections.contact.legal}: <a href="mailto:legal@noahlife.io">legal@noahlife.io</a></li>
-                  <li>{t.sections.contact.privacy}: <a href="mailto:privacy@noahlife.io">privacy@noahlife.io</a></li>
-                  <li>{t.sections.contact.postal}: [YOUR REGISTERED OFFICE ADDRESS]</li>
+                  <li>{t.sections.contact.general}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>{t.sections.contact.legal}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>{t.sections.contact.privacy}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>{t.sections.contact.postal}: Rua das Merces 41, Funchal, Madeira, Portugal 9000-224</li>
                 </ul>
               </div>
             </section>
@@ -198,8 +199,8 @@ const en = {
   title: "Terms of Use",
   subtitle: "The terms and conditions that govern your use of the Noah Life application.",
   version: "Version 1.0",
-  lastUpdated: "Last updated: [PUBLICATION DATE]",
-  effective: "Effective: [PUBLICATION DATE]",
+  lastUpdated: "Last updated: June 24, 2026",
+  effective: "Effective: June 24, 2026",
   onThisPage: "On this page",
   toc: [
     { href: "#who", label: "Who we are" },
@@ -230,7 +231,7 @@ const en = {
     not: {
       title: "3. What Noah is NOT",
       desc: "You acknowledge and accept that Noah does not provide:",
-      items: ["A medical, psychological, psychiatric, or clinical service", "A diagnosis, prescription, dosage adjustment, or treatment plan", "Legal, financial, fiscal, or insurance advice", "Emergency response services — in an emergency, dial 112 (Spain) or your local emergency number directly", "A replacement for your family, doctor, or human relationships"],
+      items: ["A medical, psychological, psychiatric, or clinical service", "A diagnosis, prescription, dosage adjustment, or treatment plan", "Legal, financial, fiscal, or insurance advice", "Emergency response services,in an emergency, dial 112 (Spain) or your local emergency number directly", "A replacement for your family, doctor, or human relationships"],
       verify: "AI responses may contain errors or outdated information. Always verify with a qualified professional.",
     },
     eligibility: {
@@ -271,7 +272,7 @@ const en = {
     },
     ip: {
       title: "10. Intellectual property",
-      desc: "The Noah application, brand, and software are owned by [YOUR COMPANY] and protected by applicable laws.",
+      desc: "The Noah application, brand, and software are owned by Pixpel LDA and protected by applicable laws.",
       yours: "Your content remains yours.",
       items: ["We do not claim ownership of your personal content", "We do not sell your content", "We do not use your content to train public AI models"],
     },
@@ -287,12 +288,12 @@ const en = {
     },
     termination: {
       title: "13. Termination",
-      desc: "You can stop using Noah anytime by uninstalling the app. Request data deletion via privacy@noahlife.io or in-app sign-out. We may terminate access for material breach.",
+      desc: "You can stop using Noah anytime by uninstalling the app. Request data deletion via contact@noahlife.io or in-app sign-out. We may terminate access for material breach.",
     },
     law: {
       title: "14. Governing law and disputes",
       desc: "These Terms are governed by Spanish law.",
-      items: ["EU consumers: EU Online Dispute Resolution (ec.europa.eu/consumers/odr)", "You may bring proceedings in your local courts", "Our preferred forum: courts of [YOUR REGISTERED CITY], Spain"],
+      items: ["EU consumers: EU Online Dispute Resolution (ec.europa.eu/consumers/odr)", "You may bring proceedings in your local courts", "Our preferred forum: courts of Funchal, Madeira, Portugal"],
     },
     contact: {
       title: "15. Contact",
@@ -309,8 +310,8 @@ const es = {
   title: "Condiciones de Uso",
   subtitle: "Los términos y condiciones que regulan el uso de la aplicación Noah Life.",
   version: "Versión 1.0",
-  lastUpdated: "Última actualización: [FECHA DE PUBLICACIÓN]",
-  effective: "Vigente desde: [FECHA DE PUBLICACIÓN]",
+  lastUpdated: "Última actualización: 24 de junio de 2026",
+  effective: "Vigente desde: 24 de junio de 2026",
   onThisPage: "En esta página",
   toc: [
     { href: "#who", label: "Quiénes somos" },
@@ -341,7 +342,7 @@ const es = {
     not: {
       title: "3. Qué NO es Noah",
       desc: "Reconoces y aceptas que Noah no proporciona:",
-      items: ["Un servicio médico, psicológico, psiquiátrico o clínico", "Un diagnóstico, prescripción, ajuste de dosis o plan de tratamiento", "Asesoramiento legal, financiero, fiscal o de seguros", "Servicios de respuesta a emergencias — en caso de emergencia, llama al 112 directamente", "Un sustituto de tu familia, médico o relaciones humanas"],
+      items: ["Un servicio médico, psicológico, psiquiátrico o clínico", "Un diagnóstico, prescripción, ajuste de dosis o plan de tratamiento", "Asesoramiento legal, financiero, fiscal o de seguros", "Servicios de respuesta a emergencias,en caso de emergencia, llama al 112 directamente", "Un sustituto de tu familia, médico o relaciones humanas"],
       verify: "Las respuestas de la IA pueden contener errores o información desactualizada. Siempre verifica con un profesional cualificado.",
     },
     eligibility: {
@@ -382,7 +383,7 @@ const es = {
     },
     ip: {
       title: "10. Propiedad intelectual",
-      desc: "La aplicación Noah, marca y software son propiedad de [TU EMPRESA] y están protegidos por las leyes aplicables.",
+      desc: "La aplicación Noah, marca y software son propiedad de Pixpel LDA y están protegidos por las leyes aplicables.",
       yours: "Tu contenido sigue siendo tuyo.",
       items: ["No reclamamos la propiedad de tu contenido personal", "No vendemos tu contenido", "No usamos tu contenido para entrenar modelos de IA públicos"],
     },
@@ -398,12 +399,12 @@ const es = {
     },
     termination: {
       title: "13. Terminación",
-      desc: "Puedes dejar de usar Noah en cualquier momento desinstalando la app. Solicita la eliminación de datos vía privacy@noahlife.io o cerrando sesión en la app. Podemos terminar el acceso por incumplimiento material.",
+      desc: "Puedes dejar de usar Noah en cualquier momento desinstalando la app. Solicita la eliminación de datos vía contact@noahlife.io o cerrando sesión en la app. Podemos terminar el acceso por incumplimiento material.",
     },
     law: {
       title: "14. Ley aplicable y disputas",
       desc: "Estas Condiciones se rigen por la ley española.",
-      items: ["Consumidores de la UE: Plataforma de Resolución de Litigios en Línea (ec.europa.eu/consumers/odr)", "Puedes presentar procedimientos en tus tribunales locales", "Nuestro foro preferido: tribunales de [TU CIUDAD REGISTRADA], España"],
+      items: ["Consumidores de la UE: Plataforma de Resolución de Litigios en Línea (ec.europa.eu/consumers/odr)", "Puedes presentar procedimientos en tus tribunales locales", "Nuestro foro preferido: tribunales de Funchal, Madeira, Portugal"],
     },
     contact: {
       title: "15. Contacto",

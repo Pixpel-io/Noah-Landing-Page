@@ -3,6 +3,7 @@
 import '../privacy/legal.css'
 import { LegalHeader } from '../privacy/legal-header'
 import { LegalFooter } from '../privacy/legal-footer'
+import { LegalLoader } from '../privacy/legal-loader'
 import { LanguageProvider, useLanguage } from '@/lib/language-context'
 
 export default function CookiePolicyPage() {
@@ -19,9 +20,10 @@ function CookiePolicyContent() {
 
   return (
     <div className="min-h-screen bg-white">
+      <LegalLoader color="#FEA060" />
       <LegalHeader />
 
-      <div className="legal-page pt-18">
+      <div className="legal-page pt-18" style={{"--accent": "#FEA060"} as React.CSSProperties}>
         <header className="legal-header">
           <span className="legal-badge">{t.badge}</span>
           <h1>{t.title}</h1>
@@ -246,11 +248,11 @@ function CookiePolicyContent() {
               <p>{t.sections.contact.desc}</p>
               <div className="legal-card">
                 <ul>
-                  <li><strong>[YOUR REGISTERED COMPANY NAME]</strong></li>
-                  <li>[Registered address, Spain]</li>
-                  <li>{t.sections.contact.email}: <a href="mailto:privacy@noahlife.io">privacy@noahlife.io</a></li>
-                  <li>DPO: <a href="mailto:dpo@noahlife.io">dpo@noahlife.io</a></li>
-                  <li>{t.sections.contact.postal}: [YOUR REGISTERED OFFICE ADDRESS]</li>
+                  <li><strong>Pixpel LDA</strong></li>
+                  <li>Rua das Merces 41, Funchal, Madeira, Portugal 9000-224</li>
+                  <li>{t.sections.contact.email}: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>DPO: <a href="mailto:contact@noahlife.io">contact@noahlife.io</a></li>
+                  <li>{t.sections.contact.postal}: Rua das Merces 41, Funchal, Madeira, Portugal 9000-224</li>
                 </ul>
               </div>
               <p>{t.sections.contact.authority} <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">www.aepd.es</a></p>
@@ -269,8 +271,8 @@ const en = {
   title: "Cookie Policy",
   subtitle: "How we use cookies and similar technologies on noahlife.io, and how you can control them.",
   version: "Version 1.0",
-  lastUpdated: "Last updated: [PUBLICATION DATE]",
-  effective: "Effective: [PUBLICATION DATE]",
+  lastUpdated: "Last updated: June 24, 2026",
+  effective: "Effective: June 24, 2026",
   onThisPage: "On this page",
   toc: [
     { href: "#what-are-cookies", label: "What are cookies" },
@@ -293,20 +295,20 @@ const en = {
       desc: "Cookies are small text files placed on your device (computer, tablet, or mobile phone) when you visit a website. They are widely used to make websites work efficiently, provide a better user experience, and supply information to site owners.",
       desc2: "In addition to cookies, we may use similar technologies including:",
       items: [
-        "Local Storage — data stored in your browser that persists until explicitly cleared",
-        "Session Storage — temporary data stored for the duration of your browser session",
-        "Pixels/web beacons — tiny transparent images used to track page visits and interactions",
-        "Scripts — code that runs on your device to enable website functionality and analytics",
+        "Local Storage,data stored in your browser that persists until explicitly cleared",
+        "Session Storage,temporary data stored for the duration of your browser session",
+        "Pixels/web beacons,tiny transparent images used to track page visits and interactions",
+        "Scripts,code that runs on your device to enable website functionality and analytics",
       ],
     },
     legalBasis: {
       title: "2. Legal basis for cookie use",
       desc: "Under EU Regulation 2009/136/EC (ePrivacy Directive) as transposed into Spanish law (LSSI-CE, Art. 22.2) and supplemented by the General Data Protection Regulation (GDPR, Art. 6), we process cookie data on the following legal bases:",
       items: [
-        "Strictly necessary cookies — Legitimate interest / contract performance (Art. 6(1)(b)(f) GDPR). No consent required per Art. 5(3) ePrivacy Directive.",
-        "Analytics cookies — Your explicit, informed, freely-given consent (Art. 6(1)(a) GDPR).",
-        "Functional cookies — Your explicit consent (Art. 6(1)(a) GDPR).",
-        "Marketing/advertising cookies — Your explicit consent (Art. 6(1)(a) GDPR). Currently not used.",
+        "Strictly necessary cookies,Legitimate interest / contract performance (Art. 6(1)(b)(f) GDPR). No consent required per Art. 5(3) ePrivacy Directive.",
+        "Analytics cookies,Your explicit, informed, freely-given consent (Art. 6(1)(a) GDPR).",
+        "Functional cookies,Your explicit consent (Art. 6(1)(a) GDPR).",
+        "Marketing/advertising cookies,Your explicit consent (Art. 6(1)(a) GDPR). Currently not used.",
       ],
       callout: "We never set non-essential cookies until you provide affirmative consent via our cookie banner. Pre-ticked boxes do not constitute valid consent.",
     },
@@ -330,8 +332,8 @@ const en = {
         title: "Analytics cookies",
         desc: "These cookies help us understand how visitors interact with our website by collecting information anonymously. They allow us to measure and improve the performance of our site. These cookies are only set with your explicit consent.",
         cookies: [
-          ["_va", "Vercel Analytics — anonymous page view and performance metrics", "24 hours"],
-          ["_vas", "Vercel Analytics session identifier — groups page views into sessions", "30 minutes"],
+          ["_va", "Vercel Analytics,anonymous page view and performance metrics", "24 hours"],
+          ["_vas", "Vercel Analytics session identifier,groups page views into sessions", "30 minutes"],
         ],
       },
       functional: {
@@ -353,9 +355,9 @@ const en = {
       title: "4. Consent management",
       desc: "When you first visit our website, a cookie consent banner is displayed. You have the following options:",
       items: [
-        "Accept all — enables all cookie categories (analytics and functional)",
-        "Reject all — only strictly necessary cookies are set",
-        "Customise — choose which optional categories to enable or disable individually",
+        "Accept all,enables all cookie categories (analytics and functional)",
+        "Reject all,only strictly necessary cookies are set",
+        "Customise,choose which optional categories to enable or disable individually",
       ],
       withdraw: "You may withdraw or modify your consent at any time by clicking the \"Cookie Settings\" link in our website footer, or by clearing your browser cookies. Withdrawal of consent does not affect the lawfulness of processing based on consent before its withdrawal.",
     },
@@ -427,12 +429,12 @@ const en = {
         { title: "Right to portability", desc: "Receive your data in a structured, machine-readable format" },
         { title: "Right to lodge a complaint", desc: "File a complaint with the Spanish AEPD or your local DPA" },
       ],
-      exercise: "To exercise any of these rights, contact us at privacy@noahlife.io. We will respond within 30 days (extendable by two further months for complex requests, per Art. 12(3) GDPR).",
+      exercise: "To exercise any of these rights, contact us at contact@noahlife.io. We will respond within 30 days (extendable by two further months for complex requests, per Art. 12(3) GDPR).",
       authority: "If you are unsatisfied with our response, you may lodge a complaint with the Agencia Española de Protección de Datos (AEPD):",
     },
     children: {
       title: "10. Children's privacy",
-      desc: "Our website and services are not directed at children under 14 years of age (the digital consent age in Spain under Art. 7 LOPDGDD). We do not knowingly set non-essential cookies for users we identify as being under this age. If you believe we have inadvertently collected data from a minor, please contact us immediately at privacy@noahlife.io and we will take steps to delete that data.",
+      desc: "Our website and services are not directed at children under 14 years of age (the digital consent age in Spain under Art. 7 LOPDGDD). We do not knowingly set non-essential cookies for users we identify as being under this age. If you believe we have inadvertently collected data from a minor, please contact us immediately at contact@noahlife.io and we will take steps to delete that data.",
     },
     changes: {
       title: "11. Changes to this policy",
@@ -459,8 +461,8 @@ const es = {
   title: "Política de Cookies",
   subtitle: "Cómo utilizamos cookies y tecnologías similares en noahlife.io, y cómo puedes controlarlas.",
   version: "Versión 1.0",
-  lastUpdated: "Última actualización: [FECHA DE PUBLICACIÓN]",
-  effective: "Vigente desde: [FECHA DE PUBLICACIÓN]",
+  lastUpdated: "Última actualización: 24 de junio de 2026",
+  effective: "Vigente desde: 24 de junio de 2026",
   onThisPage: "En esta página",
   toc: [
     { href: "#what-are-cookies", label: "Qué son las cookies" },
@@ -483,20 +485,20 @@ const es = {
       desc: "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo (ordenador, tablet o teléfono móvil) cuando visitas un sitio web. Se utilizan ampliamente para que los sitios web funcionen de forma eficiente, proporcionar una mejor experiencia de usuario y suministrar información a los propietarios del sitio.",
       desc2: "Además de las cookies, podemos utilizar tecnologías similares que incluyen:",
       items: [
-        "Almacenamiento local (Local Storage) — datos almacenados en tu navegador que persisten hasta ser eliminados explícitamente",
-        "Almacenamiento de sesión (Session Storage) — datos temporales almacenados durante la sesión del navegador",
-        "Píxeles/balizas web — pequeñas imágenes transparentes utilizadas para rastrear visitas e interacciones",
-        "Scripts — código que se ejecuta en tu dispositivo para habilitar funcionalidades del sitio web y análisis",
+        "Almacenamiento local (Local Storage),datos almacenados en tu navegador que persisten hasta ser eliminados explícitamente",
+        "Almacenamiento de sesión (Session Storage),datos temporales almacenados durante la sesión del navegador",
+        "Píxeles/balizas web,pequeñas imágenes transparentes utilizadas para rastrear visitas e interacciones",
+        "Scripts,código que se ejecuta en tu dispositivo para habilitar funcionalidades del sitio web y análisis",
       ],
     },
     legalBasis: {
       title: "2. Base legal para el uso de cookies",
       desc: "De acuerdo con el Reglamento UE 2009/136/CE (Directiva ePrivacy) transpuesto al derecho español (LSSI-CE, Art. 22.2) y complementado por el Reglamento General de Protección de Datos (RGPD, Art. 6), procesamos los datos de cookies con las siguientes bases legales:",
       items: [
-        "Cookies estrictamente necesarias — Interés legítimo / ejecución del contrato (Art. 6(1)(b)(f) RGPD). No requieren consentimiento según el Art. 5(3) de la Directiva ePrivacy.",
-        "Cookies analíticas — Tu consentimiento explícito, informado y libremente otorgado (Art. 6(1)(a) RGPD).",
-        "Cookies funcionales — Tu consentimiento explícito (Art. 6(1)(a) RGPD).",
-        "Cookies de marketing/publicidad — Tu consentimiento explícito (Art. 6(1)(a) RGPD). Actualmente no se utilizan.",
+        "Cookies estrictamente necesarias,Interés legítimo / ejecución del contrato (Art. 6(1)(b)(f) RGPD). No requieren consentimiento según el Art. 5(3) de la Directiva ePrivacy.",
+        "Cookies analíticas,Tu consentimiento explícito, informado y libremente otorgado (Art. 6(1)(a) RGPD).",
+        "Cookies funcionales,Tu consentimiento explícito (Art. 6(1)(a) RGPD).",
+        "Cookies de marketing/publicidad,Tu consentimiento explícito (Art. 6(1)(a) RGPD). Actualmente no se utilizan.",
       ],
       callout: "Nunca establecemos cookies no esenciales hasta que proporcionas un consentimiento afirmativo a través de nuestro banner de cookies. Las casillas premarcadas no constituyen un consentimiento válido.",
     },
@@ -520,8 +522,8 @@ const es = {
         title: "Cookies analíticas",
         desc: "Estas cookies nos ayudan a comprender cómo los visitantes interactúan con nuestro sitio web recopilando información de forma anónima. Nos permiten medir y mejorar el rendimiento de nuestro sitio. Estas cookies solo se establecen con tu consentimiento explícito.",
         cookies: [
-          ["_va", "Vercel Analytics — métricas anónimas de visitas y rendimiento de páginas", "24 horas"],
-          ["_vas", "Identificador de sesión de Vercel Analytics — agrupa visitas en sesiones", "30 minutos"],
+          ["_va", "Vercel Analytics,métricas anónimas de visitas y rendimiento de páginas", "24 horas"],
+          ["_vas", "Identificador de sesión de Vercel Analytics,agrupa visitas en sesiones", "30 minutos"],
         ],
       },
       functional: {
@@ -543,9 +545,9 @@ const es = {
       title: "4. Gestión del consentimiento",
       desc: "Cuando visitas nuestro sitio web por primera vez, se muestra un banner de consentimiento de cookies. Tienes las siguientes opciones:",
       items: [
-        "Aceptar todas — habilita todas las categorías de cookies (analíticas y funcionales)",
-        "Rechazar todas — solo se establecen las cookies estrictamente necesarias",
-        "Personalizar — elige qué categorías opcionales habilitar o deshabilitar individualmente",
+        "Aceptar todas,habilita todas las categorías de cookies (analíticas y funcionales)",
+        "Rechazar todas,solo se establecen las cookies estrictamente necesarias",
+        "Personalizar,elige qué categorías opcionales habilitar o deshabilitar individualmente",
       ],
       withdraw: "Puedes retirar o modificar tu consentimiento en cualquier momento haciendo clic en el enlace \"Configuración de Cookies\" en el pie de página de nuestro sitio web, o borrando las cookies de tu navegador. La retirada del consentimiento no afecta a la licitud del tratamiento basado en el consentimiento antes de su retirada.",
     },
@@ -617,12 +619,12 @@ const es = {
         { title: "Derecho a la portabilidad", desc: "Recibir tus datos en un formato estructurado y legible por máquina" },
         { title: "Derecho a reclamar", desc: "Presentar una reclamación ante la AEPD o tu autoridad de protección de datos" },
       ],
-      exercise: "Para ejercer cualquiera de estos derechos, contáctanos en privacy@noahlife.io. Responderemos en un plazo de 30 días (ampliable dos meses más para solicitudes complejas, según el Art. 12(3) RGPD).",
+      exercise: "Para ejercer cualquiera de estos derechos, contáctanos en contact@noahlife.io. Responderemos en un plazo de 30 días (ampliable dos meses más para solicitudes complejas, según el Art. 12(3) RGPD).",
       authority: "Si no estás satisfecho con nuestra respuesta, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD):",
     },
     children: {
       title: "10. Privacidad de menores",
-      desc: "Nuestro sitio web y servicios no están dirigidos a menores de 14 años (la edad de consentimiento digital en España según el Art. 7 LOPDGDD). No establecemos a sabiendas cookies no esenciales para usuarios que identificamos como menores de esta edad. Si crees que hemos recopilado inadvertidamente datos de un menor, contacta con nosotros inmediatamente en privacy@noahlife.io y tomaremos medidas para eliminar esos datos.",
+      desc: "Nuestro sitio web y servicios no están dirigidos a menores de 14 años (la edad de consentimiento digital en España según el Art. 7 LOPDGDD). No establecemos a sabiendas cookies no esenciales para usuarios que identificamos como menores de esta edad. Si crees que hemos recopilado inadvertidamente datos de un menor, contacta con nosotros inmediatamente en contact@noahlife.io y tomaremos medidas para eliminar esos datos.",
     },
     changes: {
       title: "11. Cambios en esta política",

@@ -56,7 +56,7 @@ export function Footer() {
           <div>
             <h4 className="text-[18px] font-bold text-[#1F3842] mb-4 font-[family-name:var(--font-dm-sans)]">{t.footer.company}</h4>
             <ul className="space-y-2.5">
-              <li><Link href="#" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.about}</Link></li>
+              <li><Link href="#" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.about}</Link></li>
             </ul>
           </div>
 
@@ -64,9 +64,9 @@ export function Footer() {
           <div>
             <h4 className="text-[18px] font-bold text-[#1F3842] mb-4 font-[family-name:var(--font-dm-sans)]">{t.footer.product}</h4>
             <ul className="space-y-2.5">
-              <li><Link href="#features" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.features}</Link></li>
-              <li><Link href="#how-it-works" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.howItWorks}</Link></li>
-              <li><button onClick={() => setShowDownload(true)} className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.download}</button></li>
+              <li><Link href="#features" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.features}</Link></li>
+              <li><Link href="#how-it-works" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.howItWorks}</Link></li>
+              <li><button onClick={() => setShowDownload(true)} className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.download}</button></li>
             </ul>
           </div>
 
@@ -74,8 +74,8 @@ export function Footer() {
           <div>
             <h4 className="text-[18px] font-bold text-[#1F3842] mb-4 font-[family-name:var(--font-dm-sans)]">{t.footer.support}</h4>
             <ul className="space-y-2.5">
-              <li><Link href="#" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.contact}</Link></li>
-              <li><Link href="#faq" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.faqLink}</Link></li>
+              <li><Link href="#" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.contact}</Link></li>
+              <li><Link href="#faq" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.faqLink}</Link></li>
             </ul>
           </div>
 
@@ -83,9 +83,9 @@ export function Footer() {
           <div>
             <h4 className="text-[18px] font-bold text-[#1F3842] mb-4 font-[family-name:var(--font-dm-sans)]">{t.footer.legal}</h4>
             <ul className="space-y-2.5">
-              <li><Link href="/privacy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.privacy}</Link></li>
-              <li><Link href="/terms" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.terms}</Link></li>
-              <li><Link href="/cookie-policy" className="text-sm text-[#6B7280] hover:text-[#1F3842] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.cookies}</Link></li>
+              <li><Link href="/privacy" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.privacy}</Link></li>
+              <li><Link href="/terms" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.terms}</Link></li>
+              <li><Link href="/cookie-policy" className="text-sm text-[#6B7280] hover:text-[#D86262] hover:translate-x-1 inline-block transition-all duration-200">{t.footer.links.cookies}</Link></li>
             </ul>
           </div>
         </div>
