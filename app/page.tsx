@@ -15,6 +15,7 @@ import { FAQSection } from "@/components/faq-section"
 import { CTASection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
 import { ScrollEffects } from "@/components/scroll-effects"
+import { CookieConsent } from "@/components/cookie-consent"
 import { LanguageProvider } from "@/lib/language-context"
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
         <div className="px-4 sm:px-6"><hr className="max-w-7xl mx-auto border-t border-gray-200" /></div>
         <FAQSection />
         <Footer />
+        <CookieConsent />
       </motion.main>
     </LanguageProvider>
   )
