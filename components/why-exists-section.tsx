@@ -67,11 +67,11 @@ export function WhyExistsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true, margin: "-50px" }}
-          className="relative mt-8 sm:mt-12 bg-[#FEA060] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#FEA060]/30 transition-shadow duration-300"
+          className="relative mt-8 sm:mt-12 bg-[#FEA060] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center justify-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#FEA060]/30 transition-shadow duration-300"
         >
           <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
           <Heart className="w-6 h-6 shrink-0 text-white relative z-10 group-hover:fill-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
-          <p className="text-white text-base md:text-[18px] leading-relaxed relative z-10">
+          <p className="text-white text-base md:text-[18px] leading-relaxed relative z-10 text-center">
             {t.whyExists.bottomQuote}
           </p>
         </motion.div>
