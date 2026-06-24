@@ -2,7 +2,6 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
-import { Heart } from "lucide-react"
 
 export function WhyDifferentSection() {
   const { t, locale } = useLanguage()
@@ -61,20 +60,6 @@ export function WhyDifferentSection() {
 
         </motion.div>
 
-        {/* Quote banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.4, 0.25, 1] }}
-          viewport={{ once: true, margin: "-50px" }}
-          className="relative bg-[#734163] rounded-2xl px-5 sm:px-8 md:px-10 py-4 sm:py-5 flex items-center gap-3 sm:gap-4 overflow-hidden group cursor-default hover:shadow-lg hover:shadow-[#734163]/40 transition-shadow duration-300"
-        >
-          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-          <Heart className="w-6 h-6 shrink-0 text-[#D86262] relative z-10 group-hover:fill-white group-hover:text-white group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)] transition-all duration-300" />
-          <p className="text-white text-base md:text-[18px] leading-relaxed relative z-10">
-            {t.whyDifferent.quote}
-          </p>
-        </motion.div>
 
       </div>
     </section>
