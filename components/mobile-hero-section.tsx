@@ -10,7 +10,7 @@ export function MobileHeroSection() {
   return (
     <section className="bg-white pt-20 px-4 pb-8 flex flex-col items-center">
       {/* Text Content */}
-      <div className="flex flex-col items-center gap-4 mb-8 max-w-[343px]">
+      <div className="flex flex-col items-center gap-4 mb-8 max-w-[343px] w-full">
         <h1 className="font-[family-name:var(--font-crimson)] text-[52px] leading-[95%] tracking-tight text-center text-black font-normal">
           {t.hero.headlinePart1} {t.hero.headlinePart2} {t.hero.headlinePart3}
         </h1>
@@ -23,7 +23,7 @@ export function MobileHeroSection() {
       {/* Phone mockup with cards overlay */}
       <div className="relative w-full max-w-[280px] mb-6 mx-auto">
         {/* Green background container with phone */}
-        <div className="relative bg-[#7FA088] rounded-[36px] pt-4 pb-6 px-4 mt-[150px] h-[409px]">
+        <div className="relative rounded-[36px] pt-4 pb-6 px-4 mt-[150px] h-[409px]" style={{background: "linear-gradient(to bottom, #D86262, #734163)"}}>
           {/* Phone frame */}
           <div className="relative w-full aspect-[9/16] bg-black rounded-[32px] p-[8px] shadow-2xl overflow-hidden -mt-[66px]">
             <div className="relative w-full h-full rounded-[24px] overflow-hidden">
@@ -49,7 +49,7 @@ export function MobileHeroSection() {
                 transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
                 className="absolute inset-0 rounded-full bg-white/30"
               />
-              <div className="w-[72px] h-[72px] bg-[#1F3842] rounded-full flex items-center justify-center shadow-2xl relative z-10">
+              <div className="w-[72px] h-[72px] bg-[#241A21] rounded-full flex items-center justify-center shadow-2xl relative z-10">
                 <svg viewBox="0 0 24 24" fill="white" className="w-9 h-9">
                   <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
                   <path d="M19 10v2a7 7 0 0 1-14 0v-2" stroke="white" strokeWidth="2" fill="none"/>
@@ -65,7 +65,7 @@ export function MobileHeroSection() {
         </div>
 
         {/* Feature Cards positioned absolutely over the phone */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[190px] flex flex-col gap-2 z-30">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[170px] xs:w-[190px] flex flex-col gap-2 z-30">
           {/* Dr. Martínez Card */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -73,7 +73,7 @@ export function MobileHeroSection() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="bg-white border-[1.5px] border-black rounded-xl px-3 py-2.5 flex items-center gap-2.5 shadow-md animate-float cursor-pointer hover:-translate-y-2 hover:shadow-[0_14px_30px_rgba(126,160,136,0.25)] transition-all duration-300"
           >
-            <div className="w-5 h-5 shrink-0 text-[#7EA088]">
+            <div className="w-5 h-5 shrink-0 text-[#D86262]">
               <Calendar className="w-full h-full" strokeWidth={1.8} />
             </div>
             <div className="flex-1">

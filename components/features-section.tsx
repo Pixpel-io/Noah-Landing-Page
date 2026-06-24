@@ -6,7 +6,7 @@ import { useLanguage } from "@/lib/language-context"
 import { useState, useRef, useEffect } from "react"
 
 const icons = [Mic, Camera, FileText, CalendarClock, ShieldCheck, Bell]
-const colors = ["#7EA088", "#D4A24D", "#A95535", "#1F3842", "#7EA088", "#D4A24D"]
+const colors = ["#FEA060", "#D86262", "#734163", "#FEA060", "#D86262", "#734163"]
 
 export function FeaturesSection() {
   const { t } = useLanguage()
@@ -58,7 +58,7 @@ export function FeaturesSection() {
           viewport={{ once: true, margin: "-50px" }}
           className="mb-14"
         >
-          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">
+          <p className="text-[20px] tracking-wide text-[#D86262] font-normal mb-4 font-sans">
             {t.features.sectionLabel}
           </p>
           <h2 className="font-[family-name:var(--font-crimson)] text-3xl md:text-4xl lg:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
@@ -105,7 +105,7 @@ export function FeaturesSection() {
                 key={index}
                 onClick={() => scrollToSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? "bg-[#7EA088] w-6" : "bg-gray-300"
+                  currentSlide === index ? "bg-[#D86262] w-6" : "bg-gray-300"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

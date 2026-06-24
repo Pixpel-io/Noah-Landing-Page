@@ -32,21 +32,21 @@ export function Footer() {
                   />
                   <circle cx="25" cy="11" r="1.8" fill="#D4A24D" />
                 </svg>
-                <div className="absolute inset-0 rounded-full bg-[#7EA088]/0 group-hover:bg-[#7EA088]/20 group-hover:shadow-[0_0_16px_rgba(126,160,136,0.5)] transition-all duration-300" />
+                <div className="absolute inset-0 rounded-full bg-black/0 group-hover:bg-[#D86262]/20 group-hover:shadow-[0_0_16px_rgba(216,98,98,0.5)] transition-all duration-300" />
               </div>
-              <span className="text-lg font-bold text-[#1F3842] group-hover:text-[#7EA088] transition-colors duration-300">NOAH</span>
+              <span className="text-lg font-bold text-[#1F3842] group-hover:text-[#D86262] transition-colors duration-300">NOAH</span>
             </Link>
             <p className="text-sm text-[#6B7280] mb-5 max-w-[260px] leading-relaxed">
               {t.footer.tagline}
             </p>
             <div className="flex gap-3">
-              <Link href="https://www.facebook.com/profile.php?id=61590901582384" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="https://www.facebook.com/profile.php?id=61590901582384" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white hover:bg-[#D86262] hover:shadow-[0_0_12px_rgba(216,98,98,0.5)] transition-all duration-300">
                 <Facebook className="w-3.5 h-3.5" />
               </Link>
-              <Link href="https://www.instagram.com/noahlife.io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="https://www.instagram.com/noahlife.io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white hover:bg-[#D86262] hover:shadow-[0_0_12px_rgba(216,98,98,0.5)] transition-all duration-300">
                 <Instagram className="w-3.5 h-3.5" />
               </Link>
-              <Link href="https://www.linkedin.com/company/noahlife-io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-[#1F3842] flex items-center justify-center text-white hover:bg-[#7EA088] hover:shadow-[0_0_12px_rgba(126,160,136,0.5)] transition-all duration-300">
+              <Link href="https://www.linkedin.com/company/noahlife-io/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white hover:bg-[#D86262] hover:shadow-[0_0_12px_rgba(216,98,98,0.5)] transition-all duration-300">
                 <Linkedin className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -93,7 +93,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-[#D9D2BE]/50 pt-5 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-[#6B7280]">{t.footer.copyright}</p>
-          <p className="text-xs text-[#6B7280] flex items-center gap-1.5">{t.footer.madeWith} <Heart className="w-3 h-3 text-[#D4A24D] fill-[#D4A24D] animate-pulse" /></p>
+          <p className="text-xs text-[#6B7280] flex items-center gap-1.5">{t.footer.madeWith} <Heart className="w-3 h-3 text-[#D86262] fill-[#D86262] animate-pulse" /></p>
         </div>
       </div>
       <DownloadModal isOpen={showDownload} onClose={() => setShowDownload(false)} />

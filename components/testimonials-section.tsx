@@ -92,7 +92,7 @@ export function TestimonialsSection() {
             style={{ scrollBehavior: "auto" }}
           >
             {duplicatedVideos.map((card, index) => (
-              <div key={index} className="shrink-0 w-52 sm:w-60 md:w-70 group/card cursor-pointer">
+              <div key={index} className="shrink-0 w-44 sm:w-60 md:w-70 group/card cursor-pointer">
                 {/* Video thumbnail */}
                 <div className="relative rounded-xl overflow-hidden mb-4 aspect-3/4 transition-all duration-300 group-hover/card:-translate-y-1">
                   <img
@@ -112,7 +112,7 @@ export function TestimonialsSection() {
                   &ldquo;{card.quote}&rdquo;
                 </p>
                 <p className="text-sm font-bold text-[#1F3842]">{card.name}</p>
-                <p className="text-xs text-[#7EA088]">{card.role}</p>
+                <p className="text-xs text-[#D86262]">{card.role}</p>
               </div>
             ))}
           </div>

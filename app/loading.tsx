@@ -11,7 +11,7 @@ export default function Loading() {
             strokeLinecap="round"
             strokeLinejoin="round"
           />
-          <circle cx="25" cy="11" r="1.8" fill="#D4A24D" />
+          <circle cx="25" cy="11" r="1.8" fill="#D86262" />
         </svg>
       </div>
       <p className="text-sm font-medium text-[#6B7280] animate-pulse">

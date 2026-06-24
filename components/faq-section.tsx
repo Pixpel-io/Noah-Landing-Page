@@ -23,7 +23,7 @@ export function FAQSection() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <p className="text-[20px] tracking-wide text-[#7EA088] font-normal mb-4 font-sans">{t.faq.sectionLabel}</p>
+          <p className="text-[20px] tracking-wide text-[#D86262] font-normal mb-4 font-sans">{t.faq.sectionLabel}</p>
           <h2 className="font-[family-name:var(--font-crimson)] text-3xl sm:text-4xl md:text-[60px] leading-[0.9] font-normal text-[#1F3842] heading-glow cursor-default">
             {t.faq.headline}
           </h2>
@@ -40,21 +40,21 @@ export function FAQSection() {
               onClick={() => toggleIndex(index)}
               className={`rounded-2xl px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 cursor-pointer bg-white ${
                 openIndex === index
-                  ? "border border-[#7EA088]/40 shadow-md shadow-[#7EA088]/10"
+                  ? "border border-[#D86262]/40 shadow-md shadow-[#D86262]/10"
                   : "border border-[#E5E5E5] hover:border-[#D9D2BE] hover:shadow-sm"
               }`}
             >
               <div
                 className="w-full text-left flex items-center justify-between gap-4"
               >
-                <span className={`text-sm sm:text-base font-medium transition-colors duration-300 ${openIndex === index ? "text-[#7EA088]" : "text-[#1F3842]"}`}>
+                <span className={`text-sm sm:text-base font-medium transition-colors duration-300 ${openIndex === index ? "text-[#D86262]" : "text-[#1F3842]"}`}>
                   {faq.question}
                 </span>
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                  openIndex === index ? "bg-[#7EA088]/10 rotate-0" : "bg-transparent rotate-180"
+                  openIndex === index ? "bg-[#D86262]/10 rotate-0" : "bg-transparent rotate-180"
                 }`}>
                   <ChevronUp className={`w-4 h-4 transition-colors duration-300 ${
-                    openIndex === index ? "text-[#7EA088]" : "text-[#4D6E7B]"
+                    openIndex === index ? "text-[#D86262]" : "text-[#4D6E7B]"
                   }`} />
                 </div>
               </div>
