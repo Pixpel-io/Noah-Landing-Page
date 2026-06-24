@@ -112,6 +112,11 @@ export function Header() {
             <span className="text-xs font-semibold text-[#1F3842] uppercase">{locale === "en" ? "ES" : "EN"}</span>
           </button>
 
+          <button onClick={() => setShowDownload(true)} className="flex items-center gap-1.5 border border-[#D86262] rounded-full px-3 py-1.5">
+            <span className="text-xs font-medium text-[#D86262]">{t.nav.downloadApp}</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#D86262]" />
+          </button>
+
           <button
             className="text-[#1F3842]"
             onClick={() => setIsOpen(!isOpen)}
@@ -153,10 +158,6 @@ export function Header() {
               >
                 {t.nav.faq}
               </a>
-              <button onClick={() => { setShowDownload(true); setIsOpen(false) }} className="flex items-center gap-2 bg-[#D86262] rounded-full px-5 py-2.5 w-fit mt-2">
-                <span className="text-sm font-medium text-white">{t.nav.downloadApp}</span>
-                <ArrowRight className="w-4 h-4 text-white" />
-              </button>
             </div>
           </motion.nav>
         )}
