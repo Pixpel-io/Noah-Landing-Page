@@ -10,6 +10,7 @@ import { WhyDifferentSection } from "@/components/why-different-section"
 import { WhyExistsSection } from "@/components/why-exists-section"
 import { ServicesSection } from "@/components/services-section"
 import { FeaturesSection } from "@/components/features-section"
+import { VideoShowcaseSection } from "@/components/video-showcase-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { FAQSection } from "@/components/faq-section"
 import { CTASection } from "@/components/cta-section"
@@ -44,6 +45,8 @@ export default function Home() {
         <div className="px-4 sm:px-6 my-6"><hr className="max-w-7xl mx-auto border-t border-gray-200" /></div>
         <ServicesSection />
         <FeaturesSection />
+        <div className="px-4 sm:px-6 my-6"><hr className="max-w-7xl mx-auto border-t border-gray-200" /></div>
+        <VideoShowcaseSection />
         <CTASection />
         <TestimonialsSection />
         <div className="px-4 sm:px-6"><hr className="max-w-7xl mx-auto border-t border-gray-200" /></div>

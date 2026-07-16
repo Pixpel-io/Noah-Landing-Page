@@ -103,6 +103,12 @@ export const translations = {
         { title: "Alerts and updates", description: "for authorized family members" },
       ],
     },
+    videoShowcase: {
+      sectionLabel: "See NOAH in action",
+      headline: "Watch how NOAH fits into everyday life",
+      description: "A quick look at how NOAH talks, remembers, and supports the people you love, every single day.",
+      unmute: "Tap for sound",
+    },
     cta: {
       badge: "Made with love for the ones who matter",
       headline: "Give the ones you love most the support they deserve",
@@ -307,6 +313,12 @@ export const translations = {
         { title: "Acceso Sencillo", description: "" },
         { title: "Avisos y seguimientos para familiares autorizados", description: "" },
       ],
+    },
+    videoShowcase: {
+      sectionLabel: "Mira NOAH en acción",
+      headline: "Descubre cómo NOAH se integra en el día a día",
+      description: "Un vistazo rápido a cómo NOAH conversa, recuerda y acompaña a quienes más quieres, cada día.",
+      unmute: "Toca para el sonido",
     },
     cta: {
       badge: "Hecho con amor para quienes importan",
