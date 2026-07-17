@@ -92,7 +92,23 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-[#D9D2BE]/50 pt-5 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-[#6B7280]">{t.footer.copyright}</p>
+          <p className="text-xs text-[#6B7280]">
+            {t.footer.copyright.split("Pixpel LDA").map((part, i, arr) => (
+              <span key={i}>
+                {part}
+                {i < arr.length - 1 && (
+                  <a
+                    href="https://pixpel.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-[#D86262] transition-colors duration-200 underline-offset-2 hover:underline"
+                  >
+                    Pixpel LDA
+                  </a>
+                )}
+              </span>
+            ))}
+          </p>
           <p className="text-xs text-[#6B7280] flex items-center gap-1.5">{t.footer.madeWith} <Heart className="w-3 h-3 text-[#D86262] fill-[#D86262] animate-pulse" /></p>
         </div>
       </div>
