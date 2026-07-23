@@ -227,6 +227,26 @@ function PrivacyContent() {
               <p>{t.sections.changes.desc}</p>
             </section>
 
+            <section id="ai-services">
+              <h2>{t.sections.aiServices.title}</h2>
+              <p>{t.sections.aiServices.intro}</p>
+
+              <h3>{t.sections.aiServices.whatWeShare}</h3>
+              <ul>
+                {t.sections.aiServices.shareItems.map((item, i) => (
+                  <li key={i}><strong>{item.name}</strong> — {item.desc}</li>
+                ))}
+              </ul>
+
+              <h3>{t.sections.aiServices.protection}</h3>
+              <ul>
+                {t.sections.aiServices.protectionItems.map((item, i) => <li key={i}>{item}</li>)}
+              </ul>
+
+              <p>{t.sections.aiServices.control}</p>
+              <p>{t.sections.aiServices.policies}</p>
+            </section>
+
             <section id="contact">
               <h2>{t.sections.contact.title}</h2>
               <div className="legal-card">
@@ -268,6 +288,7 @@ const en = {
     { href: "#automated", label: "Automated decisions" },
     { href: "#cookies", label: "Cookies & tracking" },
     { href: "#changes", label: "Changes" },
+    { href: "#ai-services", label: "Third-party AI services" },
     { href: "#contact", label: "Contact" },
   ],
   intro: "This Privacy Policy explains how Noah Life (“Noah”, “we”, “us”) collects, uses, stores, and shares your personal data when you use the Noah Life mobile application. We comply with the EU General Data Protection Regulation (GDPR – Regulation 2016/679), Spain’s LOPDGDD (Ley Orgánica 3/2018), and Spanish data-protection authority (AEPD) guidance.",
@@ -320,10 +341,10 @@ const en = {
       thLocation: "Location",
       rows: [
         ["AWS", "Hosting, AI inference, database, storage", "EU (Frankfurt) + US (SCCs)"],
-        ["Anthropic (via Bedrock)", "AI chat model", "AWS region (migrating to EU)"],
+        ["Anthropic (via AWS Bedrock)", "AI chat model", "AWS region (migrating to EU)"],
+        ["AWS Polly", "Text-to-speech for Noah's spoken replies", "AWS region (SCCs)"],
         ["Supabase", "Database backup, auth", "EU (Frankfurt)"],
         ["Groq", "Speech-to-text (Whisper)", "US (SCCs)"],
-        ["OpenAI", "Medication photo scan only", "US (SCCs)"],
         ["Google / Apple", "App distribution, billing", "Per their terms"],
         ["Expo / EAS", "Push notifications, builds", "US (SCCs)"],
       ],
@@ -392,8 +413,27 @@ const en = {
       title: "12. Changes to this Policy",
       desc: "Material changes are notified in-app and by email. Continued use after the change indicates acceptance.",
     },
+    aiServices: {
+      title: "13. Third-party AI services",
+      intro: "To provide its features, Noah shares certain data with trusted third-party AI service providers. This only happens after you give explicit in-app consent, which you can withdraw at any time in Settings → AI data sharing.",
+      whatWeShare: "What data we share, and with whom",
+      shareItems: [
+        { name: "AWS Bedrock (Anthropic Claude)", desc: "Your chat messages and questions, your first name, age and city/country, and the medication details and doctor-consultation notes you add, are shared to generate chat replies and summarise your notes." },
+        { name: "Groq (Whisper)", desc: "Your voice recordings during a call are shared to convert your speech into text." },
+        { name: "AWS Polly", desc: "Noah's written replies (which may include your name or health context) are shared to convert text into the spoken voice you hear." },
+      ],
+      protection: "How your data is protected",
+      protectionItems: [
+        "These providers process your data solely to deliver the requested feature.",
+        "They do not use your data to train their AI models.",
+        "We do not sell your personal data.",
+        "Data is transmitted securely, and sharing only occurs after your explicit consent.",
+      ],
+      control: "You can review exactly what is shared, or turn off all AI data sharing, at any time in the app under Settings → AI data sharing. Turning it off pauses chat, voice calls and related AI features, but keeps your existing data on your device.",
+      policies: "For each provider's own privacy practices, please see the privacy policies of Anthropic (AWS Bedrock), Groq, and Amazon Web Services.",
+    },
     contact: {
-      title: "13. Contact",
+      title: "14. Contact",
       privacy: "Privacy / GDPR rights",
       postal: "Postal",
     },
@@ -421,6 +461,7 @@ const es = {
     { href: "#automated", label: "Decisiones automatizadas" },
     { href: "#cookies", label: "Cookies y seguimiento" },
     { href: "#changes", label: "Cambios" },
+    { href: "#ai-services", label: "Servicios de IA de terceros" },
     { href: "#contact", label: "Contacto" },
   ],
   intro: "Esta Política de Privacidad explica cómo Noah Life (“Noah”, “nosotros”) recopila, utiliza, almacena y comparte tus datos personales cuando utilizas la aplicación móvil Noah Life. Cumplimos con el Reglamento General de Protección de Datos de la UE (RGPD – Reglamento 2016/679), la LOPDGDD española (Ley Orgánica 3/2018) y las directrices de la AEPD.",
@@ -473,10 +514,10 @@ const es = {
       thLocation: "Ubicación",
       rows: [
         ["AWS", "Hosting, inferencia IA, base de datos, almacenamiento", "UE (Frankfurt) + EE.UU. (CCT)"],
-        ["Anthropic (vía Bedrock)", "Modelo de chat IA", "Región AWS (migrando a UE)"],
+        ["Anthropic (vía AWS Bedrock)", "Modelo de chat IA", "Región AWS (migrando a UE)"],
+        ["AWS Polly", "Conversión de texto a voz para las respuestas de Noah", "Región AWS (CCT)"],
         ["Supabase", "Backup de base de datos, autenticación", "UE (Frankfurt)"],
         ["Groq", "Transcripción de voz (Whisper)", "EE.UU. (CCT)"],
-        ["OpenAI", "Escaneo de fotos de medicamentos", "EE.UU. (CCT)"],
         ["Google / Apple", "Distribución de la app, facturación", "Según sus términos"],
         ["Expo / EAS", "Notificaciones push, builds", "EE.UU. (CCT)"],
       ],
@@ -545,8 +586,27 @@ const es = {
       title: "12. Cambios en esta Política",
       desc: "Los cambios materiales se notifican en la app y por email. El uso continuado tras el cambio implica aceptación.",
     },
+    aiServices: {
+      title: "13. Servicios de IA de terceros",
+      intro: "Para ofrecer sus funciones, Noah comparte ciertos datos con proveedores de servicios de IA de terceros de confianza. Esto solo ocurre después de que des tu consentimiento explícito dentro de la app, que puedes retirar en cualquier momento en Ajustes → Compartir datos con IA.",
+      whatWeShare: "Qué datos compartimos, y con quién",
+      shareItems: [
+        { name: "AWS Bedrock (Anthropic Claude)", desc: "Tus mensajes y preguntas, tu nombre, edad y ciudad/país, y los detalles de medicación y notas de consultas médicas que añadas, se comparten para generar respuestas de chat y resumir tus notas." },
+        { name: "Groq (Whisper)", desc: "Tus grabaciones de voz durante una llamada se comparten para convertir tu voz en texto." },
+        { name: "AWS Polly", desc: "Las respuestas escritas de Noah (que pueden incluir tu nombre o contexto de salud) se comparten para convertir el texto en la voz hablada que escuchas." },
+      ],
+      protection: "Cómo se protegen tus datos",
+      protectionItems: [
+        "Estos proveedores procesan tus datos únicamente para ofrecer la función solicitada.",
+        "No usan tus datos para entrenar sus modelos de IA.",
+        "No vendemos tus datos personales.",
+        "Los datos se transmiten de forma segura, y solo se comparten tras tu consentimiento explícito.",
+      ],
+      control: "Puedes revisar exactamente qué se comparte, o desactivar por completo el uso compartido de datos con IA, en cualquier momento en la app en Ajustes → Compartir datos con IA. Desactivarlo pausa el chat, las llamadas de voz y las funciones de IA relacionadas, pero mantiene tus datos existentes en tu dispositivo.",
+      policies: "Para conocer las prácticas de privacidad de cada proveedor, consulta las políticas de privacidad de Anthropic (AWS Bedrock), Groq y Amazon Web Services.",
+    },
     contact: {
-      title: "13. Contacto",
+      title: "14. Contacto",
       privacy: "Privacidad / derechos RGPD",
       postal: "Dirección postal",
     },
